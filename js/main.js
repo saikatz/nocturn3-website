@@ -275,22 +275,27 @@
             submitBtn.innerHTML = '<i class="fas fa-spinner"></i> Sending...';
 
             try {
-                const response = await fetch('/api/contact', {
+                const response = await fetch('https://formsubmit.co/ajax/saikat@nocturn3.com', {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
+                    headers: { 
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
                     body: JSON.stringify({
                         name: name.value.trim(),
                         email: email.value.trim(),
                         subject: subject.value,
-                        message: message.value.trim()
+                        message: message.value.trim(),
+                        _subject: 'New Contact Form Submission - ' + subject.value,
+                        _template: 'table'
                     })
                 });
 
                 const data = await response.json();
 
-                if (response.ok) {
+                if (data.success === 'true' || response.ok) {
                     formStatus.className = 'form-status success';
-                    formStatus.textContent = data.message || 'Message sent successfully!';
+                    formStatus.textContent = 'Message sent successfully! We\'ll get back to you soon.';
                     form.reset();
                 } else {
                     formStatus.className = 'form-status error';
