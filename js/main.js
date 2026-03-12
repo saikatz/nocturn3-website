@@ -275,36 +275,24 @@
             submitBtn.innerHTML = '<i class="fas fa-spinner"></i> Sending...';
 
             try {
-                const response = await fetch('https://formsubmit.co/ajax/saikat@nocturn3.com', {
-                    method: 'POST',
-                    headers: { 
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        name: name.value.trim(),
-                        email: email.value.trim(),
-                        subject: subject.value,
-                        message: message.value.trim(),
-                        _subject: 'New Contact Form Submission - ' + subject.value,
-                        _template: 'table'
-                    })
-                });
+                // Construct mailto link with form data
+                const mailSubject = encodeURIComponent('Website Inquiry: ' + subject.value);
+                const mailBody = encodeURIComponent(
+                    'Name: ' + name.value.trim() + '\n' +
+                    'Email: ' + email.value.trim() + '\n' +
+                    'Subject: ' + subject.value + '\n\n' +
+                    'Message:\n' + message.value.trim()
+                );
+                
+                window.location.href = 'mailto:saikat@nocturn3.com?subject=' + mailSubject + '&body=' + mailBody;
 
-                const data = await response.json();
-
-                if (data.success === 'true' || response.ok) {
-                    formStatus.className = 'form-status success';
-                    formStatus.textContent = 'Message sent successfully! We\'ll get back to you soon.';
-                    form.reset();
-                } else {
-                    formStatus.className = 'form-status error';
-                    formStatus.textContent = data.message || 'Something went wrong. Please try again.';
-                }
+                formStatus.className = 'form-status success';
+                formStatus.textContent = 'Your email client has been opened. Please click Send to deliver your message.';
+                form.reset();
             } catch (err) {
                 const formStatus = document.getElementById('formStatus');
                 formStatus.className = 'form-status error';
-                formStatus.textContent = 'Network error. Please check your connection and try again.';
+                formStatus.textContent = 'Could not open email client. Please email us directly at saikat@nocturn3.com';
             } finally {
                 submitBtn.classList.remove('loading');
                 submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
