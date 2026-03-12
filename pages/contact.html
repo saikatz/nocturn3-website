@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact Nocturne Information Security Inc. for cybersecurity consulting and training inquiries.">
+    <title>Contact Us | Nocturne Information Security Inc.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+</head>
+<body>
+    <!-- ─── Navigation ────────────────────────────────────────────────────── -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="/" class="nav-brand">
+                <i class="fas fa-shield-halved brand-icon"></i>
+                <span class="brand-text">NOCTURN<span class="accent">3</span></span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="/">Home</a></li>
+                <li><a href="/pages/about">About</a></li>
+                <li><a href="/pages/services">Services</a></li>
+                <li><a href="/pages/training">Training</a></li>
+                <li><a href="/pages/contact" class="active">Contact</a></li>
+            </ul>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ─── Page Header ───────────────────────────────────────────────────── -->
+    <section class="page-header">
+        <div class="hero-bg">
+            <div class="grid-overlay"></div>
+        </div>
+        <div class="container">
+            <div class="page-header-content" data-aos="fade-up">
+                <span class="section-tag"><i class="fas fa-envelope"></i> Contact</span>
+                <h1>Get In <span class="gradient-text">Touch</span></h1>
+                <p>Ready to strengthen your security? We'd love to hear from you.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── Contact Section ───────────────────────────────────────────────── -->
+    <section class="content-section">
+        <div class="container">
+            <div class="contact-grid">
+                <!-- Contact Form -->
+                <div class="contact-form-wrapper" data-aos="fade-right">
+                    <h2>Send Us a Message</h2>
+                    <form id="contactForm" class="contact-form">
+                        <div class="form-group">
+                            <label for="name">Full Name <span class="required">*</span></label>
+                            <input type="text" id="name" name="name" placeholder="John Doe" required>
+                            <span class="form-error" id="nameError"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address <span class="required">*</span></label>
+                            <input type="email" id="email" name="email" placeholder="john@example.com" required>
+                            <span class="form-error" id="emailError"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject <span class="required">*</span></label>
+                            <select id="subject" name="subject" required>
+                                <option value="">Select a topic...</option>
+                                <option value="Security Consulting">Security Consulting</option>
+                                <option value="Training Inquiry">Training & Certification Inquiry</option>
+                                <option value="Vulnerability Assessment">Vulnerability Assessment</option>
+                                <option value="Incident Response">Incident Response</option>
+                                <option value="General Inquiry">General Inquiry</option>
+                                <option value="Partnership">Partnership Opportunity</option>
+                            </select>
+                            <span class="form-error" id="subjectError"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message <span class="required">*</span></label>
+                            <textarea id="message" name="message" rows="6" placeholder="Tell us about your security needs..." required></textarea>
+                            <span class="form-error" id="messageError"></span>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block" id="submitBtn">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                        <div class="form-status" id="formStatus"></div>
+                    </form>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="contact-info-wrapper" data-aos="fade-left">
+                    <div class="contact-info-card">
+                        <div class="contact-info-item">
+                            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                            <div>
+                                <h4>Email</h4>
+                                <a href="mailto:saikat@nocturn3.com">saikat@nocturn3.com</a>
+                            </div>
+                        </div>
+                        <div class="contact-info-item">
+                            <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                            <div>
+                                <h4>Location</h4>
+                                <p>Burlington, Ontario<br>Canada</p>
+                            </div>
+                        </div>
+                        <div class="contact-info-item">
+                            <div class="contact-icon"><i class="fas fa-globe"></i></div>
+                            <div>
+                                <h4>Website</h4>
+                                <a href="https://nocturn3.com">nocturn3.com</a>
+                            </div>
+                        </div>
+                        <div class="contact-info-item">
+                            <div class="contact-icon"><i class="fas fa-clock"></i></div>
+                            <div>
+                                <h4>Business Hours</h4>
+                                <p>Mon - Fri: 9:00 AM - 6:00 PM EST<br>Emergency response available 24/7</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-card">
+                        <h3><i class="fas fa-share-alt"></i> Connect With Us</h3>
+                        <div class="social-links large">
+                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+                            <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-card highlight">
+                        <h3><i class="fas fa-exclamation-triangle"></i> Security Incident?</h3>
+                        <p>If you're experiencing an active security incident, contact us immediately for rapid response support.</p>
+                        <a href="mailto:saikat@nocturn3.com?subject=URGENT:%20Security%20Incident" class="btn btn-outline">
+                            <i class="fas fa-phone"></i> Emergency Contact
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── Map Section (Burlington) ──────────────────────────────────────── -->
+    <section class="map-section">
+        <div class="container">
+            <div class="map-wrapper" data-aos="fade-up">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d92621.51379741066!2d-79.87559565!3d43.3255196!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b63a625e2a08d%3A0x5c5ce536cf8dbd2c!2sBurlington%2C%20ON!5e0!3m2!1sen!2sca!4v1710000000000!5m2!1sen!2sca" 
+                    width="100%" 
+                    height="400" 
+                    style="border:0; border-radius: 12px;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade"
+                    title="Burlington, Ontario - Nocturne Information Security Inc. Location">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── Footer ────────────────────────────────────────────────────────── -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="/" class="nav-brand">
+                        <i class="fas fa-shield-halved brand-icon"></i>
+                        <span class="brand-text">NOCTURN<span class="accent">3</span></span>
+                    </a>
+                    <p>Nocturne Information Security Inc. — Your trusted partner for cybersecurity consulting and professional development.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+                        <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="/pages/about">About Us</a></li>
+                        <li><a href="/pages/services">Services</a></li>
+                        <li><a href="/pages/training">Training</a></li>
+                        <li><a href="/pages/contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="/pages/services">Security Consulting</a></li>
+                        <li><a href="/pages/services">Vulnerability Assessment</a></li>
+                        <li><a href="/pages/services">Compliance & Audit</a></li>
+                        <li><a href="/pages/services">Incident Response</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> <a href="mailto:saikat@nocturn3.com">saikat@nocturn3.com</a></li>
+                        <li><i class="fas fa-map-marker-alt"></i> Burlington, Ontario</li>
+                        <li><i class="fas fa-globe"></i> <a href="https://nocturn3.com">nocturn3.com</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="currentYear"></span> Nocturne Information Security Inc. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="/js/main.js"></script>
+</body>
+</html>
