@@ -1,16 +1,16 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
   <defs>
     <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#0d0817;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#140e20;stop-opacity:1" />
+      <stop offset="0%" style="stop-color:#1a1030;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#211540;stop-opacity:1" />
     </linearGradient>
     <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#c084fc;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#7c3aed;stop-opacity:1" />
+      <stop offset="0%" style="stop-color:#d4a0ff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#9333ea;stop-opacity:1" />
     </linearGradient>
     <radialGradient id="centerGlow" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" style="stop-color:#c084fc;stop-opacity:0.12" />
-      <stop offset="100%" style="stop-color:#0d0817;stop-opacity:0" />
+      <stop offset="0%" style="stop-color:#d4a0ff;stop-opacity:0.18" />
+      <stop offset="100%" style="stop-color:#1a1030;stop-opacity:0" />
     </radialGradient>
     <filter id="glow">
       <feGaussianBlur stdDeviation="3" result="blur"/>
@@ -26,7 +26,7 @@
   
   <!-- Subtle grid pattern -->
   <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#c084fc" stroke-width="0.3" opacity="0.1"/>
+    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#d4a0ff" stroke-width="0.3" opacity="0.15"/>
   </pattern>
   <rect width="1200" height="630" fill="url(#grid)"/>
   
@@ -42,12 +42,12 @@
   </g>
 
   <!-- Company Name -->
-  <text x="480" y="250" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="72" fill="#f0ecf5" letter-spacing="4">
-    NOCTURN<tspan fill="#c084fc">3</tspan>
+  <text x="480" y="250" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="72" fill="#f8f6fc" letter-spacing="4">
+    NOCTURN<tspan fill="#d4a0ff">3</tspan>
   </text>
   
   <!-- Full Company Name -->
-  <text x="480" y="310" font-family="Arial, Helvetica, sans-serif" font-weight="400" font-size="26" fill="#a99fc0" letter-spacing="2">
+  <text x="480" y="310" font-family="Arial, Helvetica, sans-serif" font-weight="400" font-size="26" fill="#c4b8e0" letter-spacing="2">
     INFORMATION SECURITY INC.
   </text>
 
@@ -55,17 +55,17 @@
   <line x1="480" y1="340" x2="780" y2="340" stroke="url(#accentGrad)" stroke-width="2" opacity="0.6"/>
 
   <!-- Tagline -->
-  <text x="480" y="380" font-family="Arial, Helvetica, sans-serif" font-weight="300" font-size="22" fill="#f0ecf5">
+  <text x="480" y="380" font-family="Arial, Helvetica, sans-serif" font-weight="300" font-size="22" fill="#f8f6fc">
     Cybersecurity Consulting &amp; Training
   </text>
   
   <!-- Services tags -->
-  <text x="480" y="420" font-family="Arial, Helvetica, sans-serif" font-weight="400" font-size="16" fill="#a99fc0">
+  <text x="480" y="420" font-family="Arial, Helvetica, sans-serif" font-weight="400" font-size="16" fill="#c4b8e0">
     Security Consulting  ·  VAPT  ·  AI Security  ·  Compliance  ·  Training
   </text>
 
   <!-- Location -->
-  <text x="480" y="470" font-family="Arial, Helvetica, sans-serif" font-weight="400" font-size="16" fill="#c084fc">
+  <text x="480" y="470" font-family="Arial, Helvetica, sans-serif" font-weight="400" font-size="16" fill="#d4a0ff">
     Burlington, Ontario  ·  nocturn3.com
   </text>
 
