@@ -1305,8 +1305,8 @@ ul {
 }
 
 .contact-info-card.highlight {
-    border-color: rgba(239, 68, 68, 0.3);
-    background: rgba(239, 68, 68, 0.03);
+    border-color: rgba(245, 197, 66, 0.35);
+    background: rgba(245, 197, 66, 0.05);
 }
 
 .contact-info-card h3 {
