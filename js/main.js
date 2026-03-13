@@ -268,11 +268,26 @@
 
             if (!valid) return;
 
+            // Honeypot check (anti-bot)
+            const honeypot = form.querySelector('input[name="_honey"]');
+            if (honeypot && honeypot.value) {
+                // Bot detected — fake success silently
+                const fakeStatus = document.getElementById('formStatus');
+                fakeStatus.className = 'form-status success';
+                fakeStatus.textContent = 'Message sent successfully!';
+                form.reset();
+                return;
+            }
+
             // Submit
             const submitBtn = document.getElementById('submitBtn');
             const formStatus = document.getElementById('formStatus');
             submitBtn.classList.add('loading');
-            submitBtn.innerHTML = '<i class="fas fa-spinner"></i> Sending...';
+            submitBtn.textContent = '';
+            const spinnerIcon = document.createElement('i');
+            spinnerIcon.className = 'fas fa-spinner';
+            submitBtn.appendChild(spinnerIcon);
+            submitBtn.appendChild(document.createTextNode(' Sending...'));
 
             try {
                 // Construct mailto link with form data
@@ -295,7 +310,11 @@
                 formStatus.textContent = 'Could not open email client. Please email us directly at saikat@nocturn3.com';
             } finally {
                 submitBtn.classList.remove('loading');
-                submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+                submitBtn.textContent = '';
+                const planeIcon = document.createElement('i');
+                planeIcon.className = 'fas fa-paper-plane';
+                submitBtn.appendChild(planeIcon);
+                submitBtn.appendChild(document.createTextNode(' Send Message'));
             }
         });
     }
