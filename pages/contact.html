@@ -36,8 +36,11 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"></noscript>
     <link rel="stylesheet" href="/css/styles.css">
@@ -67,7 +70,8 @@
         </div>
     </nav>
 
-    <main>
+    <a href="#main-content" class="skip-nav">Skip to content</a>
+    <main id="main-content">
     <!-- ─── Page Header ───────────────────────────────────────────────────── -->
     <section class="page-header">
         <div class="hero-bg">
@@ -93,17 +97,17 @@
                         <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
                         <div class="form-group">
                             <label for="name">Full Name <span class="required">*</span></label>
-                            <input type="text" id="name" name="name" placeholder="John Doe" required>
+                            <input type="text" id="name" name="name" placeholder="John Doe" required autocomplete="name" aria-required="true" aria-describedby="nameError">
                             <span class="form-error" id="nameError"></span>
                         </div>
                         <div class="form-group">
                             <label for="email">Email Address <span class="required">*</span></label>
-                            <input type="email" id="email" name="email" placeholder="john@example.com" required>
+                            <input type="email" id="email" name="email" placeholder="john@example.com" required autocomplete="email" aria-required="true" aria-describedby="emailError">
                             <span class="form-error" id="emailError"></span>
                         </div>
                         <div class="form-group">
                             <label for="subject">Subject <span class="required">*</span></label>
-                            <select id="subject" name="subject" required>
+                            <select id="subject" name="subject" required aria-required="true" aria-describedby="subjectError">
                                 <option value="">Select a topic...</option>
                                 <option value="Security Consulting">Security Consulting</option>
                                 <option value="Training Inquiry">Training & Certification Inquiry</option>
@@ -116,13 +120,13 @@
                         </div>
                         <div class="form-group">
                             <label for="message">Message <span class="required">*</span></label>
-                            <textarea id="message" name="message" rows="6" placeholder="Tell us about your security needs..." required></textarea>
+                            <textarea id="message" name="message" rows="6" placeholder="Tell us about your security needs..." required aria-required="true" aria-describedby="messageError"></textarea>
                             <span class="form-error" id="messageError"></span>
                         </div>
                         <button type="submit" class="btn btn-primary btn-block" id="submitBtn">
                             <i class="fas fa-paper-plane"></i> Send Message
                         </button>
-                        <div class="form-status" id="formStatus"></div>
+                        <div class="form-status" id="formStatus" role="alert" aria-live="polite"></div>
                     </form>
                 </div>
 
