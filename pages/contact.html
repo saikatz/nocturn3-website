@@ -12,7 +12,7 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https://www.google-analytics.com https://www.googletagmanager.com; connect-src 'self' https://www.google-analytics.com; frame-src https://www.google.com; object-src 'none'; base-uri 'self'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https://www.google-analytics.com https://www.googletagmanager.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://*.google-analytics.com; frame-src https://www.google.com; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
     <meta name="description" content="Contact Nocturne Information Security Inc. for cybersecurity consulting and training inquiries. Located in Burlington.">
     <title>Contact Us | Nocturne Information Security Inc.</title>
 
@@ -95,7 +95,7 @@
                 <div class="contact-form-wrapper" data-aos="fade-right">
                     <h2>Send Us a Message</h2>
                     <form id="contactForm" class="contact-form">
-                        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+                        <input type="text" name="_honey" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
                         <div class="form-group">
                             <label for="name">Full Name <span class="required">*</span></label>
                             <input type="text" id="name" name="name" placeholder="John Doe" required autocomplete="name" aria-required="true" aria-describedby="nameError">
@@ -121,7 +121,7 @@
                         </div>
                         <div class="form-group">
                             <label for="message">Message <span class="required">*</span></label>
-                            <textarea id="message" name="message" rows="6" placeholder="Tell us about your security needs..." required aria-required="true" aria-describedby="messageError"></textarea>
+                            <textarea id="message" name="message" rows="6" placeholder="Tell us about your security needs..." required aria-required="true" aria-describedby="messageError" maxlength="5000"></textarea>
                             <span class="form-error" id="messageError"></span>
                         </div>
                         <button type="submit" class="btn btn-primary btn-block" id="submitBtn">
@@ -196,7 +196,8 @@
                     style="border:0; border-radius: 12px;" 
                     allowfullscreen="" 
                     loading="lazy" 
-                    referrerpolicy="no-referrer-when-downgrade"
+                    referrerpolicy="no-referrer"
+                    sandbox="allow-scripts allow-same-origin"
                     title="Burlington, Ontario - Nocturne Information Security Inc. Location">
                 </iframe>
             </div>

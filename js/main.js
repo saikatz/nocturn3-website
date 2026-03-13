@@ -233,8 +233,20 @@
         const form = document.getElementById('contactForm');
         if (!form) return;
 
+        let lastSubmitTime = 0;
+        const RATE_LIMIT_MS = 30000; // 30 seconds between submissions
+
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
+
+            // Rate limiting
+            const now = Date.now();
+            if (now - lastSubmitTime < RATE_LIMIT_MS) {
+                const formStatus = document.getElementById('formStatus');
+                formStatus.className = 'form-status error';
+                formStatus.textContent = 'Please wait before submitting again.';
+                return;
+            }
 
             // Clear errors
             clearErrors();
@@ -301,7 +313,7 @@
                 
                 window.location.href = 'mailto:saikat@nocturn3.com?subject=' + mailSubject + '&body=' + mailBody;
 
-                formStatus.className = 'form-status success';
+                lastSubmitTime = Date.now();                formStatus.className = 'form-status success';
                 formStatus.textContent = 'Your email client has been opened. Please click Send to deliver your message.';
                 form.reset();
             } catch (err) {
