@@ -11,6 +11,7 @@
         initPreloader();
         initNavbar();
         initMobileNav();
+        initDropdownMobile();
         initAOS();
         initBackToTop();
         initFooterYear();
@@ -85,6 +86,22 @@
             if (!toggle.contains(e.target) && !navLinks.contains(e.target)) {
                 toggle.classList.remove('active');
                 navLinks.classList.remove('active');
+            }
+        });
+    }
+
+    // ─── Dropdown Mobile Toggle ────────────────────────────────────────────
+    function initDropdownMobile() {
+        const dropdown = document.querySelector('.nav-dropdown');
+        if (!dropdown) return;
+        const trigger = dropdown.querySelector(':scope > a');
+        if (!trigger) return;
+
+        trigger.addEventListener('click', (e) => {
+            // Only toggle on mobile (nav is in column mode)
+            if (window.innerWidth <= 768) {
+                e.preventDefault();
+                dropdown.classList.toggle('open');
             }
         });
     }
