@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-907Z6SFM3R"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-907Z6SFM3R');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https://www.google-analytics.com https://www.googletagmanager.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://*.google-analytics.com; frame-src https://www.google.com; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta name="description" content="Free cybersecurity assessment for small businesses. Get your Security Scorecard from Nocturn3 — find out where your business stands in 2 minutes.">
+    <title>Security Scorecard | Nocturne Information Security Inc.</title>
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://nocturn3.com/pages/scorecard.html">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Free Security Scorecard | Nocturne Information Security Inc.">
+    <meta property="og:description" content="Take our free 2-minute cybersecurity assessment and get your Security Scorecard. Find out where your business stands.">
+    <meta property="og:url" content="https://nocturn3.com/pages/scorecard.html">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://nocturn3.com/images/og-image.svg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Nocturne Information Security Inc.">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Free Security Scorecard | Nocturne Information Security Inc.">
+    <meta name="twitter:description" content="Take our free 2-minute cybersecurity assessment. Get your score and personalized recommendations.">
+    <meta name="twitter:image" content="https://nocturn3.com/images/og-image.svg">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous"></noscript>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" media="print" onload="this.media='all'" integrity="sha512-1cK78a1o+ht2JcaW6g8OXYwqpev9+6GqOkz9xmBN9iUUhIndKtxwILGWYOSibOKjLsEdjyjZvYDq/cZwNeak0w==" crossorigin="anonymous">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" integrity="sha512-1cK78a1o+ht2JcaW6g8OXYwqpev9+6GqOkz9xmBN9iUUhIndKtxwILGWYOSibOKjLsEdjyjZvYDq/cZwNeak0w==" crossorigin="anonymous"></noscript>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Nocturn3 Security Scorecard",
+      "url": "https://nocturn3.com/pages/scorecard.html",
+      "description": "Free cybersecurity assessment tool for small businesses. Answer 10 questions and get your security score with personalized recommendations.",
+      "applicationCategory": "SecurityApplication",
+      "provider": {
+        "@type": "Organization",
+        "name": "Nocturne Information Security Inc.",
+        "url": "https://nocturn3.com"
+      }
+    }
+    </script>
+
+    <style>
+        /* ── Scorecard-specific styles ─────────────────────── */
+        .scorecard-app {
+            max-width: 680px;
+            margin: 0 auto;
+        }
+
+        .scorecard-intro {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .scorecard-intro .time-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(232, 93, 4, 0.12);
+            color: var(--accent);
+            padding: 0.4rem 1rem;
+            border-radius: 999px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        /* Progress bar */
+        .sc-progress-wrap {
+            background: rgba(255,255,255,0.06);
+            border-radius: 999px;
+            height: 8px;
+            margin-bottom: 2.5rem;
+            overflow: hidden;
+        }
+        .sc-progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent), #F47A2E);
+            border-radius: 999px;
+            transition: width 0.5s cubic-bezier(.4,0,.2,1);
+        }
+
+        /* Question card */
+        .sc-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 1.25rem;
+            padding: 2.5rem 2rem;
+            margin-bottom: 1rem;
+            animation: scFadeIn 0.35s ease-out;
+        }
+        @keyframes scFadeIn {
+            from { opacity: 0; transform: translateY(12px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .sc-q-number {
+            text-align: center;
+            color: rgba(255,255,255,0.4);
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .sc-category {
+            display: inline-flex;
+            padding: 0.25rem 0.75rem;
+            border-radius: 999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            border: 1px solid;
+            margin-bottom: 1rem;
+        }
+        .sc-category.critical { background: rgba(220,38,38,0.15); color: #f87171; border-color: rgba(220,38,38,0.3); }
+        .sc-category.important { background: rgba(234,179,8,0.15); color: #facc15; border-color: rgba(234,179,8,0.3); }
+        .sc-category.standard { background: rgba(59,130,246,0.15); color: #60a5fa; border-color: rgba(59,130,246,0.3); }
+
+        .sc-q-text {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.4;
+            text-align: center;
+            margin-bottom: 0.5rem;
+        }
+        .sc-q-sub {
+            text-align: center;
+            color: rgba(255,255,255,0.4);
+            font-size: 0.85rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Answer buttons */
+        .sc-answers {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+        .sc-btn-answer {
+            flex: 1;
+            max-width: 160px;
+            padding: 1rem;
+            border-radius: 0.875rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.04);
+            color: rgba(255,255,255,0.7);
+        }
+        .sc-btn-answer:hover {
+            transform: scale(1.04);
+        }
+        .sc-btn-answer.yes:hover, .sc-btn-answer.yes.selected {
+            background: rgba(22,163,74,0.25);
+            border-color: rgba(22,163,74,0.6);
+            color: #4ade80;
+        }
+        .sc-btn-answer.no:hover, .sc-btn-answer.no.selected {
+            background: rgba(220,38,38,0.25);
+            border-color: rgba(220,38,38,0.6);
+            color: #f87171;
+        }
+        .sc-btn-answer.selected {
+            transform: scale(1.06);
+            box-shadow: 0 0 20px rgba(232,93,4,0.15);
+        }
+
+        .sc-back {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+            background: none;
+            border: none;
+            color: rgba(255,255,255,0.35);
+            cursor: pointer;
+            font-size: 0.85rem;
+            margin: 1rem auto 0;
+            transition: color 0.2s;
+        }
+        .sc-back:hover { color: #fff; }
+
+        /* Contact form */
+        .sc-form-title { text-align: center; font-size: 1.3rem; font-weight: 700; color: #fff; margin-bottom: 0.4rem; }
+        .sc-form-sub { text-align: center; color: rgba(255,255,255,0.45); font-size: 0.9rem; margin-bottom: 1.5rem; }
+        .sc-field { margin-bottom: 1rem; }
+        .sc-field label { display: block; font-size: 0.85rem; font-weight: 500; color: rgba(255,255,255,0.6); margin-bottom: 0.35rem; }
+        .sc-field input {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border-radius: 0.625rem;
+            border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(0,0,0,0.25);
+            color: #fff;
+            font-size: 0.95rem;
+            font-family: inherit;
+            outline: none;
+            transition: border-color 0.2s;
+            box-sizing: border-box;
+        }
+        .sc-field input::placeholder { color: rgba(255,255,255,0.25); }
+        .sc-field input:focus { border-color: var(--accent); }
+        .sc-error-msg { color: #f87171; font-size: 0.85rem; text-align: center; margin-bottom: 0.75rem; }
+        .sc-submit-btn {
+            width: 100%;
+            padding: 0.9rem;
+            border-radius: 0.625rem;
+            border: none;
+            background: var(--accent);
+            color: #fff;
+            font-size: 1.05rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.15s;
+            font-family: inherit;
+        }
+        .sc-submit-btn:hover { background: #F47A2E; transform: translateY(-1px); }
+
+        /* Loading */
+        .sc-loading { text-align: center; padding: 4rem 0; }
+        .sc-spinner-ring {
+            width: 64px; height: 64px;
+            margin: 0 auto 1.5rem;
+            border: 4px solid rgba(255,255,255,0.08);
+            border-top-color: var(--accent);
+            border-radius: 50%;
+            animation: scSpin 0.9s linear infinite;
+        }
+        @keyframes scSpin { to { transform: rotate(360deg); } }
+        .sc-loading-msg { color: #fff; font-size: 1.1rem; font-weight: 600; }
+        .sc-loading-sub { color: rgba(255,255,255,0.4); font-size: 0.85rem; margin-top: 0.5rem; }
+
+        /* Results */
+        .sc-gauge-wrap { display: flex; justify-content: center; margin-bottom: 0.5rem; }
+        .sc-gauge-canvas { width: 260px; height: 260px; }
+        .sc-tier-badge {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            border-radius: 0.5rem;
+            color: #fff;
+            font-weight: 700;
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+        .sc-tier-wrap { text-align: center; margin-bottom: 2rem; }
+
+        .sc-analysis { margin-bottom: 2rem; }
+        .sc-analysis h3 {
+            color: var(--accent);
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin: 1.5rem 0 0.5rem;
+        }
+        .sc-analysis p, .sc-analysis li {
+            color: rgba(255,255,255,0.75);
+            font-size: 0.92rem;
+            line-height: 1.6;
+            margin-bottom: 0.4rem;
+        }
+        .sc-analysis ul { padding-left: 1.25rem; }
+        .sc-analysis strong { color: #fff; }
+
+        .sc-next-steps { text-align: center; }
+        .sc-next-steps h3 { color: #fff; font-size: 1.15rem; margin-bottom: 0.5rem; }
+        .sc-next-steps p { color: rgba(255,255,255,0.5); font-size: 0.9rem; margin-bottom: 1.25rem; }
+
+        .sc-cta-btn {
+            display: inline-block;
+            padding: 0.9rem 2rem;
+            border-radius: 0.625rem;
+            background: var(--accent);
+            color: #fff;
+            font-weight: 700;
+            text-decoration: none;
+            transition: background 0.2s, transform 0.15s;
+        }
+        .sc-cta-btn:hover { background: #F47A2E; transform: translateY(-1px); }
+
+        .sc-disclaimer {
+            color: rgba(255,255,255,0.25);
+            font-size: 0.75rem;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        /* Table in results */
+        .sc-answer-table { width: 100%; border-collapse: collapse; margin-bottom: 1.5rem; font-size: 0.85rem; }
+        .sc-answer-table th {
+            background: rgba(232,93,4,0.15);
+            color: var(--accent);
+            padding: 0.6rem 0.75rem;
+            text-align: left;
+            font-weight: 600;
+        }
+        .sc-answer-table td {
+            padding: 0.5rem 0.75rem;
+            color: rgba(255,255,255,0.7);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .sc-answer-table tr:nth-child(even) td {
+            background: rgba(255,255,255,0.02);
+        }
+        .sc-check { color: #4ade80; }
+        .sc-cross { color: #f87171; }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            .sc-card { padding: 1.5rem 1.25rem; }
+            .sc-q-text { font-size: 1.05rem; }
+            .sc-btn-answer { max-width: 130px; padding: 0.85rem; font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- ─── Navigation ────────────────────────────────────────────────────── -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="/" class="nav-brand">
+                <i class="fas fa-dragon brand-icon"></i>
+                <span class="brand-text">NOCTURN<span class="accent">3</span></span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="/">Home</a></li>
+                <li><a href="/pages/about">About</a></li>
+                <li><a href="/pages/services">Services</a></li>
+                <li><a href="/pages/training">Training</a></li>
+                <li><a href="/pages/products">Products</a></li>
+                <li><a href="/pages/blog">Blog</a></li>
+                <li><a href="/pages/scorecard" class="active">Scorecard</a></li>
+                <li><a href="/pages/contact">Contact</a></li>
+            </ul>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <a href="#main-content" class="skip-nav">Skip to content</a>
+    <main id="main-content">
+    <!-- ─── Page Header ───────────────────────────────────────────────────── -->
+    <section class="page-header">
+        <div class="hero-bg">
+            <div class="grid-overlay"></div>
+        </div>
+        <div class="container">
+            <div class="page-header-content" data-aos="fade-up">
+                <span class="section-tag"><i class="fas fa-shield-halved"></i> Free Assessment</span>
+                <h1>Security <span class="gradient-text">Scorecard</span></h1>
+                <p>Find out where your business stands in 2 minutes. Get your score and actionable recommendations.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── Scorecard App ────────────────────────────────────────────────── -->
+    <section class="content-section">
+        <div class="container">
+            <div class="scorecard-app" id="scorecardApp">
+                <!-- Populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+    </main>
+
+    <!-- ─── Footer ────────────────────────────────────────────────────────── -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="/" class="nav-brand">
+                        <i class="fas fa-dragon brand-icon"></i>
+                        <span class="brand-text">NOCTURN<span class="accent">3</span></span>
+                    </a>
+                    <p>Nocturne Information Security Inc. — Your trusted partner for cybersecurity consulting and professional development.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+                        <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="/pages/about">About Us</a></li>
+                        <li><a href="/pages/services">Services</a></li>
+                        <li><a href="/pages/training">Training</a></li>
+                        <li><a href="/pages/products">Products</a></li>
+                        <li><a href="/pages/blog">Blog</a></li>
+                        <li><a href="/pages/contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="/pages/services">Security Consulting</a></li>
+                        <li><a href="/pages/services">Vulnerability Assessment</a></li>
+                        <li><a href="/pages/services">Compliance & Audit</a></li>
+                        <li><a href="/pages/services">AI Security Consulting</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> <a href="mailto:saikat@nocturn3.com">saikat@nocturn3.com</a></li>
+                        <li><i class="fas fa-map-marker-alt"></i> Burlington, Ontario</li>
+                        <li><i class="fas fa-globe"></i> <a href="https://nocturn3.com">nocturn3.com</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="currentYear"></span> Nocturne Information Security Inc. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" integrity="sha512-A7AYk1fGKX6S2SsHywmPkrnzTZHrgiVT7GcQkLGDe2ev0aWb8zejytzS8wjo7PGEXKqJOrjQ4oORtnimIRZBtw==" crossorigin="anonymous"></script>
+    <script src="/js/main.js"></script>
+
+    <script>
+    /* ═══════════════════════════════════════════════════
+       Nocturn3 Security Scorecard — Client-Side Engine
+       ═══════════════════════════════════════════════════ */
+    (function () {
+        'use strict';
+
+        // ── Questions ─────────────────────────────────
+        var QUESTIONS = [
+            { id:'q1',  text:'Do you use Multi-Factor Authentication (MFA) on all business accounts?', category:'critical', weight:15 },
+            { id:'q2',  text:'Have you updated your passwords across all systems in the last 90 days?', category:'important', weight:10 },
+            { id:'q3',  text:'Do you have a properly configured firewall on your network?', category:'important', weight:10 },
+            { id:'q4',  text:'Do your employees receive regular cybersecurity awareness training?', category:'standard', weight:5 },
+            { id:'q5',  text:'Have you tested your data backups in the last 90 days?', category:'important', weight:10 },
+            { id:'q6',  text:'Is antivirus/endpoint protection installed on all company devices?', category:'standard', weight:5 },
+            { id:'q7',  text:'Do you have a documented data breach response plan?', category:'critical', weight:15 },
+            { id:'q8',  text:'Is sensitive business and customer data encrypted at rest and in transit?', category:'critical', weight:15 },
+            { id:'q9',  text:'Do you monitor and log who accesses your systems and when?', category:'important', weight:10 },
+            { id:'q10', text:'Have you had a professional security audit or assessment in the last 2 years?', category:'standard', weight:5 }
+        ];
+
+        var LABELS = {
+            q1:'Multi-Factor Authentication',q2:'Password Management',q3:'Firewall Configuration',
+            q4:'Security Awareness Training',q5:'Data Backup Testing',q6:'Antivirus / Endpoint Protection',
+            q7:'Data Breach Response Plan',q8:'Data Encryption',q9:'Access Monitoring & Logging',
+            q10:'Professional Security Audit'
+        };
+
+        var answers = {};
+        var currentQ = 0;
+        var step = 'quiz'; // quiz | contact | loading | results
+        var app = document.getElementById('scorecardApp');
+
+        // ── Render router ─────────────────────────────
+        function render() {
+            if (step === 'quiz')    return renderQuiz();
+            if (step === 'contact') return renderContact();
+            if (step === 'loading') return renderLoading();
+            if (step === 'results') return renderResults();
+        }
+
+        // ── Quiz ──────────────────────────────────────
+        function renderQuiz() {
+            var q = QUESTIONS[currentQ];
+            var pct = ((currentQ) / (QUESTIONS.length + 1) * 100).toFixed(1);
+            var catLabel = q.category.charAt(0).toUpperCase() + q.category.slice(1);
+
+            var html = '<div class="scorecard-intro">' +
+                '<span class="time-badge"><i class="fas fa-clock"></i> 2 minute assessment</span>' +
+                '</div>' +
+                '<div class="sc-progress-wrap"><div class="sc-progress-bar" style="width:' + pct + '%"></div></div>' +
+                '<div class="sc-card" key="' + currentQ + '">' +
+                '<p class="sc-q-number">Question ' + (currentQ + 1) + ' of ' + QUESTIONS.length + '</p>' +
+                '<div style="text-align:center;margin-bottom:1rem"><span class="sc-category ' + q.category + '">' + catLabel + '</span></div>' +
+                '<p class="sc-q-text">' + q.text + '</p>' +
+                '<div class="sc-q-sub">' + (q.weight >= 15 ? 'Worth 15 points' : q.weight >= 10 ? 'Worth 10 points' : 'Worth 5 points') + '</div>' +
+                '<div class="sc-answers">' +
+                '<button class="sc-btn-answer yes' + (answers[q.id] === true ? ' selected' : '') + '" onclick="window._scAnswer(true)">Yes</button>' +
+                '<button class="sc-btn-answer no' + (answers[q.id] === false ? ' selected' : '') + '" onclick="window._scAnswer(false)">No</button>' +
+                '</div>' +
+                '</div>';
+
+            if (currentQ > 0) {
+                html += '<button class="sc-back" onclick="window._scBack()">&larr; Back to previous question</button>';
+            }
+            app.innerHTML = html;
+        }
+
+        window._scAnswer = function (val) {
+            answers[QUESTIONS[currentQ].id] = val;
+            if (currentQ < QUESTIONS.length - 1) {
+                currentQ++;
+                render();
+            } else {
+                step = 'contact';
+                render();
+            }
+        };
+
+        window._scBack = function () {
+            if (step === 'contact') { step = 'quiz'; render(); return; }
+            if (currentQ > 0) { currentQ--; render(); }
+        };
+
+        // ── Contact form ──────────────────────────────
+        function renderContact() {
+            var pct = (QUESTIONS.length / (QUESTIONS.length + 1) * 100).toFixed(1);
+            var html = '<div class="sc-progress-wrap"><div class="sc-progress-bar" style="width:' + pct + '%"></div></div>' +
+                '<div class="sc-card">' +
+                '<p class="sc-form-title">Almost done!</p>' +
+                '<p class="sc-form-sub">Enter your details to receive your personalised Security Scorecard.</p>' +
+                '<div class="sc-field"><label>Business Name</label><input id="scBiz" placeholder="Acme Corp"></div>' +
+                '<div class="sc-field"><label>Your Name</label><input id="scName" placeholder="Jane Smith"></div>' +
+                '<div class="sc-field"><label>Email Address</label><input id="scEmail" type="email" placeholder="jane@acmecorp.com"></div>' +
+                '<div id="scFormErr" class="sc-error-msg" style="display:none"></div>' +
+                '<button class="sc-submit-btn" onclick="window._scSubmit()">Generate My Report</button>' +
+                '</div>' +
+                '<button class="sc-back" onclick="window._scBack()">&larr; Back to questions</button>';
+            app.innerHTML = html;
+        }
+
+        window._scSubmit = function () {
+            var biz   = document.getElementById('scBiz').value.trim();
+            var name  = document.getElementById('scName').value.trim();
+            var email = document.getElementById('scEmail').value.trim();
+            var err   = document.getElementById('scFormErr');
+
+            if (!biz || !name || !email) {
+                err.textContent = 'Please fill in all fields.';
+                err.style.display = 'block';
+                return;
+            }
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                err.textContent = 'Please enter a valid email address.';
+                err.style.display = 'block';
+                return;
+            }
+
+            window._scContact = { business_name: biz, contact_name: name, email: email };
+            step = 'loading';
+            render();
+            // Calculate synchronously, show results after short delay for UX
+            setTimeout(function () {
+                step = 'results';
+                render();
+            }, 2200);
+        };
+
+        // ── Loading ───────────────────────────────────
+        function renderLoading() {
+            app.innerHTML =
+                '<div class="sc-loading">' +
+                '<div class="sc-spinner-ring"></div>' +
+                '<p class="sc-loading-msg">Analyzing your security posture...</p>' +
+                '<p class="sc-loading-sub">This will only take a moment</p>' +
+                '</div>';
+        }
+
+        // ── Results ───────────────────────────────────
+        function renderResults() {
+            // Score
+            var score = 0;
+            var breakdown = [];
+            for (var i = 0; i < QUESTIONS.length; i++) {
+                var q = QUESTIONS[i];
+                var pts = answers[q.id] ? q.weight : 0;
+                score += pts;
+                breakdown.push({ id: q.id, label: LABELS[q.id], answered: !!answers[q.id], pts: pts, max: q.weight });
+            }
+
+            // Risk tier
+            var tier, tierColor;
+            if (score <= 40)       { tier = 'Critical Risk'; tierColor = '#DC2626'; }
+            else if (score <= 65)  { tier = 'High Risk';     tierColor = '#EA580C'; }
+            else if (score <= 85)  { tier = 'Moderate Risk'; tierColor = '#CA8A04'; }
+            else                   { tier = 'Good Standing'; tierColor = '#16A34A'; }
+
+            // Build risks & recommendations
+            var risks = [];
+            var recs  = [];
+            for (var j = 0; j < QUESTIONS.length; j++) {
+                if (!answers[QUESTIONS[j].id]) {
+                    risks.push(QUESTIONS[j]);
+                }
+            }
+            // Sort by weight desc (critical first)
+            risks.sort(function (a, b) { return b.weight - a.weight; });
+
+            var riskAnalysis = buildRiskAnalysis(risks.slice(0, 3));
+            var recAnalysis  = buildRecommendations(risks);
+
+            // ── Render HTML ──
+            var html = '<div class="sc-progress-wrap"><div class="sc-progress-bar" style="width:100%"></div></div>';
+
+            // Score gauge
+            html += '<div class="sc-card">' +
+                '<div class="sc-gauge-wrap"><canvas id="scGauge" class="sc-gauge-canvas" width="260" height="260"></canvas></div>' +
+                '<div class="sc-tier-wrap"><span class="sc-tier-badge" style="background:' + tierColor + '">' + tier + '</span></div>' +
+                '</div>';
+
+            // Answer summary table
+            html += '<div class="sc-card">' +
+                '<h3 style="color:#fff;font-size:1.1rem;font-weight:700;margin-bottom:1rem;">Assessment Summary</h3>' +
+                '<table class="sc-answer-table"><thead><tr><th>#</th><th>Area</th><th>Status</th><th>Pts</th></tr></thead><tbody>';
+            for (var k = 0; k < breakdown.length; k++) {
+                var b = breakdown[k];
+                html += '<tr><td>Q' + (k+1) + '</td><td>' + b.label + '</td>' +
+                    '<td>' + (b.answered ? '<i class="fas fa-check sc-check"></i> Yes' : '<i class="fas fa-times sc-cross"></i> No') + '</td>' +
+                    '<td>' + b.pts + '/' + b.max + '</td></tr>';
+            }
+            html += '</tbody></table></div>';
+
+            // Risk analysis
+            html += '<div class="sc-card"><div class="sc-analysis">' +
+                '<h3 style="margin-top:0">Top Security Risks</h3>' + riskAnalysis +
+                '<h3>Recommended Actions</h3>' + recAnalysis +
+                '<h3>Summary</h3>' +
+                '<p>' + buildSummary(score, tier, window._scContact.business_name) + '</p>' +
+                '</div></div>';
+
+            // Next steps
+            html += '<div class="sc-card sc-next-steps">' +
+                '<h3>What\u2019s Next?</h3>' +
+                '<p>Want a professional security assessment with AI-powered analysis and a detailed PDF report?</p>' +
+                '<a href="/pages/contact" class="sc-cta-btn">Contact Nocturn3 for a Full Assessment</a>' +
+                '</div>';
+
+            html += '<p class="sc-disclaimer">This assessment is for informational purposes only and does not constitute professional security advice. Contact Nocturn3 at nocturn3.com for a comprehensive audit.</p>';
+
+            app.innerHTML = html;
+
+            // Draw gauge with animation
+            animateGauge(score, tierColor);
+        }
+
+        // ── Risk analysis generator ───────────────────
+        function buildRiskAnalysis(topRisks) {
+            if (topRisks.length === 0) return '<p>Excellent! No critical gaps were identified in this assessment.</p>';
+
+            var riskDetails = {
+                q1: 'Without Multi-Factor Authentication, your accounts are protected only by passwords — which can be stolen through phishing or data breaches. MFA is one of the most effective defenses against unauthorized access.',
+                q2: 'Outdated passwords are a major vulnerability. Old or reused passwords are commonly found in data breaches and can be used by attackers to gain access to your systems.',
+                q3: 'Without a properly configured firewall, your network is exposed to unauthorized traffic. This is like leaving the front door of your business wide open to anyone on the internet.',
+                q4: 'Human error is the #1 cause of security breaches. Without regular training, your employees may fall for phishing emails, use weak passwords, or mishandle sensitive data.',
+                q5: 'Untested backups are unreliable backups. If ransomware hits or data is lost, you may discover too late that your backups are corrupted or incomplete.',
+                q6: 'Unprotected devices are entry points for malware, ransomware, and other threats. Even one unprotected device can compromise your entire network.',
+                q7: 'Without a documented response plan, a data breach will create chaos. Delayed response increases damage, legal liability, and customer trust issues.',
+                q8: 'Unencrypted data — whether stored on servers or sent over the internet — can be intercepted and read by attackers. This puts customer data and business secrets at risk.',
+                q9: 'Without access monitoring, you have no way to detect unauthorized access or suspicious behavior. If an attacker gets in, you won\u2019t know until the damage is done.',
+                q10: 'Without regular professional audits, vulnerabilities accumulate unnoticed. Threats evolve constantly — what was secure a year ago may not be today.'
+            };
+
+            var html = '<ol>';
+            for (var i = 0; i < topRisks.length; i++) {
+                html += '<li><strong>' + LABELS[topRisks[i].id] + '</strong><br>' + riskDetails[topRisks[i].id] + '</li>';
+            }
+            html += '</ol>';
+            return html;
+        }
+
+        function buildRecommendations(allRisks) {
+            var recMap = {
+                q1: 'Enable Multi-Factor Authentication on all business accounts immediately — start with email and financial accounts.',
+                q7: 'Create a documented data breach response plan. Include who to call, how to contain the breach, and notification timelines.',
+                q8: 'Implement encryption for sensitive data — use TLS for data in transit and disk encryption for data at rest. Most cloud services offer this built-in.',
+                q2: 'Implement a password policy requiring updates every 90 days. Use a business password manager like 1Password or Bitwarden.',
+                q3: 'Have your firewall configuration reviewed and properly set up by a qualified professional. Enable intrusion detection if available.',
+                q5: 'Schedule and perform a test restore of your backups within the next 7 days. Set up automated monthly backup testing.',
+                q9: 'Set up access logging and monitoring on all critical systems. Review logs weekly for unusual activity.',
+                q4: 'Start monthly security awareness training. Nocturn3 offers engaging training programs designed for non-technical staff.',
+                q6: 'Install and configure endpoint protection on all company devices, including employee mobile devices used for work.',
+                q10: 'Schedule a professional security audit or penetration test. Nocturn3 can help — contact us at nocturn3.com.'
+            };
+
+            if (allRisks.length === 0) return '<p>You\u2019re in great shape! Continue your current security practices and schedule regular reviews.</p>';
+
+            var html = '<ol>';
+            for (var i = 0; i < Math.min(allRisks.length, 7); i++) {
+                html += '<li>' + recMap[allRisks[i].id] + '</li>';
+            }
+            html += '</ol>';
+            return html;
+        }
+
+        function buildSummary(score, tier, bizName) {
+            if (score >= 86)
+                return bizName + ' demonstrates a strong security posture with a score of ' + score + '/100. Keep up the great work and continue regular security reviews to stay ahead of evolving threats. Nocturn3 can help you maintain and improve your standing.';
+            if (score >= 66)
+                return bizName + ' has a moderate security foundation with a score of ' + score + '/100. There are some important gaps that should be addressed soon to strengthen your defenses. The good news is that most can be fixed quickly — Nocturn3 can help prioritise and implement these improvements.';
+            if (score >= 41)
+                return bizName + ' scored ' + score + '/100, indicating significant security gaps that put your business at risk. We strongly recommend addressing the items above as soon as possible. Nocturn3 specialises in helping businesses like yours close these gaps quickly and affordably.';
+            return bizName + ' scored ' + score + '/100, indicating critical security vulnerabilities. Your business is at serious risk of a cyber incident. We urge you to take immediate action on the recommendations above. Nocturn3 can provide emergency security consulting to help you get protected — contact us today.';
+        }
+
+        // ── Animated gauge ────────────────────────────
+        function animateGauge(score, tierColor) {
+            var canvas = document.getElementById('scGauge');
+            if (!canvas) return;
+            var ctx = canvas.getContext('2d');
+            var cx = 130, cy = 150, radius = 100, lw = 16;
+            var startAngle = Math.PI, endAngle = 2 * Math.PI;
+            var targetAngle = startAngle + (score / 100) * Math.PI;
+            var startTime = performance.now();
+            var duration = 1400;
+
+            function draw(now) {
+                var t = Math.min((now - startTime) / duration, 1);
+                var ease = 1 - Math.pow(1 - t, 3);
+                var curAngle = startAngle + ease * (targetAngle - startAngle);
+                var curNum = Math.round(ease * score);
+
+                ctx.clearRect(0, 0, 260, 260);
+
+                // BG arc
+                ctx.beginPath();
+                ctx.arc(cx, cy, radius, startAngle, endAngle);
+                ctx.strokeStyle = 'rgba(255,255,255,0.06)';
+                ctx.lineWidth = lw;
+                ctx.lineCap = 'round';
+                ctx.stroke();
+
+                // Filled arc
+                if (curAngle > startAngle) {
+                    ctx.beginPath();
+                    ctx.arc(cx, cy, radius, startAngle, curAngle);
+                    ctx.strokeStyle = tierColor;
+                    ctx.lineWidth = lw;
+                    ctx.lineCap = 'round';
+                    ctx.stroke();
+                }
+
+                // Number
+                ctx.fillStyle = '#ffffff';
+                ctx.font = 'bold 52px Inter, sans-serif';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText(curNum, cx, cy - 8);
+
+                ctx.fillStyle = 'rgba(255,255,255,0.4)';
+                ctx.font = '14px Inter, sans-serif';
+                ctx.fillText('out of 100', cx, cy + 28);
+
+                if (t < 1) requestAnimationFrame(draw);
+            }
+            requestAnimationFrame(draw);
+        }
+
+        // ── Init ──────────────────────────────────────
+        render();
+    })();
+    </script>
+</body>
+</html>
