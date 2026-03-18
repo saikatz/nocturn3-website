@@ -17,6 +17,8 @@
     <title>Security Scorecard | Nocturne Information Security Inc.</title>
 
     <!-- Canonical URL -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.2/jspdf.umd.min.js"></script>
+
     <link rel="canonical" href="https://nocturn3.com/pages/scorecard.html">
 
     <!-- Open Graph -->
@@ -501,7 +503,6 @@
                 '<p class="sc-q-number">Question ' + (currentQ + 1) + ' of ' + QUESTIONS.length + '</p>' +
                 '<div style="text-align:center;margin-bottom:1rem"><span class="sc-category ' + q.category + '">' + catLabel + '</span></div>' +
                 '<p class="sc-q-text">' + q.text + '</p>' +
-                '<div class="sc-q-sub">' + (q.weight >= 15 ? 'Worth 15 points' : q.weight >= 10 ? 'Worth 10 points' : 'Worth 5 points') + '</div>' +
                 '<div class="sc-answers">' +
                 '<button class="sc-btn-answer yes' + (answers[q.id] === true ? ' selected' : '') + '" onclick="window._scAnswer(true)">Yes</button>' +
                 '<button class="sc-btn-answer no' + (answers[q.id] === false ? ' selected' : '') + '" onclick="window._scAnswer(false)">No</button>' +
@@ -629,12 +630,11 @@
             // Answer summary table
             html += '<div class="sc-card">' +
                 '<h3 style="color:#fff;font-size:1.1rem;font-weight:700;margin-bottom:1rem;">Assessment Summary</h3>' +
-                '<table class="sc-answer-table"><thead><tr><th>#</th><th>Area</th><th>Status</th><th>Pts</th></tr></thead><tbody>';
+                '<table class="sc-answer-table"><thead><tr><th>#</th><th>Area</th><th>Status</th></tr></thead><tbody>';
             for (var k = 0; k < breakdown.length; k++) {
                 var b = breakdown[k];
                 html += '<tr><td>Q' + (k+1) + '</td><td>' + b.label + '</td>' +
-                    '<td>' + (b.answered ? '<i class="fas fa-check sc-check"></i> Yes' : '<i class="fas fa-times sc-cross"></i> No') + '</td>' +
-                    '<td>' + b.pts + '/' + b.max + '</td></tr>';
+                    '<td>' + (b.answered ? '<i class="fas fa-check sc-check"></i> Yes' : '<i class="fas fa-times sc-cross"></i> No') + '</td></tr>';
             }
             html += '</tbody></table></div>';
 
@@ -652,6 +652,8 @@
                 '<p>Want a professional security assessment with AI-powered analysis and a detailed PDF report?</p>' +
                 '<a href="/pages/contact" class="sc-cta-btn">Contact Nocturn3 for a Full Assessment</a>' +
                 '</div>';
+
+            html += '<div class="sc-card" style="text-align:center"><button class="sc-cta-btn" onclick="window._scDownloadPDF()" style="display:inline-flex;align-items:center;gap:0.5rem;"><i class="fas fa-file-pdf"></i> Download PDF Report</button></div>';
 
             html += '<p class="sc-disclaimer">This assessment is for informational purposes only and does not constitute professional security advice. Contact Nocturn3 at nocturn3.com for a comprehensive audit.</p>';
 
@@ -719,6 +721,231 @@
                 return bizName + ' scored ' + score + '/100, indicating significant security gaps that put your business at risk. We strongly recommend addressing the items above as soon as possible. Nocturn3 specialises in helping businesses like yours close these gaps quickly and affordably.';
             return bizName + ' scored ' + score + '/100, indicating critical security vulnerabilities. Your business is at serious risk of a cyber incident. We urge you to take immediate action on the recommendations above. Nocturn3 can provide emergency security consulting to help you get protected — contact us today.';
         }
+
+        // ── PDF Download ──────────────────────────────
+        window._scDownloadPDF = function () {
+            var jsPDF = window.jspdf.jsPDF;
+            var doc = new jsPDF('p', 'mm', 'a4');
+            var W = 210, M = 20, CW = W - 2 * M;
+            var y = 20;
+            var navy = [26, 47, 94];
+            var orange = [232, 93, 4];
+
+            // Score calculation
+            var score = 0;
+            var breakdown = [];
+            for (var i = 0; i < QUESTIONS.length; i++) {
+                var q = QUESTIONS[i];
+                var pts = answers[q.id] ? q.weight : 0;
+                score += pts;
+                breakdown.push({ id: q.id, label: LABELS[q.id], answered: !!answers[q.id] });
+            }
+            var tier, tierColor;
+            if (score <= 40) { tier = 'Critical Risk'; tierColor = [220, 38, 38]; }
+            else if (score <= 65) { tier = 'High Risk'; tierColor = [234, 88, 12]; }
+            else if (score <= 85) { tier = 'Moderate Risk'; tierColor = [202, 138, 4]; }
+            else { tier = 'Good Standing'; tierColor = [22, 163, 74]; }
+
+            var bizName = window._scContact.business_name;
+            var contactName = window._scContact.contact_name;
+            var dateStr = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+            // ── Header bar ──
+            doc.setFillColor(navy[0], navy[1], navy[2]);
+            doc.rect(0, 0, W, 36, 'F');
+            doc.setTextColor(255, 255, 255);
+            doc.setFontSize(22);
+            doc.setFont('helvetica', 'bold');
+            doc.text('NOCTURN3', M, 16);
+            doc.setFontSize(9);
+            doc.setFont('helvetica', 'normal');
+            doc.text('Nocturne Information Security Inc.', M, 23);
+            doc.setFontSize(8);
+            doc.text('nocturn3.com', W - M, 16, { align: 'right' });
+            doc.text(dateStr, W - M, 23, { align: 'right' });
+
+            // ── Orange accent line ──
+            doc.setFillColor(orange[0], orange[1], orange[2]);
+            doc.rect(0, 36, W, 2, 'F');
+            y = 48;
+
+            // ── Title ──
+            doc.setTextColor(navy[0], navy[1], navy[2]);
+            doc.setFontSize(18);
+            doc.setFont('helvetica', 'bold');
+            doc.text('Security Scorecard Report', M, y);
+            y += 8;
+            doc.setFontSize(11);
+            doc.setFont('helvetica', 'normal');
+            doc.setTextColor(80, 80, 80);
+            doc.text('Prepared for: ' + bizName + '  |  Contact: ' + contactName, M, y);
+            y += 12;
+
+            // ── Score box ──
+            doc.setFillColor(245, 245, 250);
+            doc.roundedRect(M, y, CW, 28, 3, 3, 'F');
+            doc.setFontSize(36);
+            doc.setFont('helvetica', 'bold');
+            doc.setTextColor(tierColor[0], tierColor[1], tierColor[2]);
+            doc.text(score + '/100', M + 12, y + 18);
+            doc.setFontSize(14);
+            doc.text(tier, M + 65, y + 18);
+
+            // Score bar
+            var barX = M + 12, barY = y + 22, barW = CW - 24, barH = 3;
+            doc.setFillColor(220, 220, 230);
+            doc.roundedRect(barX, barY, barW, barH, 1.5, 1.5, 'F');
+            doc.setFillColor(tierColor[0], tierColor[1], tierColor[2]);
+            doc.roundedRect(barX, barY, barW * (score / 100), barH, 1.5, 1.5, 'F');
+            y += 36;
+
+            // ── Assessment Summary table ──
+            doc.setTextColor(navy[0], navy[1], navy[2]);
+            doc.setFontSize(13);
+            doc.setFont('helvetica', 'bold');
+            doc.text('Assessment Summary', M, y);
+            y += 6;
+
+            // Table header
+            doc.setFillColor(navy[0], navy[1], navy[2]);
+            doc.rect(M, y, CW, 7, 'F');
+            doc.setTextColor(255, 255, 255);
+            doc.setFontSize(8);
+            doc.setFont('helvetica', 'bold');
+            doc.text('#', M + 3, y + 5);
+            doc.text('Security Area', M + 15, y + 5);
+            doc.text('Status', M + CW - 20, y + 5);
+            y += 7;
+
+            // Table rows
+            doc.setFontSize(8);
+            for (var k = 0; k < breakdown.length; k++) {
+                var b = breakdown[k];
+                if (k % 2 === 0) {
+                    doc.setFillColor(248, 248, 252);
+                    doc.rect(M, y, CW, 6, 'F');
+                }
+                doc.setTextColor(60, 60, 60);
+                doc.setFont('helvetica', 'normal');
+                doc.text('Q' + (k + 1), M + 3, y + 4);
+                doc.text(b.label, M + 15, y + 4);
+                if (b.answered) {
+                    doc.setTextColor(22, 163, 74);
+                    doc.text('Yes', M + CW - 20, y + 4);
+                } else {
+                    doc.setTextColor(220, 38, 38);
+                    doc.text('No', M + CW - 20, y + 4);
+                }
+                y += 6;
+            }
+            y += 8;
+
+            // ── Risk Analysis ──
+            var risks = [];
+            for (var j = 0; j < QUESTIONS.length; j++) {
+                if (!answers[QUESTIONS[j].id]) risks.push(QUESTIONS[j]);
+            }
+            risks.sort(function (a, b) { return b.weight - a.weight; });
+            var topRisks = risks.slice(0, 3);
+
+            if (topRisks.length > 0) {
+                doc.setTextColor(navy[0], navy[1], navy[2]);
+                doc.setFontSize(13);
+                doc.setFont('helvetica', 'bold');
+                doc.text('Top Security Risks', M, y);
+                y += 7;
+
+                var riskDetails = {
+                    q1: 'Without MFA, accounts are protected only by passwords \u2014 which can be stolen through phishing or data breaches.',
+                    q2: 'Outdated passwords are a major vulnerability. Old or reused passwords are commonly found in data breaches.',
+                    q3: 'Without a properly configured firewall, your network is exposed to unauthorized traffic.',
+                    q4: 'Human error is the #1 cause of breaches. Without training, employees may fall for phishing or mishandle data.',
+                    q5: 'Untested backups are unreliable. Ransomware may reveal corrupted or incomplete backups too late.',
+                    q6: 'Unprotected devices are entry points for malware. One unprotected device can compromise your entire network.',
+                    q7: 'Without a response plan, a data breach creates chaos. Delayed response increases damage and liability.',
+                    q8: 'Unencrypted data can be intercepted and read by attackers, putting customer data and secrets at risk.',
+                    q9: 'Without access monitoring, you cannot detect unauthorized access or suspicious behavior.',
+                    q10: 'Without regular audits, vulnerabilities accumulate. What was secure a year ago may not be today.'
+                };
+
+                for (var r = 0; r < topRisks.length; r++) {
+                    if (y > 260) { doc.addPage(); y = 20; }
+                    doc.setFontSize(9);
+                    doc.setFont('helvetica', 'bold');
+                    doc.setTextColor(220, 38, 38);
+                    doc.text((r + 1) + '. ' + LABELS[topRisks[r].id], M, y);
+                    y += 5;
+                    doc.setFont('helvetica', 'normal');
+                    doc.setTextColor(80, 80, 80);
+                    var lines = doc.splitTextToSize(riskDetails[topRisks[r].id], CW - 5);
+                    doc.text(lines, M + 3, y);
+                    y += lines.length * 4 + 4;
+                }
+                y += 4;
+            }
+
+            // ── Recommendations ──
+            if (risks.length > 0) {
+                if (y > 240) { doc.addPage(); y = 20; }
+                doc.setTextColor(navy[0], navy[1], navy[2]);
+                doc.setFontSize(13);
+                doc.setFont('helvetica', 'bold');
+                doc.text('Recommended Actions', M, y);
+                y += 7;
+
+                var recMap = {
+                    q1: 'Enable Multi-Factor Authentication on all business accounts immediately.',
+                    q7: 'Create a documented data breach response plan with containment and notification procedures.',
+                    q8: 'Implement encryption for sensitive data \u2014 use TLS for transit and disk encryption for data at rest.',
+                    q2: 'Implement a password policy requiring updates every 90 days. Use a password manager.',
+                    q3: 'Have your firewall configuration reviewed and properly set up by a qualified professional.',
+                    q5: 'Perform a test restore of your backups within 7 days. Set up automated monthly testing.',
+                    q9: 'Set up access logging and monitoring on all critical systems. Review logs weekly.',
+                    q4: 'Start monthly security awareness training for all staff.',
+                    q6: 'Install and configure endpoint protection on all company devices.',
+                    q10: 'Schedule a professional security audit or penetration test.'
+                };
+
+                for (var rec = 0; rec < Math.min(risks.length, 7); rec++) {
+                    if (y > 270) { doc.addPage(); y = 20; }
+                    doc.setFontSize(9);
+                    doc.setFont('helvetica', 'normal');
+                    doc.setTextColor(60, 60, 60);
+                    var rLine = doc.splitTextToSize((rec + 1) + '. ' + recMap[risks[rec].id], CW - 5);
+                    doc.text(rLine, M, y);
+                    y += rLine.length * 4 + 2;
+                }
+                y += 6;
+            }
+
+            // ── Summary ──
+            if (y > 250) { doc.addPage(); y = 20; }
+            doc.setTextColor(navy[0], navy[1], navy[2]);
+            doc.setFontSize(13);
+            doc.setFont('helvetica', 'bold');
+            doc.text('Summary', M, y);
+            y += 7;
+            doc.setFontSize(9);
+            doc.setFont('helvetica', 'normal');
+            doc.setTextColor(60, 60, 60);
+            var summaryLines = doc.splitTextToSize(buildSummary(score, tier, bizName), CW);
+            doc.text(summaryLines, M, y);
+            y += summaryLines.length * 4 + 10;
+
+            // ── Footer ──
+            var pageCount = doc.internal.getNumberOfPages();
+            for (var p = 1; p <= pageCount; p++) {
+                doc.setPage(p);
+                doc.setFillColor(navy[0], navy[1], navy[2]);
+                doc.rect(0, 287, W, 10, 'F');
+                doc.setTextColor(255, 255, 255);
+                doc.setFontSize(7);
+                doc.setFont('helvetica', 'normal');
+                doc.text('Nocturne Information Security Inc. | nocturn3.com | This report is for informational purposes only.', W / 2, 293, { align: 'center' });
+            }
+
+            doc.save('Nocturn3-Security-Scorecard-' + bizName.replace(/[^a-zA-Z0-9]/g, '_') + '.pdf');
+        };
 
         // ── Animated gauge ────────────────────────────
         function animateGauge(score, tierColor) {
