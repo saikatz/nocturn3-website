@@ -12,17 +12,15 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https://www.google-analytics.com https://www.googletagmanager.com https://haveibeenpwned.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://*.google-analytics.com https://haveibeenpwned.com; frame-src https://www.google.com; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
-    <meta name="description" content="Check if your company domain appears in known data breaches. Free instant check for Canadian small businesses. Powered by Nocturn3 Cybersecurity.">
-    <meta name="keywords" content="data breach checker canada, business breach check, have i been pwned business, cybersecurity Burlington Ontario, small business data breach">
-    <title>Free Business Breach Checker | Cyber Health Check | Nocturn3</title>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https://www.google-analytics.com https://www.googletagmanager.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://*.google-analytics.com; frame-src https://www.google.com; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta name="description" content="Calculate the real cost of a cyber attack on your Canadian business. Free instant estimate based on IBM and Canadian Privacy Commissioner data. No signup required. Powered by Nocturn3 Cybersecurity Burlington.">
+    <meta name="keywords" content="cyber breach cost calculator canada, data breach cost small business canada, cybersecurity risk calculator, how much does a data breach cost canada, cyber attack cost estimate, Burlington cybersecurity, Ontario small business security">
+    <title>Free Cyber Breach Cost Calculator Canada | Cyber Health Check | Nocturn3</title>
 
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://nocturn3.com/pages/breach-checker.html">
+    <link rel="canonical" href="https://nocturn3.com/pages/breach-checker">
 
-    <!-- Open Graph -->
-    <meta property="og:title" content="Free Business Breach Checker | Nocturn3 Cybersecurity">
-    <meta property="og:description" content="Check if your company domain appears in known data breaches. Free instant check for Canadian small businesses.">
+    <meta property="og:title" content="What Would a Cyber Attack Cost Your Business? — Free Calculator">
+    <meta property="og:description" content="Instant estimate based on real Canadian breach data. Takes 2 minutes.">
     <meta property="og:url" content="https://nocturn3.com/pages/breach-checker">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://nocturn3.com/images/og-image.svg">
@@ -30,10 +28,9 @@
     <meta property="og:image:height" content="630">
     <meta property="og:site_name" content="Nocturne Information Security Inc.">
 
-    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Free Business Breach Checker | Nocturn3 Cybersecurity">
-    <meta name="twitter:description" content="Check if your company domain appears in known data breaches. Free instant check.">
+    <meta name="twitter:title" content="What Would a Cyber Attack Cost Your Business? — Free Calculator">
+    <meta name="twitter:description" content="Instant estimate based on real Canadian breach data. Takes 2 minutes.">
     <meta name="twitter:image" content="https://nocturn3.com/images/og-image.svg">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -48,14 +45,13 @@
     <link rel="stylesheet" href="/css/styles.css">
     <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
 
-    <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "WebApplication",
-      "name": "Nocturn3 Breach Checker",
+      "name": "Nocturn3 Cyber Incident Cost Calculator",
       "url": "https://nocturn3.com/pages/breach-checker",
-      "description": "Check if your company domain appears in known data breaches. Free instant check for Canadian small businesses.",
+      "description": "Calculate the real cost of a cyber attack on your Canadian business. Free instant estimate based on IBM and Canadian Privacy Commissioner data.",
       "applicationCategory": "SecurityApplication",
       "provider": {
         "@type": "Organization",
@@ -66,496 +62,153 @@
     </script>
 
     <style>
-        /* ── Breach Checker Styles ──────────────────────── */
-        .bc-app { max-width: 720px; margin: 0 auto; }
-
-        .bc-hero-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: var(--border-radius-lg);
-            padding: 48px 40px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .bc-hero-card h2 {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: var(--text-primary);
-            margin-bottom: 12px;
-            line-height: 1.3;
-        }
-
-        .bc-hero-card .bc-sub {
-            color: var(--text-secondary);
-            font-size: 1rem;
-            margin-bottom: 32px;
-            line-height: 1.6;
-        }
-
-        .bc-input-row {
-            display: flex;
-            gap: 12px;
-            max-width: 520px;
-            margin: 0 auto 16px;
-        }
-
-        .bc-input-row input {
-            flex: 1;
-            padding: 14px 18px;
-            border-radius: var(--border-radius-sm);
-            border: 1px solid var(--border-color);
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            font-size: 1rem;
-            font-family: inherit;
-            outline: none;
-            transition: var(--transition);
-        }
-
-        .bc-input-row input:focus {
-            border-color: var(--accent-primary);
-            box-shadow: 0 0 0 3px rgba(245, 197, 66, 0.15);
-        }
-
-        .bc-input-row input::placeholder { color: var(--text-muted); }
-
-        .bc-check-btn {
-            padding: 14px 28px;
-            background: var(--accent-gradient);
-            color: var(--bg-primary);
-            border: none;
-            border-radius: var(--border-radius-sm);
-            font-weight: 700;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: var(--transition);
-            white-space: nowrap;
-            font-family: inherit;
-        }
-
-        .bc-check-btn:hover {
-            background: var(--accent-gradient-hover);
-            transform: translateY(-1px);
-            box-shadow: var(--shadow-glow);
-        }
-
-        .bc-hint {
-            font-size: 0.82rem;
-            color: var(--text-muted);
-        }
-
-        .bc-error-msg {
-            color: var(--error);
-            font-size: 0.88rem;
-            margin-top: 8px;
-        }
-
-        /* Loading */
-        .bc-loading-overlay {
-            text-align: center;
-            padding: 60px 20px;
-        }
-
-        .bc-spinner {
-            width: 56px; height: 56px;
-            border: 4px solid rgba(245, 197, 66, 0.15);
-            border-top-color: var(--accent-primary);
-            border-radius: 50%;
-            animation: bc-spin 0.8s linear infinite;
-            margin: 0 auto 24px;
-        }
-
-        @keyframes bc-spin {
-            to { transform: rotate(360deg); }
-        }
-
-        .bc-loading-msg {
-            font-size: 1.1rem;
-            color: var(--text-primary);
-            font-weight: 600;
-            margin-bottom: 8px;
-            min-height: 1.6em;
-        }
-
-        .bc-loading-sub {
-            color: var(--text-muted);
-            font-size: 0.88rem;
-        }
-
-        /* Result: No breach */
-        .bc-clean {
-            text-align: center;
-            padding: 20px 0;
-        }
-
-        .bc-check-anim {
-            width: 80px; height: 80px;
-            margin: 0 auto 24px;
-        }
-
-        .bc-check-anim svg {
-            width: 80px; height: 80px;
-        }
-
-        .bc-check-anim .circle { stroke: var(--success); stroke-width: 3; fill: none; stroke-dasharray: 300; stroke-dashoffset: 300; animation: bc-draw-circle 0.6s ease forwards; }
-        .bc-check-anim .check { stroke: var(--success); stroke-width: 4; fill: none; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 60; stroke-dashoffset: 60; animation: bc-draw-check 0.4s 0.5s ease forwards; }
-
-        @keyframes bc-draw-circle { to { stroke-dashoffset: 0; } }
-        @keyframes bc-draw-check { to { stroke-dashoffset: 0; } }
-
-        .bc-clean h3 {
-            font-size: 1.4rem;
-            color: var(--success);
-            font-weight: 700;
-            margin-bottom: 12px;
-        }
-
-        .bc-clean p { color: var(--text-secondary); margin-bottom: 16px; line-height: 1.6; }
-
-        .bc-info-box {
-            background: rgba(52, 211, 153, 0.08);
-            border: 1px solid rgba(52, 211, 153, 0.2);
-            border-radius: var(--border-radius-sm);
-            padding: 16px 20px;
-            font-size: 0.88rem;
-            color: var(--text-secondary);
-            line-height: 1.6;
-            margin-bottom: 32px;
-            text-align: left;
-        }
-
-        /* Monitoring email section */
-        .bc-monitor-section {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: var(--border-radius);
-            padding: 32px;
-            margin-top: 24px;
-            text-align: center;
-        }
-
-        .bc-monitor-section h4 {
-            color: var(--text-primary);
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
-
-        .bc-monitor-section p {
-            color: var(--text-secondary);
-            font-size: 0.88rem;
-            margin-bottom: 20px;
-        }
-
-        .bc-monitor-row {
-            display: flex;
-            gap: 12px;
-            max-width: 440px;
-            margin: 0 auto;
-        }
-
-        .bc-monitor-row input {
-            flex: 1;
-            padding: 12px 16px;
-            border-radius: var(--border-radius-sm);
-            border: 1px solid var(--border-color);
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            font-size: 0.9rem;
-            font-family: inherit;
-            outline: none;
-        }
-
-        .bc-monitor-row input:focus {
-            border-color: var(--accent-primary);
-        }
-
-        .bc-monitor-btn {
-            padding: 12px 20px;
-            background: var(--accent-gradient);
-            color: var(--bg-primary);
-            border: none;
-            border-radius: var(--border-radius-sm);
-            font-weight: 600;
-            font-size: 0.88rem;
-            cursor: pointer;
-            transition: var(--transition);
-            white-space: nowrap;
-            font-family: inherit;
-        }
-
-        .bc-monitor-btn:hover {
-            background: var(--accent-gradient-hover);
-        }
-
-        /* Result: Breaches found */
-        .bc-breached { padding: 20px 0; }
-
-        .bc-alert-icon {
-            width: 80px; height: 80px;
-            margin: 0 auto 20px;
-            background: rgba(248, 113, 113, 0.12);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            animation: bc-pulse 1.5s ease-in-out infinite;
-        }
-
-        .bc-alert-icon i {
-            font-size: 2rem;
-            color: var(--error);
-        }
-
-        @keyframes bc-pulse {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(248, 113, 113, 0.3); }
-            50% { box-shadow: 0 0 0 16px rgba(248, 113, 113, 0); }
-        }
-
-        .bc-breach-count {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .bc-breach-count .num {
-            font-size: 3rem;
-            font-weight: 800;
-            color: var(--error);
-            display: block;
-        }
-
-        .bc-breach-count .lbl {
-            font-size: 1rem;
-            color: var(--text-secondary);
-        }
-
-        .bc-warning-banner {
-            background: rgba(248, 113, 113, 0.1);
-            border: 1px solid rgba(248, 113, 113, 0.25);
-            border-radius: var(--border-radius-sm);
-            padding: 16px 20px;
-            font-size: 0.9rem;
-            color: var(--text-primary);
-            margin-bottom: 28px;
-            text-align: center;
-            line-height: 1.5;
-        }
-
-        /* Breach list */
-        .bc-breach-list { margin-bottom: 28px; }
-
-        .bc-breach-item {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: var(--border-radius-sm);
-            padding: 20px;
-            margin-bottom: 12px;
-        }
-
-        .bc-breach-header {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            margin-bottom: 10px;
-        }
-
-        .bc-breach-logo {
-            width: 40px; height: 40px;
-            border-radius: var(--border-radius-sm);
-            object-fit: contain;
-            background: #fff;
-            padding: 4px;
-        }
-
-        .bc-breach-name {
-            font-weight: 700;
-            font-size: 1rem;
-            color: var(--text-primary);
-        }
-
-        .bc-breach-date {
-            font-size: 0.82rem;
-            color: var(--text-muted);
-        }
-
-        .bc-breach-meta {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-            margin-bottom: 10px;
-        }
-
-        .bc-tags { display: flex; flex-wrap: wrap; gap: 6px; }
-
-        .bc-tag {
-            padding: 3px 10px;
-            border-radius: 999px;
-            font-size: 0.75rem;
-            font-weight: 600;
-        }
-
-        .bc-tag.passwords { background: rgba(248, 113, 113, 0.15); color: #f87171; }
-        .bc-tag.emails { background: rgba(251, 191, 36, 0.15); color: #fbbf24; }
-        .bc-tag.phones { background: rgba(96, 165, 250, 0.15); color: #60a5fa; }
-        .bc-tag.names { background: rgba(167, 139, 250, 0.15); color: #a78bfa; }
-        .bc-tag.addresses { background: rgba(52, 211, 153, 0.15); color: #34d399; }
-        .bc-tag.default { background: rgba(148, 168, 208, 0.15); color: var(--text-secondary); }
-
-        .bc-urgency-box {
-            background: linear-gradient(135deg, rgba(248, 113, 113, 0.12), rgba(251, 146, 60, 0.12));
-            border: 1px solid rgba(248, 113, 113, 0.25);
-            border-radius: var(--border-radius);
-            padding: 28px;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .bc-urgency-box h4 {
-            color: var(--error);
-            font-size: 1.15rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-        }
-
-        .bc-urgency-box p {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-
-        .bc-cta-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 14px 32px;
-            background: var(--accent-gradient);
-            color: var(--bg-primary);
-            border: none;
-            border-radius: var(--border-radius-sm);
-            font-weight: 700;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: var(--transition);
-            text-decoration: none;
-            font-family: inherit;
-            animation: bc-cta-pulse 2s ease-in-out infinite;
-        }
-
-        .bc-cta-btn:hover {
-            background: var(--accent-gradient-hover);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-glow);
-            color: var(--bg-primary);
-        }
-
-        @keyframes bc-cta-pulse {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(245, 197, 66, 0.3); }
-            50% { box-shadow: 0 0 0 10px rgba(245, 197, 66, 0); }
-        }
-
-        .bc-secondary-cta {
-            display: block;
-            margin-top: 14px;
-            font-size: 0.88rem;
-            color: var(--text-secondary);
-            cursor: pointer;
-            background: none;
-            border: none;
-            text-decoration: underline;
-            font-family: inherit;
-        }
-
-        .bc-secondary-cta:hover { color: var(--accent-primary); }
-
-        /* Trust indicators */
-        .bc-trust {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 16px;
-            margin-top: 40px;
-            padding-top: 32px;
-            border-top: 1px solid var(--border-color);
-        }
-
-        .bc-trust-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 0.82rem;
-            color: var(--text-muted);
-        }
-
-        .bc-trust-item i {
-            color: var(--accent-primary);
-            font-size: 0.9rem;
-        }
-
-        /* FAQ */
-        .bc-faq { margin-top: 48px; }
-
-        .bc-faq h3 {
-            font-size: 1.3rem;
-            color: var(--text-primary);
-            font-weight: 700;
-            margin-bottom: 24px;
-        }
-
-        .bc-faq-item {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: var(--border-radius-sm);
-            padding: 20px 24px;
-            margin-bottom: 12px;
-        }
-
-        .bc-faq-item h4 {
-            color: var(--text-primary);
-            font-size: 0.95rem;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-
-        .bc-faq-item p {
-            color: var(--text-secondary);
-            font-size: 0.88rem;
-            line-height: 1.6;
-        }
-
-        .bc-faq-item ul {
-            margin-top: 8px;
-            padding-left: 20px;
-        }
-
-        .bc-faq-item ul li {
-            color: var(--text-secondary);
-            font-size: 0.88rem;
-            line-height: 1.7;
-            list-style: disc;
-        }
-
-        /* Print stylesheet for PDF download */
-        @media print {
-            .navbar, .skip-nav, .breadcrumb, .back-to-top, .footer,
-            .bc-trust, .bc-faq, .tools-section, .bc-secondary-cta,
-            .bc-monitor-section, .bc-check-btn, .bc-input-row, .bc-hint,
-            .bc-cta-btn { display: none !important; }
-            body { background: #fff; color: #222; }
-            .bc-hero-card, .bc-breach-item, .bc-urgency-box, .bc-warning-banner {
-                background: #fff; border-color: #ddd; color: #222;
-            }
-            .bc-breach-name, .bc-breach-count .num, .bc-urgency-box h4 { color: #c00; }
-            .page-header { background: #1A2F5E !important; }
-        }
-
-        @media (max-width: 600px) {
-            .bc-hero-card { padding: 32px 20px; }
-            .bc-input-row { flex-direction: column; }
-            .bc-monitor-row { flex-direction: column; }
-            .bc-hero-card h2 { font-size: 1.4rem; }
-            .bc-breach-count .num { font-size: 2.2rem; }
-        }
+    /* ── Incident Cost Calculator ──────────────────────── */
+    .icc-app { max-width: 760px; margin: 0 auto; }
+
+    /* Trust badges */
+    .icc-trust-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 24px; margin: 32px 0 0; }
+    .icc-trust-badge { display: flex; align-items: center; gap: 8px; font-size: 0.82rem; color: var(--text-muted); }
+    .icc-trust-badge i { color: var(--accent-primary); }
+
+    /* Stats section */
+    .icc-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin: 48px 0; }
+    .icc-stat-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--border-radius); padding: 28px 24px; text-align: center; }
+    .icc-stat-num { font-size: 2.2rem; font-weight: 800; color: var(--accent-primary); margin-bottom: 8px; }
+    .icc-stat-label { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 6px; }
+    .icc-stat-src { font-size: 0.72rem; color: var(--text-muted); font-style: italic; }
+
+    /* Wizard card */
+    .icc-wizard { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--border-radius-lg); padding: 40px; overflow: hidden; }
+
+    /* Progress bar */
+    .icc-progress { margin-bottom: 32px; }
+    .icc-progress-label { display: flex; justify-content: space-between; font-size: 0.82rem; color: var(--text-muted); margin-bottom: 8px; }
+    .icc-progress-track { height: 6px; background: rgba(245,197,66,0.12); border-radius: 999px; overflow: hidden; }
+    .icc-progress-fill { height: 100%; background: var(--accent-gradient); border-radius: 999px; transition: width 0.4s ease; }
+
+    /* Step container */
+    .icc-step { display: none; animation: iccSlideIn 0.35s ease-out; }
+    .icc-step.active { display: block; }
+    @keyframes iccSlideIn { from { opacity: 0; transform: translateX(30px); } to { opacity: 1; transform: translateX(0); } }
+    .icc-step-back { animation-name: iccSlideBack; }
+    @keyframes iccSlideBack { from { opacity: 0; transform: translateX(-30px); } to { opacity: 1; transform: translateX(0); } }
+
+    .icc-step h3 { font-size: 1.35rem; font-weight: 700; color: var(--text-primary); margin-bottom: 8px; text-align: center; }
+    .icc-step .icc-sub { font-size: 0.88rem; color: var(--text-secondary); text-align: center; margin-bottom: 28px; line-height: 1.5; }
+
+    /* Option cards */
+    .icc-options { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 28px; }
+    .icc-opt { background: var(--bg-primary); border: 2px solid var(--border-color); border-radius: var(--border-radius); padding: 18px 16px; cursor: pointer; transition: var(--transition); text-align: center; }
+    .icc-opt:hover { border-color: rgba(245,197,66,0.4); background: rgba(245,197,66,0.04); }
+    .icc-opt.selected { border-color: var(--accent-primary); background: rgba(245,197,66,0.08); box-shadow: 0 0 0 1px var(--accent-primary); }
+    .icc-opt .icc-opt-icon { font-size: 1.6rem; margin-bottom: 8px; }
+    .icc-opt .icc-opt-title { font-size: 0.92rem; font-weight: 700; color: var(--text-primary); margin-bottom: 4px; }
+    .icc-opt .icc-opt-desc { font-size: 0.78rem; color: var(--text-muted); line-height: 1.4; }
+
+    /* Multi-select indicator */
+    .icc-opt.multi .icc-check { display: inline-block; width: 18px; height: 18px; border: 2px solid var(--border-color); border-radius: 4px; margin-bottom: 8px; position: relative; transition: var(--transition); }
+    .icc-opt.multi.selected .icc-check { background: var(--accent-primary); border-color: var(--accent-primary); }
+    .icc-opt.multi.selected .icc-check::after { content: '\f00c'; font-family: 'Font Awesome 6 Free'; font-weight: 900; font-size: 0.65rem; color: var(--bg-primary); position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); }
+
+    /* Buttons */
+    .icc-btns { display: flex; justify-content: space-between; gap: 12px; }
+    .icc-btn-back { padding: 12px 24px; border: 1px solid var(--border-color); background: transparent; color: var(--text-secondary); border-radius: var(--border-radius-sm); cursor: pointer; font-weight: 600; font-size: 0.9rem; transition: var(--transition); font-family: inherit; }
+    .icc-btn-back:hover { border-color: var(--text-secondary); color: var(--text-primary); }
+    .icc-btn-next { padding: 12px 32px; background: var(--accent-gradient); color: var(--bg-primary); border: none; border-radius: var(--border-radius-sm); cursor: pointer; font-weight: 700; font-size: 0.95rem; transition: var(--transition); font-family: inherit; opacity: 0.4; pointer-events: none; }
+    .icc-btn-next.enabled { opacity: 1; pointer-events: auto; }
+    .icc-btn-next.enabled:hover { background: var(--accent-gradient-hover); transform: translateY(-1px); box-shadow: var(--shadow-glow); }
+
+    /* Loading overlay */
+    .icc-loading { text-align: center; padding: 60px 20px; }
+    .icc-spinner { width: 56px; height: 56px; border: 4px solid rgba(245,197,66,0.15); border-top-color: var(--accent-primary); border-radius: 50%; animation: iccSpin 0.8s linear infinite; margin: 0 auto 28px; }
+    @keyframes iccSpin { to { transform: rotate(360deg); } }
+    .icc-load-msg { font-size: 1.05rem; color: var(--text-primary); font-weight: 600; margin-bottom: 8px; min-height: 1.6em; }
+    .icc-load-sub { color: var(--text-muted); font-size: 0.82rem; margin-top: 24px; }
+    .icc-load-bar { max-width: 300px; height: 4px; background: rgba(245,197,66,0.12); border-radius: 999px; margin: 12px auto 0; overflow: hidden; }
+    .icc-load-bar-fill { height: 100%; width: 0; background: var(--accent-gradient); border-radius: 999px; transition: width 0.15s linear; }
+
+    /* ── Results ────────────────────────── */
+    .icc-results { display: none; }
+    .icc-results.visible { display: block; }
+
+    /* Big number */
+    .icc-big-num { text-align: center; padding: 40px 20px; }
+    .icc-big-num .amount { font-size: 3.4rem; font-weight: 800; font-family: 'JetBrains Mono', monospace; margin-bottom: 8px; }
+    .icc-big-num .amount.yellow { color: #fbbf24; }
+    .icc-big-num .amount.orange { color: var(--accent-primary); }
+    .icc-big-num .amount.red { color: #f87171; }
+    .icc-big-num .lbl { font-size: 1rem; color: var(--text-secondary); margin-bottom: 6px; }
+    .icc-big-num .sublbl { font-size: 0.85rem; color: var(--text-muted); }
+
+    /* Breakdown bars */
+    .icc-breakdown { margin: 32px 0; }
+    .icc-breakdown h4 { font-size: 1.1rem; font-weight: 700; color: var(--text-primary); margin-bottom: 20px; }
+    .icc-bar-item { margin-bottom: 16px; }
+    .icc-bar-label { display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 6px; }
+    .icc-bar-label .name { color: var(--text-secondary); }
+    .icc-bar-label .val { color: var(--accent-primary); font-weight: 600; font-family: 'JetBrains Mono', monospace; }
+    .icc-bar-track { height: 10px; background: rgba(245,197,66,0.08); border-radius: 999px; overflow: hidden; }
+    .icc-bar-fill { height: 100%; background: var(--accent-gradient); border-radius: 999px; width: 0; transition: width 1s ease; }
+
+    /* Risk metric cards */
+    .icc-metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin: 32px 0; }
+    .icc-metric { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--border-radius); padding: 24px 20px; text-align: center; }
+    .icc-metric .m-icon { font-size: 1.6rem; margin-bottom: 10px; }
+    .icc-metric .m-title { font-size: 0.82rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+    .icc-metric .m-value { font-size: 1.2rem; font-weight: 700; color: var(--text-primary); margin-bottom: 6px; }
+    .icc-metric .m-sub { font-size: 0.78rem; color: var(--text-muted); line-height: 1.4; }
+
+    /* Risk summary */
+    .icc-summary { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--border-radius); padding: 28px; margin: 28px 0; }
+    .icc-summary h4 { font-size: 1rem; font-weight: 700; color: var(--text-primary); margin-bottom: 12px; }
+    .icc-summary p { color: var(--text-secondary); font-size: 0.9rem; line-height: 1.7; }
+
+    /* CTA box */
+    .icc-cta-box { background: linear-gradient(135deg, rgba(245,197,66,0.12), rgba(232,93,4,0.12)); border: 1px solid rgba(245,197,66,0.25); border-radius: var(--border-radius-lg); padding: 40px 32px; text-align: center; margin: 32px 0; }
+    .icc-cta-box h4 { font-size: 1.3rem; font-weight: 800; color: var(--accent-primary); margin-bottom: 12px; }
+    .icc-cta-box p { color: var(--text-secondary); font-size: 0.92rem; line-height: 1.6; margin-bottom: 24px; max-width: 480px; margin-left: auto; margin-right: auto; }
+    .icc-cta-primary { display: inline-flex; align-items: center; gap: 8px; padding: 16px 36px; background: var(--accent-gradient); color: var(--bg-primary); border: none; border-radius: var(--border-radius-sm); font-weight: 700; font-size: 1rem; cursor: pointer; transition: var(--transition); text-decoration: none; font-family: inherit; animation: iccPulse 2s ease-in-out infinite; }
+    .icc-cta-primary:hover { background: var(--accent-gradient-hover); transform: translateY(-2px); box-shadow: var(--shadow-glow); color: var(--bg-primary); }
+    @keyframes iccPulse { 0%,100%{ box-shadow: 0 0 0 0 rgba(245,197,66,0.3); } 50%{ box-shadow: 0 0 0 10px rgba(245,197,66,0); } }
+    .icc-cta-secondary { display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px; background: transparent; border: 2px solid var(--border-color); color: var(--text-secondary); border-radius: var(--border-radius-sm); font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: var(--transition); text-decoration: none; margin-top: 12px; font-family: inherit; }
+    .icc-cta-secondary:hover { border-color: var(--accent-primary); color: var(--accent-primary); }
+
+    /* Disclaimer */
+    .icc-disclaimer { font-size: 0.78rem; color: var(--text-muted); line-height: 1.6; text-align: center; padding: 20px 0; border-top: 1px solid var(--border-color); margin-top: 32px; }
+
+    /* Share row */
+    .icc-share { display: flex; align-items: center; justify-content: center; gap: 16px; margin: 24px 0; }
+    .icc-share span { font-size: 0.88rem; color: var(--text-muted); }
+    .icc-share-btn { display: inline-flex; align-items: center; gap: 8px; padding: 8px 18px; background: #0A66C2; color: #fff; border: none; border-radius: var(--border-radius-sm); font-size: 0.82rem; font-weight: 600; cursor: pointer; transition: var(--transition); text-decoration: none; font-family: inherit; }
+    .icc-share-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+    .icc-restart { padding: 8px 18px; background: transparent; border: 1px solid var(--border-color); color: var(--text-secondary); border-radius: var(--border-radius-sm); font-size: 0.82rem; cursor: pointer; transition: var(--transition); font-family: inherit; }
+    .icc-restart:hover { border-color: var(--text-secondary); color: var(--text-primary); }
+
+    /* FAQ */
+    .icc-faq { margin-top: 48px; }
+    .icc-faq h3 { font-size: 1.3rem; color: var(--text-primary); font-weight: 700; margin-bottom: 24px; }
+    .icc-faq-item { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--border-radius-sm); padding: 20px 24px; margin-bottom: 12px; }
+    .icc-faq-item h4 { color: var(--text-primary); font-size: 0.95rem; font-weight: 600; margin-bottom: 8px; }
+    .icc-faq-item p { color: var(--text-secondary); font-size: 0.88rem; line-height: 1.6; }
+
+    /* Print */
+    @media print {
+        .navbar,.skip-nav,.breadcrumb,.back-to-top,.footer,.icc-trust-row,.icc-faq,.tools-section,.icc-cta-primary,.icc-cta-secondary,.icc-share,.icc-restart,.icc-wizard { display:none!important; }
+        body { background:#fff; color:#222; }
+        .icc-results,.icc-big-num,.icc-breakdown,.icc-metrics,.icc-summary { background:#fff; border-color:#ddd; color:#222; }
+    }
+
+    @media (max-width: 600px) {
+        .icc-wizard { padding: 24px 18px; }
+        .icc-options { grid-template-columns: 1fr; }
+        .icc-big-num .amount { font-size: 2.4rem; }
+        .icc-metrics { grid-template-columns: 1fr; }
+        .icc-stats { grid-template-columns: 1fr; }
+        .icc-cta-box { padding: 28px 20px; }
+        .icc-btns { flex-direction: column-reverse; }
+        .icc-btn-next, .icc-btn-back { width: 100%; text-align: center; }
+        .icc-share { flex-direction: column; gap: 10px; }
+    }
     </style>
 </head>
 <body>
@@ -581,10 +234,10 @@
                             <span class="dd-label">Free &rarr;</span>
                         </a>
                         <a href="/pages/breach-checker" class="nav-dropdown-item">
-                            <span class="dd-icon"><i class="fas fa-search"></i></span>
+                            <span class="dd-icon"><i class="fas fa-calculator"></i></span>
                             <span class="dd-content">
-                                <span class="dd-title">Breach Checker</span>
-                                <span class="dd-desc">Check if your business has been compromised</span>
+                                <span class="dd-title">Incident Cost Calculator</span>
+                                <span class="dd-desc">What would a breach cost your business?</span>
                             </span>
                             <span class="dd-label">Free &rarr;</span>
                         </a>
@@ -606,28 +259,210 @@
 
     <!-- Breadcrumb -->
     <div class="container breadcrumb" style="padding-top:100px">
-        <a href="/">Home</a><span class="sep">&rarr;</span><a href="#">Cyber Health Check</a><span class="sep">&rarr;</span><span class="current">Breach Checker</span>
+        <a href="/">Home</a><span class="sep">&rarr;</span><a href="#">Cyber Health Check</a><span class="sep">&rarr;</span><span class="current">Incident Cost Calculator</span>
     </div>
 
     <!-- Page Header -->
     <section class="page-header">
-        <div class="hero-bg">
-            <div class="grid-overlay"></div>
-        </div>
+        <div class="hero-bg"><div class="grid-overlay"></div></div>
         <div class="container">
             <div class="page-header-content" data-aos="fade-up">
-                <span class="section-tag"><i class="fas fa-search"></i> Free Tool</span>
-                <h1>Breach <span class="gradient-text">Checker</span></h1>
-                <p>Check if your company domain appears in known data breaches. Instant. Free. No signup required.</p>
+                <span class="section-tag"><i class="fas fa-calculator"></i> Free Tool</span>
+                <h1>What Would a Cyber Attack <span class="gradient-text">Cost Your Business?</span></h1>
+                <p>Answer 5 quick questions and get an instant estimate of your financial exposure. Based on real Canadian breach cost data.</p>
+                <div class="icc-trust-row">
+                    <div class="icc-trust-badge"><i class="fas fa-chart-bar"></i> Based on Canadian Privacy Commissioner data</div>
+                    <div class="icc-trust-badge"><i class="fas fa-university"></i> IBM Cost of a Data Breach Report 2024</div>
+                    <div class="icc-trust-badge"><i class="fas fa-flag"></i> Canadian business statistics</div>
+                </div>
+                <a href="#calculator" class="btn btn-primary" style="margin-top:28px" onclick="document.getElementById('calculator').scrollIntoView({behavior:'smooth'});return false">Calculate My Risk &rarr;</a>
             </div>
         </div>
     </section>
 
-    <!-- Breach Checker App -->
-    <section class="content-section">
+    <!-- Why This Matters -->
+    <section class="content-section" style="padding-top:48px;padding-bottom:0">
         <div class="container">
-            <div class="bc-app" id="bcApp">
-                <!-- Populated by JavaScript -->
+            <div class="icc-stats" data-aos="fade-up">
+                <div class="icc-stat-card">
+                    <div class="icc-stat-num">$6.94M</div>
+                    <div class="icc-stat-label">Average Canadian enterprise breach cost in 2024</div>
+                    <div class="icc-stat-src">IBM Cost of Data Breach Report</div>
+                </div>
+                <div class="icc-stat-card">
+                    <div class="icc-stat-num">60%</div>
+                    <div class="icc-stat-label">Of small businesses close within 6 months of a breach</div>
+                    <div class="icc-stat-src">Canadian Federation of Independent Business</div>
+                </div>
+                <div class="icc-stat-card">
+                    <div class="icc-stat-num">277 Days</div>
+                    <div class="icc-stat-label">Average time to identify and contain a breach</div>
+                    <div class="icc-stat-src">IBM Security Report 2024</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Badges -->
+    <section class="content-section" style="padding:24px 0 0">
+        <div class="container">
+            <div class="icc-trust-row" style="justify-content:center;gap:32px;padding-bottom:8px" data-aos="fade-up">
+                <div class="icc-trust-badge"><i class="fas fa-landmark"></i> Based on Canadian Government Data</div>
+                <div class="icc-trust-badge"><i class="fas fa-chart-bar"></i> IBM Breach Report 2024</div>
+                <div class="icc-trust-badge"><i class="fas fa-certificate"></i> Nocturn3 CISSP Certified</div>
+                <div class="icc-trust-badge"><i class="fas fa-flag"></i> Built for Canadian Businesses</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calculator -->
+    <section class="content-section" id="calculator">
+        <div class="container">
+            <div class="icc-app" id="iccApp">
+                <div class="icc-wizard" id="iccWizard">
+                    <!-- Progress -->
+                    <div class="icc-progress">
+                        <div class="icc-progress-label"><span id="iccStepLabel">Step 1 of 5</span><span id="iccStepPct">20%</span></div>
+                        <div class="icc-progress-track"><div class="icc-progress-fill" id="iccProgressFill" style="width:20%"></div></div>
+                    </div>
+
+                    <!-- Step 1: Industry -->
+                    <div class="icc-step active" data-step="1" id="iccStep1">
+                        <h3>What industry is your business in?</h3>
+                        <p class="icc-sub">Breach costs vary significantly by industry due to regulatory requirements</p>
+                        <div class="icc-options">
+                            <div class="icc-opt" data-val="healthcare"><div class="icc-opt-icon">🏥</div><div class="icc-opt-title">Healthcare &amp; Medical</div><div class="icc-opt-desc">Highest breach costs due to PHIPA</div></div>
+                            <div class="icc-opt" data-val="financial"><div class="icc-opt-icon">🏦</div><div class="icc-opt-title">Financial Services</div><div class="icc-opt-desc">Heavily regulated — OSFI requirements</div></div>
+                            <div class="icc-opt" data-val="legal"><div class="icc-opt-icon">⚖️</div><div class="icc-opt-title">Legal &amp; Professional Services</div><div class="icc-opt-desc">High client confidentiality exposure</div></div>
+                            <div class="icc-opt" data-val="retail"><div class="icc-opt-icon">🛒</div><div class="icc-opt-title">Retail &amp; E-commerce</div><div class="icc-opt-desc">PCI DSS compliance requirements</div></div>
+                            <div class="icc-opt" data-val="construction"><div class="icc-opt-icon">🏗️</div><div class="icc-opt-title">Construction &amp; Real Estate</div><div class="icc-opt-desc">Contract and financial data exposure</div></div>
+                            <div class="icc-opt" data-val="hospitality"><div class="icc-opt-icon">🍽️</div><div class="icc-opt-title">Hospitality &amp; Food Service</div><div class="icc-opt-desc">Payment and customer data risk</div></div>
+                            <div class="icc-opt" data-val="technology"><div class="icc-opt-icon">💻</div><div class="icc-opt-title">Technology &amp; Software</div><div class="icc-opt-desc">IP theft and customer data risk</div></div>
+                            <div class="icc-opt" data-val="other"><div class="icc-opt-icon">🏢</div><div class="icc-opt-title">Other Business Services</div><div class="icc-opt-desc">General business data exposure</div></div>
+                        </div>
+                        <div class="icc-btns"><div></div><button class="icc-btn-next" id="iccNext1">Next &rarr;</button></div>
+                    </div>
+
+                    <!-- Step 2: Size -->
+                    <div class="icc-step" data-step="2" id="iccStep2">
+                        <h3>How many employees do you have?</h3>
+                        <p class="icc-sub">Larger organizations face higher total costs but SMBs are targeted more frequently</p>
+                        <div class="icc-options" style="grid-template-columns:repeat(2,1fr)">
+                            <div class="icc-opt" data-val="micro"><div class="icc-opt-icon">👤</div><div class="icc-opt-title">1 to 10 employees</div><div class="icc-opt-desc">Micro business</div></div>
+                            <div class="icc-opt" data-val="small"><div class="icc-opt-icon">👥</div><div class="icc-opt-title">11 to 50 employees</div><div class="icc-opt-desc">Small business</div></div>
+                            <div class="icc-opt" data-val="medium"><div class="icc-opt-icon">👨‍👩‍👧‍👦</div><div class="icc-opt-title">51 to 200 employees</div><div class="icc-opt-desc">Medium business</div></div>
+                            <div class="icc-opt" data-val="growing"><div class="icc-opt-icon">🏢</div><div class="icc-opt-title">201 to 500 employees</div><div class="icc-opt-desc">Growing enterprise</div></div>
+                        </div>
+                        <div class="icc-btns"><button class="icc-btn-back" data-back="1">&larr; Back</button><button class="icc-btn-next" id="iccNext2">Next &rarr;</button></div>
+                    </div>
+
+                    <!-- Step 3: Data Types (multi-select) -->
+                    <div class="icc-step" data-step="3" id="iccStep3">
+                        <h3>What types of sensitive data does your business handle?</h3>
+                        <p class="icc-sub">Select all that apply — each type adds to your risk exposure</p>
+                        <div class="icc-options">
+                            <div class="icc-opt multi" data-val="payment"><div class="icc-check"></div><div class="icc-opt-title">Customer Payment Information</div><div class="icc-opt-desc">Credit cards, banking details</div></div>
+                            <div class="icc-opt multi" data-val="health"><div class="icc-check"></div><div class="icc-opt-title">Health or Medical Records</div><div class="icc-opt-desc">Patient or employee health data</div></div>
+                            <div class="icc-opt multi" data-val="personal"><div class="icc-check"></div><div class="icc-opt-title">Personal Customer Information</div><div class="icc-opt-desc">Names, addresses, emails, phones</div></div>
+                            <div class="icc-opt multi" data-val="employee"><div class="icc-check"></div><div class="icc-opt-title">Employee Records</div><div class="icc-opt-desc">HR files, SIN numbers, payroll</div></div>
+                            <div class="icc-opt multi" data-val="contracts"><div class="icc-check"></div><div class="icc-opt-title">Business Contracts &amp; IP</div><div class="icc-opt-desc">Proprietary business information</div></div>
+                            <div class="icc-opt multi" data-val="credentials"><div class="icc-check"></div><div class="icc-opt-title">System Access Credentials</div><div class="icc-opt-desc">Passwords, API keys, certificates</div></div>
+                        </div>
+                        <div class="icc-btns"><button class="icc-btn-back" data-back="2">&larr; Back</button><button class="icc-btn-next" id="iccNext3">Next &rarr;</button></div>
+                    </div>
+
+                    <!-- Step 4: Security Posture -->
+                    <div class="icc-step" data-step="4" id="iccStep4">
+                        <h3>How would you rate your current cybersecurity?</h3>
+                        <p class="icc-sub">Be honest — this affects the accuracy of your estimate</p>
+                        <div class="icc-options" style="grid-template-columns:1fr 1fr">
+                            <div class="icc-opt" data-val="minimal"><div class="icc-opt-icon">🔴</div><div class="icc-opt-title">Minimal Protection</div><div class="icc-opt-desc">Basic antivirus only, no formal security measures</div></div>
+                            <div class="icc-opt" data-val="basic"><div class="icc-opt-icon">🟡</div><div class="icc-opt-title">Basic Protection</div><div class="icc-opt-desc">Some measures in place but no formal security program</div></div>
+                            <div class="icc-opt" data-val="moderate"><div class="icc-opt-icon">🟢</div><div class="icc-opt-title">Moderate Protection</div><div class="icc-opt-desc">Regular updates, some training, basic policies in place</div></div>
+                            <div class="icc-opt" data-val="strong"><div class="icc-opt-icon">🔵</div><div class="icc-opt-title">Strong Protection</div><div class="icc-opt-desc">Formal security program, regular audits, trained staff</div></div>
+                        </div>
+                        <div class="icc-btns"><button class="icc-btn-back" data-back="3">&larr; Back</button><button class="icc-btn-next" id="iccNext4">Next &rarr;</button></div>
+                    </div>
+
+                    <!-- Step 5: Previous Incidents -->
+                    <div class="icc-step" data-step="5" id="iccStep5">
+                        <h3>Has your business experienced a security incident before?</h3>
+                        <p class="icc-sub">Prior incidents indicate existing vulnerabilities</p>
+                        <div class="icc-options" style="grid-template-columns:1fr 1fr">
+                            <div class="icc-opt" data-val="none"><div class="icc-opt-icon">✅</div><div class="icc-opt-title">No known incidents</div><div class="icc-opt-desc">No previous breaches or attacks</div></div>
+                            <div class="icc-opt" data-val="minor"><div class="icc-opt-icon">⚠️</div><div class="icc-opt-title">Minor incidents</div><div class="icc-opt-desc">Phishing emails, minor malware, spam issues</div></div>
+                            <div class="icc-opt" data-val="significant"><div class="icc-opt-icon">🚨</div><div class="icc-opt-title">Significant incident</div><div class="icc-opt-desc">Data breach, ransomware, major security event</div></div>
+                            <div class="icc-opt" data-val="unsure"><div class="icc-opt-icon">❓</div><div class="icc-opt-title">Not sure</div><div class="icc-opt-desc">May have had incidents but not certain</div></div>
+                        </div>
+                        <div class="icc-btns"><button class="icc-btn-back" data-back="4">&larr; Back</button><button class="icc-btn-next" id="iccNext5">Calculate My Risk &rarr;</button></div>
+                    </div>
+
+                    <!-- Loading -->
+                    <div class="icc-step" data-step="loading" id="iccLoading">
+                        <div class="icc-loading">
+                            <div class="icc-spinner"></div>
+                            <p class="icc-load-msg" id="iccLoadMsg">Analyzing your industry risk profile...</p>
+                            <div class="icc-load-bar"><div class="icc-load-bar-fill" id="iccLoadBar"></div></div>
+                            <p class="icc-load-sub">Based on IBM, Ponemon Institute, and Canadian Privacy Commissioner data</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Results -->
+                <div class="icc-results" id="iccResults">
+                    <div class="icc-wizard">
+                        <!-- Big Number -->
+                        <div class="icc-big-num">
+                            <div class="lbl">Estimated Cost of a Cyber Breach at Your Business</div>
+                            <div class="amount" id="iccAmount">$0</div>
+                            <div class="sublbl">This is the average total cost based on businesses similar to yours</div>
+                        </div>
+
+                        <!-- Breakdown -->
+                        <div class="icc-breakdown">
+                            <h4>Cost Breakdown</h4>
+                            <div id="iccBars"></div>
+                        </div>
+
+                        <!-- Risk Metrics -->
+                        <div class="icc-metrics" id="iccMetrics"></div>
+
+                        <!-- Summary -->
+                        <div class="icc-summary"><h4>Your Risk Profile</h4><p id="iccSummaryText"></p></div>
+
+                        <!-- CTA -->
+                        <div class="icc-cta-box">
+                            <h4>This Is 100% Preventable</h4>
+                            <p>Most breaches are caused by known vulnerabilities and human error — both fixable with the right security program.</p>
+                            <a href="#" class="icc-cta-primary" id="iccCtaEmail">Get Free Security Consultation &rarr;</a>
+                            <br>
+                            <a href="/pages/scorecard" class="icc-cta-secondary">Try Security Scorecard &rarr;</a>
+                        </div>
+
+                        <!-- Share -->
+                        <div class="icc-share">
+                            <span>Share your results:</span>
+                            <a href="#" class="icc-share-btn" id="iccLinkedIn" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
+                            <button class="icc-restart" id="iccRestart">Start Over</button>
+                        </div>
+
+                        <!-- Disclaimer -->
+                        <div class="icc-disclaimer">Estimates are based on Canadian industry averages from IBM Cost of a Data Breach Report 2024, the Canadian Centre for Cyber Security, and the Office of the Privacy Commissioner of Canada. Actual costs vary by organization. This tool is provided for educational purposes by Nocturn3 Cybersecurity.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="content-section" style="padding-top:0">
+        <div class="container">
+            <div class="icc-faq" style="max-width:760px;margin:0 auto">
+                <h3>Frequently Asked Questions</h3>
+                <div class="icc-faq-item"><h4>How accurate is this estimate?</h4><p>This calculator uses industry averages from reputable sources including IBM, Ponemon Institute, and the Canadian Privacy Commissioner. Your actual costs could be higher or lower depending on specific circumstances. Use this as a directional guide rather than a precise prediction.</p></div>
+                <div class="icc-faq-item"><h4>What makes up the biggest cost of a breach?</h4><p>Business disruption and downtime typically represents the largest portion (around 30%), followed by legal and regulatory costs, incident response, and long-term reputation damage.</p></div>
+                <div class="icc-faq-item"><h4>Can I reduce these costs?</h4><p>Absolutely — organizations with mature security programs experience breach costs 45-65% lower than those with minimal protection. The investment in prevention is almost always a fraction of the cost of a breach.</p></div>
+                <div class="icc-faq-item"><h4>Is this tool free?</h4><p>Yes — completely free, no signup required, provided by Nocturn3 Cybersecurity as a public service for Canadian small businesses.</p></div>
             </div>
         </div>
     </section>
@@ -677,7 +512,7 @@
                     <h4>Cyber Health Check</h4>
                     <ul>
                         <li><a href="/pages/scorecard">Security Scorecard</a></li>
-                        <li><a href="/pages/breach-checker">Breach Checker</a></li>
+                        <li><a href="/pages/breach-checker">Incident Cost Calculator</a></li>
                     </ul>
                     <h4 style="margin-top:20px">Services</h4>
                     <ul>
@@ -701,9 +536,7 @@
         </div>
     </footer>
 
-    <button class="back-to-top" id="backToTop" aria-label="Back to top">
-        <i class="fas fa-arrow-up"></i>
-    </button>
+    <button class="back-to-top" id="backToTop" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" integrity="sha512-A7AYk1fGKX6S2SsHywmPkrnzTZHrgiVT7GcQkLGDe2ev0aWb8zejytzS8wjo7PGEXKqJOrjQ4oORtnimIRZBtw==" crossorigin="anonymous"></script>
     <script src="/js/main.js"></script>
@@ -712,288 +545,314 @@
     (function () {
         'use strict';
 
-        // Get your API key at: https://haveibeenpwned.com/API/Key
-        var CONFIG = {
-            HIBP_API_KEY: ''
-        };
+        /* ════ DATA ════ */
+        var BASE_COST = { healthcare:450000, financial:380000, legal:320000, retail:210000, construction:175000, hospitality:155000, technology:290000, other:195000 };
+        var SIZE_MULT = { micro:0.35, small:0.55, medium:0.80, growing:1.00 };
+        var DATA_COST = { payment:45000, health:65000, personal:35000, employee:28000, contracts:22000, credentials:18000 };
+        var SEC_MULT  = { minimal:1.45, basic:1.20, moderate:0.90, strong:0.65 };
+        var INC_MULT  = { none:1.00, minor:1.15, significant:1.35, unsure:1.10 };
+        var DOWNTIME  = { minimal:'18 to 25', basic:'12 to 18', moderate:'7 to 12', strong:'3 to 7' };
+        var PROB      = { minimal:{txt:'1 in 3',pct:33}, basic:{txt:'1 in 5',pct:20}, moderate:{txt:'1 in 8',pct:12}, strong:{txt:'1 in 14',pct:7} };
 
-        var app = document.getElementById('bcApp');
-        var searchedDomain = '';
+        var INDUSTRY_LABEL = { healthcare:'Healthcare & Medical', financial:'Financial Services', legal:'Legal & Professional Services', retail:'Retail & E-commerce', construction:'Construction & Real Estate', hospitality:'Hospitality & Food Service', technology:'Technology & Software', other:'Other Business Services' };
+        var SIZE_LABEL = { micro:'1-10', small:'11-50', medium:'51-200', growing:'201-500' };
+        var DATA_LABEL = { payment:'Customer Payment Information', health:'Health or Medical Records', personal:'Personal Customer Information', employee:'Employee Records', contracts:'Business Contracts & IP', credentials:'System Access Credentials' };
+        var SEC_LABEL = { minimal:'minimal', basic:'basic', moderate:'moderate', strong:'strong' };
 
-        renderInput();
+        /* ════ STATE ════ */
+        var answers = { industry:null, size:null, dataTypes:[], security:null, incidents:null };
+        var currentStep = 1;
 
-        function renderInput() {
-            app.innerHTML =
-                '<div class="bc-hero-card">' +
-                    '<h2>Has Your Business Been Compromised?</h2>' +
-                    '<p class="bc-sub">Check if your company domain appears in known data breaches.<br>Free. Instant. No signup required.</p>' +
-                    '<div class="bc-input-row">' +
-                        '<input type="text" id="bcDomain" placeholder="Enter your domain e.g. yourcompany.com" autocomplete="off" spellcheck="false">' +
-                        '<button class="bc-check-btn" id="bcSubmit">Check Now &rarr;</button>' +
-                    '</div>' +
-                    '<p class="bc-hint">We check against 800+ known data breaches</p>' +
-                    '<div id="bcError" class="bc-error-msg" style="display:none"></div>' +
-                    '<div class="bc-trust">' +
-                        '<div class="bc-trust-item"><i class="fas fa-database"></i> Powered by HaveIBeenPwned</div>' +
-                        '<div class="bc-trust-item"><i class="fas fa-shield-alt"></i> Data from 800+ known breaches</div>' +
-                        '<div class="bc-trust-item"><i class="fas fa-eye-slash"></i> We never store your domain</div>' +
-                        '<div class="bc-trust-item"><i class="fas fa-lock"></i> Secure and Private</div>' +
-                    '</div>' +
-                '</div>';
+        /* ════ DOM REFS ════ */
+        var wizard = document.getElementById('iccWizard');
+        var results = document.getElementById('iccResults');
+        var progressFill = document.getElementById('iccProgressFill');
+        var stepLabel = document.getElementById('iccStepLabel');
+        var stepPct = document.getElementById('iccStepPct');
 
-            var input = document.getElementById('bcDomain');
-            var btn = document.getElementById('bcSubmit');
+        /* ════ INIT ════ */
+        initStep(1);
+        initStep(2);
+        initStep(4);
+        initStep(5);
+        initMultiStep();
+        initBacks();
 
-            btn.addEventListener('click', function () { handleSubmit(); });
-            input.addEventListener('keydown', function (e) { if (e.key === 'Enter') handleSubmit(); });
-        }
+        /* ════ SINGLE-SELECT STEPS ════ */
+        function initStep(n) {
+            var step = document.getElementById('iccStep' + n);
+            var opts = step.querySelectorAll('.icc-opt');
+            var btn  = document.getElementById('iccNext' + n);
 
-        function handleSubmit() {
-            var raw = document.getElementById('bcDomain').value;
-            var err = document.getElementById('bcError');
-            err.style.display = 'none';
+            var keys = {1:'industry',2:'size',4:'security',5:'incidents'};
+            var key  = keys[n];
 
-            // Clean input
-            var domain = raw.trim().toLowerCase()
-                .replace(/^https?:\/\//, '')
-                .replace(/^www\./, '')
-                .replace(/\/.*$/, '');
-
-            if (!domain || !domain.includes('.') || domain.includes(' ') || domain.length < 4) {
-                err.textContent = 'Please enter a valid domain like yourcompany.com';
-                err.style.display = 'block';
-                return;
-            }
-
-            searchedDomain = domain;
-
-            // Check if API key is configured
-            if (!CONFIG.HIBP_API_KEY) {
-                renderLoading();
-                setTimeout(function () { renderNoKey(); }, 3000);
-                return;
-            }
-
-            renderLoading();
-            doBreachCheck(domain);
-        }
-
-        function renderLoading() {
-            var messages = [
-                'Scanning dark web databases...',
-                'Checking 800+ known breaches...',
-                'Analyzing compromised records...'
-            ];
-            var idx = 0;
-
-            app.innerHTML =
-                '<div class="bc-hero-card">' +
-                    '<div class="bc-loading-overlay">' +
-                        '<div class="bc-spinner"></div>' +
-                        '<p class="bc-loading-msg" id="bcLoadMsg">' + messages[0] + '</p>' +
-                        '<p class="bc-loading-sub">This will only take a moment</p>' +
-                    '</div>' +
-                '</div>';
-
-            var msgEl = document.getElementById('bcLoadMsg');
-            var interval = setInterval(function () {
-                idx = (idx + 1) % messages.length;
-                if (msgEl) msgEl.textContent = messages[idx];
-            }, 1000);
-
-            // Store interval so we can clear it
-            window._bcLoadInterval = interval;
-        }
-
-        function clearLoadInterval() {
-            if (window._bcLoadInterval) { clearInterval(window._bcLoadInterval); window._bcLoadInterval = null; }
-        }
-
-        function doBreachCheck(domain) {
-            var startTime = Date.now();
-            var minDelay = 3000; // 3 seconds minimum for UX
-
-            fetch('https://haveibeenpwned.com/api/v3/breaches?domain=' + encodeURIComponent(domain), {
-                headers: {
-                    'hibp-api-key': CONFIG.HIBP_API_KEY,
-                    'Accept': 'application/json'
-                }
-            })
-            .then(function (res) {
-                if (res.status === 404) return [];
-                if (res.status === 429) throw new Error('rate-limit');
-                if (!res.ok) throw new Error('api-error');
-                return res.json();
-            })
-            .then(function (data) {
-                var elapsed = Date.now() - startTime;
-                var remaining = Math.max(0, minDelay - elapsed);
-                setTimeout(function () {
-                    clearLoadInterval();
-                    if (!data || data.length === 0) {
-                        renderClean();
-                    } else {
-                        renderBreached(data);
-                    }
-                }, remaining);
-            })
-            .catch(function (err) {
-                var elapsed = Date.now() - startTime;
-                var remaining = Math.max(0, minDelay - elapsed);
-                setTimeout(function () {
-                    clearLoadInterval();
-                    if (err.message === 'rate-limit') {
-                        renderError('Please wait 10 seconds and try again.');
-                    } else {
-                        renderError('Breach checking is temporarily unavailable. Please <a href="/pages/contact">contact us</a> for a manual domain check &mdash; we respond within 1 hour.');
-                    }
-                }, remaining);
-            });
-        }
-
-        function renderNoKey() {
-            clearLoadInterval();
-            app.innerHTML =
-                '<div class="bc-hero-card">' +
-                    '<div class="bc-clean">' +
-                        '<div class="bc-alert-icon" style="animation:none;background:rgba(251,191,36,0.12)"><i class="fas fa-tools" style="color:var(--accent-primary)"></i></div>' +
-                        '<h3 style="color:var(--accent-primary)">Service Setup In Progress</h3>' +
-                        '<p>Breach checking is temporarily unavailable. Please <a href="/pages/contact">contact us at nocturn3.com/contact</a> for a manual domain check &mdash; we respond within 1 hour.</p>' +
-                        '<a href="/pages/contact" class="bc-cta-btn" style="margin-top:20px;display:inline-flex;text-decoration:none">Request Manual Check &rarr;</a>' +
-                    '</div>' +
-                '</div>';
-        }
-
-        function renderError(msg) {
-            app.innerHTML =
-                '<div class="bc-hero-card">' +
-                    '<div class="bc-clean">' +
-                        '<div class="bc-alert-icon" style="animation:none;background:rgba(248,113,113,0.12)"><i class="fas fa-exclamation-triangle"></i></div>' +
-                        '<h3 style="color:var(--error)">Something Went Wrong</h3>' +
-                        '<p>' + msg + '</p>' +
-                        '<button class="bc-check-btn" style="margin-top:20px" onclick="location.reload()">Try Again</button>' +
-                    '</div>' +
-                '</div>';
-        }
-
-        function renderClean() {
-            app.innerHTML =
-                '<div class="bc-hero-card">' +
-                    '<div class="bc-clean">' +
-                        '<div class="bc-check-anim"><svg viewBox="0 0 100 100"><circle class="circle" cx="50" cy="50" r="45"/><polyline class="check" points="30,52 45,66 72,36"/></svg></div>' +
-                        '<h3>Good News &mdash; No Breaches Found</h3>' +
-                        '<p>No email addresses from <strong>' + escapeHtml(searchedDomain) + '</strong> were found in our breach database. Your domain appears clean.</p>' +
-                        '<div class="bc-info-box"><i class="fas fa-info-circle"></i> This checks known public breaches. New breaches occur daily. Stay protected with regular monitoring.</div>' +
-                    '</div>' +
-                    '<div class="bc-monitor-section">' +
-                        '<h4>Get Free Monthly Breach Alerts</h4>' +
-                        '<p>We will notify you immediately if your domain appears in a new breach.</p>' +
-                        '<div class="bc-monitor-row">' +
-                            '<input type="email" id="bcMonitorEmail" placeholder="Your email address">' +
-                            '<button class="bc-monitor-btn" id="bcMonitorBtn">Set Up Free Monitoring &rarr;</button>' +
-                        '</div>' +
-                    '</div>' +
-                    '<div style="text-align:center;margin-top:24px">' +
-                        '<p style="color:var(--text-secondary);margin-bottom:16px">Want to ensure your systems are fully protected?</p>' +
-                        '<a href="/pages/contact" class="bc-cta-btn" style="text-decoration:none;animation:none">Get Free Security Consultation &rarr;</a>' +
-                    '</div>' +
-                '</div>';
-
-            document.getElementById('bcMonitorBtn').addEventListener('click', function () {
-                var email = document.getElementById('bcMonitorEmail').value.trim();
-                if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-                    return;
-                }
-                var subject = encodeURIComponent('Breach Monitoring Request: ' + searchedDomain);
-                var body = encodeURIComponent('Please set up breach monitoring for domain: ' + searchedDomain + '\nContact email: ' + email);
-                window.location.href = 'mailto:saikat@nocturn3.com?subject=' + subject + '&body=' + body;
-            });
-        }
-
-        function renderBreached(breaches) {
-            // Count unique email addresses
-            var totalEmails = 0;
-            breaches.forEach(function (b) { totalEmails += (b.PwnCount || 0); });
-
-            var html = '<div class="bc-hero-card"><div class="bc-breached">' +
-                '<div class="bc-alert-icon"><i class="fas fa-exclamation-triangle"></i></div>' +
-                '<div class="bc-breach-count"><span class="num">' + breaches.length + '</span><span class="lbl">Breach' + (breaches.length !== 1 ? 'es' : '') + ' Found</span></div>' +
-                '<div class="bc-warning-banner">\u26A0\uFE0F Attackers may have valid credentials to your business systems right now.</div>' +
-                '<div class="bc-breach-list">';
-
-            breaches.forEach(function (b) {
-                var date = b.BreachDate || 'Unknown';
-                var dataTypes = b.DataClasses || [];
-                var logoUrl = 'https://haveibeenpwned.com/Content/Images/PwnedLogos/' + encodeURIComponent(b.Name) + '.' + (b.LogoPath ? b.LogoPath.split('.').pop() : 'png');
-
-                html += '<div class="bc-breach-item">' +
-                    '<div class="bc-breach-header">' +
-                        '<img class="bc-breach-logo" src="' + escapeHtml(logoUrl) + '" alt="" onerror="this.style.display=\'none\'">' +
-                        '<div><div class="bc-breach-name">' + escapeHtml(b.Title || b.Name) + '</div>' +
-                        '<div class="bc-breach-date">Breached: ' + escapeHtml(date) + '</div></div>' +
-                    '</div>' +
-                    '<div class="bc-breach-meta">' + formatNumber(b.PwnCount || 0) + ' accounts affected</div>' +
-                    '<div class="bc-tags">';
-
-                dataTypes.forEach(function (dt) {
-                    var cls = getTagClass(dt);
-                    html += '<span class="bc-tag ' + cls + '">' + escapeHtml(dt) + '</span>';
+            opts.forEach(function(o) {
+                o.addEventListener('click', function() {
+                    opts.forEach(function(x){ x.classList.remove('selected'); });
+                    o.classList.add('selected');
+                    answers[key] = o.getAttribute('data-val');
+                    btn.classList.add('enabled');
                 });
-
-                html += '</div></div>';
             });
 
-            html += '</div>' +
-                '<div class="bc-urgency-box">' +
-                    '<h4>This Requires Immediate Action</h4>' +
-                    '<p>Compromised credentials are actively used by attackers within hours of a breach. Your business accounts using these email addresses should be considered compromised until passwords are changed and MFA is enabled.</p>' +
-                    '<a href="/pages/contact" class="bc-cta-btn" style="text-decoration:none">Get Free Emergency Consultation &rarr;</a>' +
-                    '<br><button class="bc-secondary-cta" onclick="window.print()">Download Full Breach Report (PDF)</button>' +
-                '</div>' +
-                '</div></div>';
+            btn.addEventListener('click', function() {
+                if (!btn.classList.contains('enabled')) return;
+                if (n === 5) { showLoading(); return; }
+                goToStep(n + 1);
+            });
 
-            app.innerHTML = html;
+            // Restore selection if going back
+            if (answers[key]) {
+                var sel = step.querySelector('.icc-opt[data-val="' + answers[key] + '"]');
+                if (sel) { sel.classList.add('selected'); btn.classList.add('enabled'); }
+            }
         }
 
-        function getTagClass(type) {
-            var t = type.toLowerCase();
-            if (t.includes('password')) return 'passwords';
-            if (t.includes('email')) return 'emails';
-            if (t.includes('phone')) return 'phones';
-            if (t.includes('name') && !t.includes('user')) return 'names';
-            if (t.includes('address') && !t.includes('email') && !t.includes('ip')) return 'addresses';
-            return 'default';
+        /* ════ MULTI-SELECT (step 3) ════ */
+        function initMultiStep() {
+            var step = document.getElementById('iccStep3');
+            var opts = step.querySelectorAll('.icc-opt.multi');
+            var btn  = document.getElementById('iccNext3');
+
+            opts.forEach(function(o) {
+                o.addEventListener('click', function() {
+                    o.classList.toggle('selected');
+                    var sel = step.querySelectorAll('.icc-opt.selected');
+                    answers.dataTypes = [];
+                    sel.forEach(function(s){ answers.dataTypes.push(s.getAttribute('data-val')); });
+                    if (answers.dataTypes.length > 0) btn.classList.add('enabled');
+                    else btn.classList.remove('enabled');
+                });
+            });
+
+            btn.addEventListener('click', function() {
+                if (!btn.classList.contains('enabled')) return;
+                goToStep(4);
+            });
         }
 
-        function formatNumber(n) {
-            if (n >= 1000000) return (n / 1000000).toFixed(1) + 'M';
-            if (n >= 1000) return (n / 1000).toFixed(0) + 'K';
-            return n.toString();
+        /* ════ BACK BUTTONS ════ */
+        function initBacks() {
+            document.querySelectorAll('.icc-btn-back').forEach(function(b) {
+                b.addEventListener('click', function() {
+                    var target = parseInt(b.getAttribute('data-back'));
+                    goToStep(target, true);
+                });
+            });
         }
 
-        function escapeHtml(str) {
-            var d = document.createElement('div');
-            d.appendChild(document.createTextNode(str));
-            return d.innerHTML;
+        /* ════ NAVIGATE ════ */
+        function goToStep(n, isBack) {
+            document.querySelectorAll('.icc-step').forEach(function(s) {
+                s.classList.remove('active','icc-step-back');
+            });
+            var next = document.getElementById('iccStep' + n);
+            if (isBack) next.classList.add('icc-step-back');
+            next.classList.add('active');
+            currentStep = n;
+            var pct = Math.round((n / 5) * 100);
+            progressFill.style.width = pct + '%';
+            stepLabel.textContent = 'Step ' + n + ' of 5';
+            stepPct.textContent = pct + '%';
+
+            // Re-render selection state for the target step
+            restoreSelections(n);
         }
-    })();
-    </script>
 
-    <!-- FAQ Section -->
-    <script>
-    (function () {
-        var toolsSection = document.querySelector('.tools-section');
-        if (!toolsSection) return;
+        function restoreSelections(n) {
+            var step = document.getElementById('iccStep' + n);
+            var btn = document.getElementById('iccNext' + n);
+            if (n === 3) {
+                var opts = step.querySelectorAll('.icc-opt.multi');
+                opts.forEach(function(o) {
+                    var v = o.getAttribute('data-val');
+                    if (answers.dataTypes.indexOf(v) >= 0) o.classList.add('selected');
+                    else o.classList.remove('selected');
+                });
+                if (answers.dataTypes.length > 0) btn.classList.add('enabled');
+                else btn.classList.remove('enabled');
+            } else {
+                var keys = {1:'industry',2:'size',4:'security',5:'incidents'};
+                var key = keys[n];
+                if (!key) return;
+                var opts2 = step.querySelectorAll('.icc-opt');
+                opts2.forEach(function(o) {
+                    if (o.getAttribute('data-val') === answers[key]) { o.classList.add('selected'); btn.classList.add('enabled'); }
+                });
+            }
+        }
 
-        var faqHtml = '<div class="container bc-faq">' +
-            '<h3>Frequently Asked Questions</h3>' +
-            '<div class="bc-faq-item"><h4>What is a data breach?</h4><p>A data breach occurs when sensitive information is accessed, stolen, or released without authorization. This can include passwords, email addresses, financial data, and personal information. Breaches happen when companies that store your data are hacked by cybercriminals.</p></div>' +
-            '<div class="bc-faq-item"><h4>What should I do if breaches are found?</h4><ul><li>Change passwords immediately on all affected accounts and any accounts using the same password.</li><li>Enable Multi-Factor Authentication (MFA) on all business accounts, especially email and financial services.</li><li>Monitor your accounts for suspicious activity over the next 30 days.</li></ul><p style="margin-top:8px">Or let <a href="/pages/contact">Nocturn3 handle it for you &rarr;</a></p></div>' +
-            '<div class="bc-faq-item"><h4>Is this search private?</h4><p>Yes &mdash; we do not log or store any domain searches. Your query is sent directly to the HaveIBeenPwned API and the results are displayed only in your browser.</p></div>' +
-            '<div class="bc-faq-item"><h4>How current is the breach data?</h4><p>Updated within 72 hours of any new public breach disclosure. The database includes over 800 known breaches and is maintained by Troy Hunt, a globally recognized cybersecurity expert.</p></div>' +
-        '</div>';
+        /* ════ LOADING ════ */
+        function showLoading() {
+            document.querySelectorAll('.icc-step').forEach(function(s){ s.classList.remove('active'); });
+            var ld = document.getElementById('iccLoading');
+            ld.classList.add('active');
+            // hide progress
+            document.querySelector('.icc-progress').style.display = 'none';
 
-        toolsSection.insertAdjacentHTML('beforebegin', faqHtml);
+            var msgs = [
+                'Analyzing your industry risk profile...',
+                'Calculating regulatory exposure...',
+                'Applying Canadian breach cost data...',
+                'Generating your estimate...'
+            ];
+            var msgEl = document.getElementById('iccLoadMsg');
+            var bar = document.getElementById('iccLoadBar');
+            var idx = 0;
+            var progress = 0;
+
+            var intv = setInterval(function() {
+                idx++;
+                if (idx < msgs.length) msgEl.textContent = msgs[idx];
+                progress = Math.min(100, progress + 28);
+                bar.style.width = progress + '%';
+            }, 600);
+
+            setTimeout(function() {
+                clearInterval(intv);
+                bar.style.width = '100%';
+                setTimeout(function() {
+                    ld.classList.remove('active');
+                    wizard.style.display = 'none';
+                    showResults();
+                }, 300);
+            }, 2500);
+        }
+
+        /* ════ CALCULATION ENGINE ════ */
+        function calculate() {
+            var baseCost = BASE_COST[answers.industry] || 195000;
+            var sizeMult = SIZE_MULT[answers.size] || 0.55;
+            var dataAdd = 0;
+            answers.dataTypes.forEach(function(d) { dataAdd += (DATA_COST[d] || 0); });
+            var secMult = SEC_MULT[answers.security] || 1.20;
+            var incMult = INC_MULT[answers.incidents] || 1.00;
+
+            var total = Math.round((baseCost * sizeMult + dataAdd) * secMult * incMult);
+
+            // Regulatory fines
+            var fineMin = 0, fineMax = 0;
+            if (answers.dataTypes.indexOf('health') >= 0)   { fineMin += 50000;  fineMax += 150000; }
+            if (answers.dataTypes.indexOf('payment') >= 0)   { fineMin += 25000;  fineMax += 75000; }
+            if (answers.dataTypes.indexOf('personal') >= 0)  { fineMin += 10000;  fineMax += 100000; }
+            if (answers.dataTypes.indexOf('employee') >= 0)  { fineMin += 10000;  fineMax += 100000; }
+
+            var downtime = DOWNTIME[answers.security] || '12 to 18';
+            var prob = PROB[answers.security] || { txt:'1 in 5', pct:20 };
+
+            return { total: total, fineMin: fineMin, fineMax: fineMax, downtime: downtime, prob: prob };
+        }
+
+        /* ════ RESULTS ════ */
+        function showResults() {
+            var r = calculate();
+            results.classList.add('visible');
+            results.scrollIntoView({ behavior: 'smooth' });
+
+            // Color code
+            var amountEl = document.getElementById('iccAmount');
+            if (r.total < 100000) amountEl.className = 'amount yellow';
+            else if (r.total < 300000) amountEl.className = 'amount orange';
+            else amountEl.className = 'amount red';
+
+            // Count-up animation
+            animateCount(amountEl, r.total, 1500);
+
+            // Breakdown bars
+            var breakdown = [
+                { name: 'Business Disruption & Downtime', pct: 30 },
+                { name: 'Incident Response & Investigation', pct: 25 },
+                { name: 'Legal & Regulatory Compliance', pct: 20 },
+                { name: 'Reputation & Customer Loss', pct: 15 },
+                { name: 'Notification & Communication', pct: 10 }
+            ];
+            var barsHtml = '';
+            breakdown.forEach(function(b) {
+                var amt = Math.round(r.total * b.pct / 100);
+                barsHtml += '<div class="icc-bar-item"><div class="icc-bar-label"><span class="name">' + b.name + '</span><span class="val">$' + formatNum(amt) + ' (' + b.pct + '%)</span></div><div class="icc-bar-track"><div class="icc-bar-fill" data-width="' + b.pct + '"></div></div></div>';
+            });
+            document.getElementById('iccBars').innerHTML = barsHtml;
+
+            // Animate bars after short delay
+            setTimeout(function() {
+                document.querySelectorAll('.icc-bar-fill').forEach(function(b) {
+                    b.style.width = (parseFloat(b.getAttribute('data-width')) / 30 * 100) + '%';
+                });
+            }, 300);
+
+            // Metrics cards
+            var fineStr = (r.fineMin > 0) ? '$' + formatNum(r.fineMin) + ' to $' + formatNum(r.fineMax) : 'Low exposure';
+            var fineSub = '';
+            if (answers.dataTypes.indexOf('health') >= 0) fineSub += 'PHIPA ';
+            if (answers.dataTypes.indexOf('payment') >= 0) fineSub += 'PCI DSS ';
+            if (answers.dataTypes.indexOf('personal') >= 0 || answers.dataTypes.indexOf('employee') >= 0) fineSub += 'PIPEDA ';
+            if (!fineSub) fineSub = 'General data protection laws';
+            else fineSub = 'Potential fines under ' + fineSub.trim().replace(/ /g, ', ');
+
+            document.getElementById('iccMetrics').innerHTML =
+                '<div class="icc-metric"><div class="m-icon">🕐</div><div class="m-title">Expected Downtime</div><div class="m-value">' + r.downtime + ' business days</div><div class="m-sub">Days your business could be non-operational</div></div>' +
+                '<div class="icc-metric"><div class="m-icon">⚖️</div><div class="m-title">Regulatory Fine Risk</div><div class="m-value">' + fineStr + '</div><div class="m-sub">' + fineSub + '</div></div>' +
+                '<div class="icc-metric"><div class="m-icon">🎯</div><div class="m-title">Breach Probability</div><div class="m-value">' + r.prob.txt + ' chance</div><div class="m-sub">Likelihood of incident in the next 12 months</div></div>';
+
+            // Summary paragraph
+            var dataLabels = answers.dataTypes.map(function(d){ return DATA_LABEL[d] || d; });
+            var topData = dataLabels[0] || 'data';
+            var summaryText = 'Based on your profile as a <strong>' + INDUSTRY_LABEL[answers.industry] + '</strong> business with <strong>' + SIZE_LABEL[answers.size] + ' employees</strong> handling <strong>' + dataLabels.join(', ') + '</strong>, your estimated exposure to a cyber incident is <strong>$' + formatNum(r.total) + ' CAD</strong>.<br><br>' +
+                'With <strong>' + SEC_LABEL[answers.security] + '</strong> protection in place, you currently have a <strong>' + r.prob.pct + '%</strong> chance of experiencing a breach in the next 12 months.';
+            if (answers.incidents === 'significant') summaryText += ' <strong>Your previous incident history increases this risk significantly.</strong>';
+            else if (answers.incidents === 'minor') summaryText += ' Your previous minor incidents suggest existing attack surface exposure.';
+            summaryText += '<br><br>The <strong>' + topData + '</strong> you handle represents your highest regulatory exposure under Canadian privacy law.';
+            document.getElementById('iccSummaryText').innerHTML = summaryText;
+
+            // CTA mailto
+            var subject = encodeURIComponent('Security Consultation Request');
+            var body = encodeURIComponent(
+                'Hi Saikat,\n\nI just ran the Nocturn3 Incident Cost Calculator and my estimated exposure is $' + formatNum(r.total) + '.\n\nI would like to discuss how to reduce this risk.\n\nMy business details:\nIndustry: ' + INDUSTRY_LABEL[answers.industry] +
+                '\nSize: ' + SIZE_LABEL[answers.size] + ' employees' +
+                '\nData types: ' + dataLabels.join(', ') +
+                '\n\nPlease contact me to arrange a free consultation.'
+            );
+            document.getElementById('iccCtaEmail').href = 'mailto:saikat@nocturn3.com?subject=' + subject + '&body=' + body;
+
+            // LinkedIn share
+            var shareText = encodeURIComponent('I just calculated my business\'s cyber breach exposure using Nocturn3\'s free tool \u2014 the number surprised me. Check yours at nocturn3.com #Cybersecurity #SmallBusiness');
+            document.getElementById('iccLinkedIn').href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent('https://nocturn3.com/pages/breach-checker');
+
+            // Restart
+            document.getElementById('iccRestart').addEventListener('click', function() {
+                answers = { industry:null, size:null, dataTypes:[], security:null, incidents:null };
+                results.classList.remove('visible');
+                wizard.style.display = '';
+                document.querySelector('.icc-progress').style.display = '';
+                // Clear all selections
+                document.querySelectorAll('.icc-opt').forEach(function(o){ o.classList.remove('selected'); });
+                document.querySelectorAll('.icc-btn-next').forEach(function(b){ b.classList.remove('enabled'); });
+                goToStep(1);
+                wizard.scrollIntoView({ behavior: 'smooth' });
+            });
+        }
+
+        /* ════ HELPERS ════ */
+        function animateCount(el, target, duration) {
+            var start = 0;
+            var startTime = null;
+            function tick(ts) {
+                if (!startTime) startTime = ts;
+                var elapsed = ts - startTime;
+                var progress = Math.min(elapsed / duration, 1);
+                // Ease out cubic
+                var ease = 1 - Math.pow(1 - progress, 3);
+                var current = Math.round(ease * target);
+                el.textContent = '$' + formatNum(current) + ' CAD';
+                if (progress < 1) requestAnimationFrame(tick);
+            }
+            requestAnimationFrame(tick);
+        }
+
+        function formatNum(n) {
+            return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        }
     })();
     </script>
 </body>
