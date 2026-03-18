@@ -482,7 +482,7 @@
         // ── Render router ─────────────────────────────
         function render() {
             if (step === 'quiz')    return renderQuiz();
-            if (step === 'contact') return renderContact();
+
             if (step === 'loading') return renderLoading();
             if (step === 'results') return renderResults();
         }
@@ -519,59 +519,20 @@
                 currentQ++;
                 render();
             } else {
-                step = 'contact';
+                step = 'loading';
                 render();
+                setTimeout(function () {
+                    step = 'results';
+                    render();
+                }, 2200);
             }
         };
 
         window._scBack = function () {
-            if (step === 'contact') { step = 'quiz'; render(); return; }
             if (currentQ > 0) { currentQ--; render(); }
         };
 
-        // ── Contact form ──────────────────────────────
-        function renderContact() {
-            var pct = (QUESTIONS.length / (QUESTIONS.length + 1) * 100).toFixed(1);
-            var html = '<div class="sc-progress-wrap"><div class="sc-progress-bar" style="width:' + pct + '%"></div></div>' +
-                '<div class="sc-card">' +
-                '<p class="sc-form-title">Almost done!</p>' +
-                '<p class="sc-form-sub">Enter your details to receive your personalised Security Scorecard.</p>' +
-                '<div class="sc-field"><label>Business Name</label><input id="scBiz" placeholder="Acme Corp"></div>' +
-                '<div class="sc-field"><label>Your Name</label><input id="scName" placeholder="Jane Smith"></div>' +
-                '<div class="sc-field"><label>Email Address</label><input id="scEmail" type="email" placeholder="jane@acmecorp.com"></div>' +
-                '<div id="scFormErr" class="sc-error-msg" style="display:none"></div>' +
-                '<button class="sc-submit-btn" onclick="window._scSubmit()">Generate My Report</button>' +
-                '</div>' +
-                '<button class="sc-back" onclick="window._scBack()">&larr; Back to questions</button>';
-            app.innerHTML = html;
-        }
 
-        window._scSubmit = function () {
-            var biz   = document.getElementById('scBiz').value.trim();
-            var name  = document.getElementById('scName').value.trim();
-            var email = document.getElementById('scEmail').value.trim();
-            var err   = document.getElementById('scFormErr');
-
-            if (!biz || !name || !email) {
-                err.textContent = 'Please fill in all fields.';
-                err.style.display = 'block';
-                return;
-            }
-            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-                err.textContent = 'Please enter a valid email address.';
-                err.style.display = 'block';
-                return;
-            }
-
-            window._scContact = { business_name: biz, contact_name: name, email: email };
-            step = 'loading';
-            render();
-            // Calculate synchronously, show results after short delay for UX
-            setTimeout(function () {
-                step = 'results';
-                render();
-            }, 2200);
-        };
 
         // ── Loading ───────────────────────────────────
         function renderLoading() {
@@ -641,7 +602,7 @@
                 '<h3 style="margin-top:0">Top Security Risks</h3>' + riskAnalysis +
                 '<h3>Recommended Actions</h3>' + recAnalysis +
                 '<h3>Summary</h3>' +
-                '<p>' + buildSummary(score, tier, window._scContact.business_name) + '</p>' +
+                '<p>' + buildSummary(score, tier) + '</p>' +
                 '</div></div>';
 
             // Next steps
@@ -708,14 +669,14 @@
             return html;
         }
 
-        function buildSummary(score, tier, bizName) {
+        function buildSummary(score, tier) {
             if (score >= 86)
-                return bizName + ' demonstrates a strong security posture with a score of ' + score + '/100. Keep up the great work and continue regular security reviews to stay ahead of evolving threats. Nocturn3 can help you maintain and improve your standing.';
+                return 'Your business demonstrates a strong security posture with a score of ' + score + '/100. Keep up the great work and continue regular security reviews to stay ahead of evolving threats. Nocturn3 can help you maintain and improve your standing.';
             if (score >= 66)
-                return bizName + ' has a moderate security foundation with a score of ' + score + '/100. There are some important gaps that should be addressed soon to strengthen your defenses. The good news is that most can be fixed quickly — Nocturn3 can help prioritise and implement these improvements.';
+                return 'Your business has a moderate security foundation with a score of ' + score + '/100. There are some important gaps that should be addressed soon to strengthen your defenses. The good news is that most can be fixed quickly \u2014 Nocturn3 can help prioritise and implement these improvements.';
             if (score >= 41)
-                return bizName + ' scored ' + score + '/100, indicating significant security gaps that put your business at risk. We strongly recommend addressing the items above as soon as possible. Nocturn3 specialises in helping businesses like yours close these gaps quickly and affordably.';
-            return bizName + ' scored ' + score + '/100, indicating critical security vulnerabilities. Your business is at serious risk of a cyber incident. We urge you to take immediate action on the recommendations above. Nocturn3 can provide emergency security consulting to help you get protected — contact us today.';
+                return 'Your business scored ' + score + '/100, indicating significant security gaps that put you at risk. We strongly recommend addressing the items above as soon as possible. Nocturn3 specialises in helping businesses like yours close these gaps quickly and affordably.';
+            return 'Your business scored ' + score + '/100, indicating critical security vulnerabilities. You are at serious risk of a cyber incident. We urge you to take immediate action on the recommendations above. Nocturn3 can provide emergency security consulting to help you get protected \u2014 contact us today.';
         }
 
         // ── Animated gauge ────────────────────────────
