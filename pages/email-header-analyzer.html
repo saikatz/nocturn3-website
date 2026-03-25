@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-907Z6SFM3R"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-907Z6SFM3R');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https://www.google-analytics.com https://www.googletagmanager.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://*.google-analytics.com; frame-src https://www.google.com; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta name="description" content="Free Email Header Analyzer — Paste your email headers to detect spoofing, authentication failures, suspicious relays, and routing anomalies. No signup required. By Nocturn3 Cybersecurity.">
+    <meta name="keywords" content="email header analyzer, email header checker, SPF DKIM DMARC check, email spoofing detection, phishing analysis, email security tool, free email analyzer">
+    <title>Free Email Header Analyzer | Detect Spoofing & Anomalies | Nocturn3</title>
+
+    <link rel="canonical" href="https://nocturn3.com/pages/email-header-analyzer">
+
+    <meta property="og:title" content="Free Email Header Analyzer — Detect Spoofing & Anomalies">
+    <meta property="og:description" content="Paste email headers to instantly detect SPF/DKIM/DMARC failures, suspicious relays, and routing anomalies. 100% client-side, no data stored.">
+    <meta property="og:url" content="https://nocturn3.com/pages/email-header-analyzer">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://nocturn3.com/images/og-image.svg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Nocturne Information Security Inc.">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Free Email Header Analyzer — Detect Spoofing & Anomalies">
+    <meta name="twitter:description" content="Paste email headers to detect authentication failures and suspicious routing. Free, instant, no signup.">
+    <meta name="twitter:image" content="https://nocturn3.com/images/og-image.svg">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous"></noscript>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" media="print" onload="this.media='all'" integrity="sha512-1cK78a1o+ht2JcaW6g8OXYwqpev9+6GqOkz9xmBN9iUUhIndKtxwILGWYOSibOKjLsEdjyjZvYDq/cZwNeak0w==" crossorigin="anonymous">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" integrity="sha512-1cK78a1o+ht2JcaW6g8OXYwqpev9+6GqOkz9xmBN9iUUhIndKtxwILGWYOSibOKjLsEdjyjZvYDq/cZwNeak0w==" crossorigin="anonymous"></noscript>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Nocturn3 Email Header Analyzer",
+      "url": "https://nocturn3.com/pages/email-header-analyzer",
+      "description": "Free email header analyzer to detect spoofing, SPF/DKIM/DMARC failures, suspicious relays, and routing anomalies.",
+      "applicationCategory": "SecurityApplication",
+      "provider": {
+        "@type": "Organization",
+        "name": "Nocturne Information Security Inc.",
+        "url": "https://nocturn3.com"
+      }
+    }
+    </script>
+
+    <style>
+    /* ── Email Header Analyzer ──────────────────────── */
+    .eha-app { max-width: 900px; margin: 0 auto; }
+
+    /* Trust badges */
+    .eha-trust-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 24px; margin: 32px 0 0; }
+    .eha-trust-badge { display: flex; align-items: center; gap: 8px; font-size: 0.82rem; color: var(--text-muted); }
+    .eha-trust-badge i { color: var(--accent-primary); }
+
+    /* How-to guide */
+    .eha-guide { margin: 48px 0; }
+    .eha-guide h3 { font-size: 1.3rem; font-weight: 700; color: var(--text-primary); margin-bottom: 24px; text-align: center; }
+
+    .eha-tabs { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 24px; }
+    .eha-tab { padding: 10px 20px; border: 1px solid var(--border-color); background: var(--bg-card); color: var(--text-secondary); border-radius: var(--border-radius-sm); cursor: pointer; font-size: 0.85rem; font-weight: 600; transition: var(--transition); font-family: inherit; }
+    .eha-tab:hover { border-color: rgba(245,197,66,0.4); color: var(--text-primary); }
+    .eha-tab.active { border-color: var(--accent-primary); background: rgba(245,197,66,0.08); color: var(--accent-primary); }
+
+    .eha-tab-content { display: none; }
+    .eha-tab-content.active { display: block; }
+
+    .eha-steps { counter-reset: steps; }
+    .eha-step { display: flex; gap: 16px; margin-bottom: 20px; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--border-radius); padding: 20px; }
+    .eha-step-num { counter-increment: steps; flex-shrink: 0; width: 36px; height: 36px; background: var(--accent-gradient); color: var(--bg-primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.9rem; }
+    .eha-step-body h4 { font-size: 0.95rem; font-weight: 700; color: var(--text-primary); margin-bottom: 4px; }
+    .eha-step-body p { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; }
+    .eha-step-body code { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; background: rgba(245,197,66,0.08); padding: 2px 6px; border-radius: 4px; color: var(--accent-primary); }
+
+    /* Analyzer card */
+    .eha-analyzer { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--border-radius-lg); padding: 40px; margin: 32px 0; }
+    .eha-analyzer h3 { font-size: 1.2rem; font-weight: 700; color: var(--text-primary); margin-bottom: 8px; }
+    .eha-analyzer .eha-sub { font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 24px; line-height: 1.5; }
+
+    .eha-textarea { width: 100%; min-height: 220px; background: var(--bg-primary); border: 2px solid var(--border-color); border-radius: var(--border-radius); padding: 16px; color: var(--text-primary); font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; line-height: 1.6; resize: vertical; transition: var(--transition); }
+    .eha-textarea::placeholder { color: var(--text-muted); }
+    .eha-textarea:focus { outline: none; border-color: var(--accent-primary); box-shadow: 0 0 0 3px rgba(245,197,66,0.12); }
+
+    .eha-actions { display: flex; gap: 12px; margin-top: 16px; flex-wrap: wrap; }
+    .eha-btn-analyze { padding: 14px 36px; background: var(--accent-gradient); color: var(--bg-primary); border: none; border-radius: var(--border-radius-sm); cursor: pointer; font-weight: 700; font-size: 0.95rem; transition: var(--transition); font-family: inherit; }
+    .eha-btn-analyze:hover { background: var(--accent-gradient-hover); transform: translateY(-1px); box-shadow: var(--shadow-glow); }
+    .eha-btn-analyze:disabled { opacity: 0.4; pointer-events: none; }
+    .eha-btn-clear { padding: 14px 24px; background: transparent; border: 1px solid var(--border-color); color: var(--text-secondary); border-radius: var(--border-radius-sm); cursor: pointer; font-weight: 600; font-size: 0.9rem; transition: var(--transition); font-family: inherit; }
+    .eha-btn-clear:hover { border-color: var(--text-secondary); color: var(--text-primary); }
+    .eha-btn-sample { padding: 14px 24px; background: transparent; border: 1px solid var(--border-color); color: var(--text-secondary); border-radius: var(--border-radius-sm); cursor: pointer; font-weight: 600; font-size: 0.9rem; transition: var(--transition); font-family: inherit; }
+    .eha-btn-sample:hover { border-color: rgba(245,197,66,0.4); color: var(--accent-primary); }
+
+    /* Results */
+    .eha-results { display: none; margin-top: 32px; }
+    .eha-results.visible { display: block; animation: ehaFadeIn 0.4s ease-out; }
+    @keyframes ehaFadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* Summary cards */
+    .eha-summary { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px; margin-bottom: 32px; }
+    .eha-summary-card { background: var(--bg-primary); border: 1px solid var(--border-color); border-radius: var(--border-radius); padding: 20px; text-align: center; }
+    .eha-summary-card.pass { border-color: rgba(52,211,153,0.3); }
+    .eha-summary-card.fail { border-color: rgba(248,113,113,0.3); }
+    .eha-summary-card.warn { border-color: rgba(251,191,36,0.3); }
+    .eha-summary-card.info { border-color: rgba(96,165,250,0.3); }
+    .eha-summary-icon { font-size: 1.4rem; margin-bottom: 8px; }
+    .eha-summary-icon.pass { color: var(--success); }
+    .eha-summary-icon.fail { color: var(--error); }
+    .eha-summary-icon.warn { color: var(--warning); }
+    .eha-summary-icon.info { color: #60a5fa; }
+    .eha-summary-label { font-size: 0.78rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+    .eha-summary-value { font-size: 1.1rem; font-weight: 700; color: var(--text-primary); }
+
+    /* Hop table */
+    .eha-section { margin-bottom: 32px; }
+    .eha-section h4 { font-size: 1.05rem; font-weight: 700; color: var(--text-primary); margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+    .eha-section h4 i { color: var(--accent-primary); }
+
+    .eha-hop-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+    .eha-hop-table th { text-align: left; padding: 12px 16px; background: var(--bg-primary); color: var(--text-muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; font-size: 0.72rem; border-bottom: 1px solid var(--border-color); }
+    .eha-hop-table td { padding: 12px 16px; border-bottom: 1px solid var(--border-color); color: var(--text-secondary); vertical-align: top; word-break: break-word; }
+    .eha-hop-table tr:hover td { background: rgba(245,197,66,0.03); }
+    .eha-delay-badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: 600; font-family: 'JetBrains Mono', monospace; }
+    .eha-delay-badge.fast { background: rgba(52,211,153,0.12); color: var(--success); }
+    .eha-delay-badge.slow { background: rgba(251,191,36,0.12); color: var(--warning); }
+    .eha-delay-badge.very-slow { background: rgba(248,113,113,0.12); color: var(--error); }
+
+    /* Auth results */
+    .eha-auth-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+    .eha-auth-card { background: var(--bg-primary); border: 1px solid var(--border-color); border-radius: var(--border-radius); padding: 20px; }
+    .eha-auth-card h5 { font-size: 0.9rem; font-weight: 700; color: var(--text-primary); margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+    .eha-auth-card p { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.6; }
+    .eha-auth-status { display: inline-block; padding: 2px 10px; border-radius: 4px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; }
+    .eha-auth-status.pass { background: rgba(52,211,153,0.12); color: var(--success); }
+    .eha-auth-status.fail { background: rgba(248,113,113,0.12); color: var(--error); }
+    .eha-auth-status.neutral { background: rgba(96,165,250,0.12); color: #60a5fa; }
+
+    /* Anomaly list */
+    .eha-anomalies { list-style: none; padding: 0; }
+    .eha-anomaly { display: flex; gap: 12px; padding: 16px; background: var(--bg-primary); border: 1px solid var(--border-color); border-radius: var(--border-radius-sm); margin-bottom: 10px; align-items: flex-start; }
+    .eha-anomaly.critical { border-left: 3px solid var(--error); }
+    .eha-anomaly.warning { border-left: 3px solid var(--warning); }
+    .eha-anomaly.info { border-left: 3px solid #60a5fa; }
+    .eha-anomaly-icon { flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; }
+    .eha-anomaly.critical .eha-anomaly-icon { background: rgba(248,113,113,0.15); color: var(--error); }
+    .eha-anomaly.warning .eha-anomaly-icon { background: rgba(251,191,36,0.15); color: var(--warning); }
+    .eha-anomaly.info .eha-anomaly-icon { background: rgba(96,165,250,0.15); color: #60a5fa; }
+    .eha-anomaly-body h5 { font-size: 0.88rem; font-weight: 700; color: var(--text-primary); margin-bottom: 4px; }
+    .eha-anomaly-body p { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.5; }
+
+    /* Raw headers toggle */
+    .eha-raw-toggle { padding: 10px 20px; background: transparent; border: 1px solid var(--border-color); color: var(--text-secondary); border-radius: var(--border-radius-sm); cursor: pointer; font-weight: 600; font-size: 0.85rem; transition: var(--transition); font-family: inherit; margin-bottom: 12px; }
+    .eha-raw-toggle:hover { border-color: var(--text-secondary); color: var(--text-primary); }
+    .eha-raw-content { display: none; background: var(--bg-primary); border: 1px solid var(--border-color); border-radius: var(--border-radius); padding: 16px; font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; color: var(--text-secondary); line-height: 1.6; white-space: pre-wrap; word-break: break-all; max-height: 400px; overflow-y: auto; }
+    .eha-raw-content.visible { display: block; }
+
+    /* Disclaimer */
+    .eha-disclaimer { background: rgba(248,113,113,0.06); border: 1px solid rgba(248,113,113,0.2); border-radius: var(--border-radius); padding: 20px; margin: 32px 0; }
+    .eha-disclaimer h4 { font-size: 0.9rem; font-weight: 700; color: var(--error); margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+    .eha-disclaimer p { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.7; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .eha-analyzer { padding: 24px; }
+        .eha-hop-table { font-size: 0.75rem; }
+        .eha-hop-table th, .eha-hop-table td { padding: 8px 10px; }
+        .eha-summary { grid-template-columns: repeat(2, 1fr); }
+        .eha-auth-grid { grid-template-columns: 1fr; }
+        .eha-actions { flex-direction: column; }
+        .eha-btn-analyze, .eha-btn-clear, .eha-btn-sample { width: 100%; text-align: center; }
+    }
+    @media (max-width: 480px) {
+        .eha-summary { grid-template-columns: 1fr; }
+        .eha-tabs { flex-direction: column; }
+    }
+
+    /* Hop table responsive wrapper */
+    .eha-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+    /* Print */
+    @media print {
+        .navbar,.skip-nav,.breadcrumb,.back-to-top,.footer,.eha-trust-row,.eha-guide,.eha-actions,.eha-btn-sample { display:none!important; }
+        body { background:#fff; color:#222; }
+        .eha-results,.eha-analyzer { background:#fff; border-color:#ddd; color:#222; }
+    }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="/" class="nav-brand">
+                <i class="fas fa-dragon brand-icon"></i>
+                <span class="brand-text">NOCTURN<span class="accent">3</span></span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="/" >Home</a></li>
+                <li class="nav-dropdown">
+                    <a href="#">Services <i class="fas fa-chevron-down dropdown-arrow"></i></a>
+                    <div class="nav-dropdown-menu">
+                        <a href="/pages/services" class="nav-dropdown-item">
+                            <span class="dd-icon"><i class="fas fa-user-shield"></i></span>
+                            <span class="dd-content">
+                                <span class="dd-title">Consulting Services</span>
+                                <span class="dd-desc">Security assessments, compliance & consulting</span>
+                            </span>
+                        </a>
+                        <a href="/pages/training" class="nav-dropdown-item">
+                            <span class="dd-icon"><i class="fas fa-graduation-cap"></i></span>
+                            <span class="dd-content">
+                                <span class="dd-title">Training & Certifications</span>
+                                <span class="dd-desc">CISSP, CompTIA Security+, CISA prep courses</span>
+                            </span>
+                        </a>
+                    </div>
+                </li>
+                <li class="nav-dropdown">
+                    <a href="#" class="active">Cyber Health Check <i class="fas fa-chevron-down dropdown-arrow"></i></a>
+                    <div class="nav-dropdown-menu">
+                        <a href="/pages/scorecard" class="nav-dropdown-item">
+                            <span class="dd-icon"><i class="fas fa-shield-alt"></i></span>
+                            <span class="dd-content">
+                                <span class="dd-title">Security Scorecard</span>
+                                <span class="dd-desc">Rate your business security in 2 minutes</span>
+                            </span>
+                            <span class="dd-label">Free &rarr;</span>
+                        </a>
+                        <a href="/pages/breach-checker" class="nav-dropdown-item">
+                            <span class="dd-icon"><i class="fas fa-calculator"></i></span>
+                            <span class="dd-content">
+                                <span class="dd-title">Incident Cost Calculator</span>
+                                <span class="dd-desc">What would a breach cost your business?</span>
+                            </span>
+                            <span class="dd-label">Free &rarr;</span>
+                        </a>
+                        <a href="/pages/email-header-analyzer" class="nav-dropdown-item">
+                            <span class="dd-icon"><i class="fas fa-envelope-open-text"></i></span>
+                            <span class="dd-content">
+                                <span class="dd-title">Email Header Analyzer</span>
+                                <span class="dd-desc">Detect spoofing & routing anomalies</span>
+                            </span>
+                            <span class="dd-label">Free &rarr;</span>
+                        </a>
+                    </div>
+                </li>
+                <li><a href="/pages/products" >Products</a></li>
+                <li><a href="/pages/blog" >Blog</a></li>
+                <li><a href="/pages/about" >About</a></li>
+                <li><a href="/pages/contact" >Contact</a></li>
+            </ul>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <a href="#main-content" class="skip-nav">Skip to content</a>
+    <main id="main-content">
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="hero-bg">
+            <div class="grid-overlay"></div>
+        </div>
+        <div class="container">
+            <div class="page-header-content" data-aos="fade-up">
+                <span class="section-tag"><i class="fas fa-envelope-open-text"></i> Free Tool</span>
+                <h1>Email Header <span class="gradient-text">Analyzer</span></h1>
+                <p>Paste your email headers to detect spoofing, authentication failures, and suspicious routing — 100% client-side, no data stored.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="content-section">
+        <div class="container">
+            <div class="eha-app">
+
+                <!-- Trust Badges -->
+                <div class="eha-trust-row" data-aos="fade-up">
+                    <div class="eha-trust-badge"><i class="fas fa-lock"></i> 100% Client-Side</div>
+                    <div class="eha-trust-badge"><i class="fas fa-database"></i> No Data Stored</div>
+                    <div class="eha-trust-badge"><i class="fas fa-user-secret"></i> No Signup Required</div>
+                    <div class="eha-trust-badge"><i class="fas fa-bolt"></i> Instant Results</div>
+                </div>
+
+                <!-- Disclaimer -->
+                <div class="eha-disclaimer" data-aos="fade-up">
+                    <h4><i class="fas fa-exclamation-triangle"></i> Disclaimer</h4>
+                    <p>This tool is provided for <strong>educational and informational purposes only</strong>. Nocturne Information Security Inc. is <strong>not responsible</strong> for any decisions, actions, or outcomes resulting from the use of this analyzer. Analysis results should be verified by a qualified security professional before taking any action. This tool performs best-effort parsing and may not detect all threats. Never rely solely on automated analysis for security decisions.</p>
+                </div>
+
+                <!-- How-to Guide -->
+                <div class="eha-guide" data-aos="fade-up">
+                    <h3><i class="fas fa-book-open" style="color: var(--accent-primary);"></i> How to Get Email Headers</h3>
+
+                    <div class="eha-tabs" role="tablist">
+                        <button class="eha-tab active" data-tab="gmail" role="tab" aria-selected="true">Gmail</button>
+                        <button class="eha-tab" data-tab="outlook" role="tab" aria-selected="false">Outlook</button>
+                        <button class="eha-tab" data-tab="outlook365" role="tab" aria-selected="false">Outlook 365 / Web</button>
+                        <button class="eha-tab" data-tab="apple" role="tab" aria-selected="false">Apple Mail</button>
+                        <button class="eha-tab" data-tab="yahoo" role="tab" aria-selected="false">Yahoo Mail</button>
+                    </div>
+
+                    <!-- Gmail -->
+                    <div class="eha-tab-content active" id="tab-gmail">
+                        <div class="eha-steps">
+                            <div class="eha-step">
+                                <div class="eha-step-num">1</div>
+                                <div class="eha-step-body">
+                                    <h4>Open the email</h4>
+                                    <p>Open the suspicious email in Gmail (web browser, not the app).</p>
+                                </div>
+                            </div>
+                            <div class="eha-step">
+                                <div class="eha-step-num">2</div>
+                                <div class="eha-step-body">
+                                    <h4>Click the three dots menu</h4>
+                                    <p>In the top-right corner of the email, click the <strong>three vertical dots</strong> (More options).</p>
+                                </div>
+                            </div>
+                            <div class="eha-step">
+                                <div class="eha-step-num">3</div>
+                                <div class="eha-step-body">
+                                    <h4>Select "Show original"</h4>
+                                    <p>Click <strong>"Show original"</strong> from the dropdown menu. A new tab will open.</p>
+                                </div>
+                            </div>
+                            <div class="eha-step">
+                                <div class="eha-step-num">4</div>
+                                <div class="eha-step-body">
+                                    <h4>Copy the headers</h4>
+                                    <p>Click <strong>"Copy to clipboard"</strong> or select all the text and copy it. Paste it into the analyzer below.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Outlook Desktop -->
+                    <div class="eha-tab-content" id="tab-outlook">
+                        <div class="eha-steps">
+                            <div class="eha-step">
+                                <div class="eha-step-num">1</div>
+                                <div class="eha-step-body">
+                                    <h4>Open the email</h4>
+                                    <p>Double-click the email to open it in its own window.</p>
+                                </div>
+                            </div>
+                            <div class="eha-step">
+                                <div class="eha-step-num">2</div>
+                                <div class="eha-step-body">
+                                    <h4>Go to File &gt; Properties</h4>
+                                    <p>Click <strong>File</strong> in the top menu, then select <strong>Properties</strong>.</p>
+                                </div>
+                            </div>
+                            <div class="eha-step">
+                                <div class="eha-step-num">3</div>
+                                <div class="eha-step-body">
+                                    <h4>Copy the Internet Headers</h4>
+                                    <p>In the Properties dialog, find the <strong>"Internet headers"</strong> box at the bottom. Select all text (<code>Ctrl+A</code>) and copy it (<code>Ctrl+C</code>).</p>
+                                </div>
+                            </div>
+                            <div class="eha-step">
+                                <div class="eha-step-num">4</div>
+                                <div class="eha-step-body">
+                                    <h4>Paste into the analyzer</h4>
+                                    <p>Paste the copied headers into the text area below.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Outlook 365 / Web -->
+                    <div class="eha-tab-content" id="tab-outlook365">
+                        <div class="eha-steps">
+                            <div class="eha-step">
+                                <div class="eha-step-num">1</div>
+                                <div class="eha-step-body">
+                                    <h4>Open the email</h4>
+                                    <p>Open the email in Outlook on the web (outlook.office.com or outlook.live.com).</p>
+                                </div>
+                            </div>
+                            <div class="eha-step">
+                                <div class="eha-step-num">2</div>
+                                <div class="eha-step-body">
+                                    <h4>Click the three dots</h4>
+                                    <p>Click the <strong>three dots (...)</strong> at the top-right of the email (More actions).</p>
+                                </div>
+                            </div>
+                            <div class="eha-step">
+                                <div class="eha-step-num">3</div>
+                                <div class="eha-step-body">
+                                    <h4>Select "View message source" or "View message details"</h4>
+                                    <p>Click <strong>"View message source"</strong> (new Outlook) or go to <strong>More actions &gt; View message details</strong> (classic Outlook). A popup will appear with the full headers.</p>
+                                </div>
+                            </div>
+                            <div class="eha-step">
+                                <div class="eha-step-num">4</div>
+                                <div class="eha-step-body">
+                                    <h4>Copy and paste</h4>
+                                    <p>Select all the header text, copy it, and paste it into the analyzer below.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Apple Mail -->
+                    <div class="eha-tab-content" id="tab-apple">
+                        <div class="eha-steps">
+                            <div class="eha-step">
+                                <div class="eha-step-num">1</div>
+                                <div class="eha-step-body">
+                                    <h4>Open the email</h4>
+                                    <p>Select the email in Apple Mail.</p>
+                                </div>
+                            </div>
+                            <div class="eha-step">
+                                <div class="eha-step-num">2</div>
+                                <div class="eha-step-body">
+                                    <h4>View &gt; Message &gt; All Headers</h4>
+                                    <p>In the menu bar, go to <strong>View &gt; Message &gt; All Headers</strong> (or press <code>Cmd+Shift+H</code>).</p>
+                                </div>
+                            </div>
+                            <div class="eha-step">
+                                <div class="eha-step-num">3</div>
+                                <div class="eha-step-body">
+                                    <h4>View raw source</h4>
+                                    <p>Alternatively, go to <strong>View &gt; Message &gt; Raw Source</strong> to see the full email source including headers.</p>
+                                </div>
+                            </div>
+                            <div class="eha-step">
+                                <div class="eha-step-num">4</div>
+                                <div class="eha-step-body">
+                                    <h4>Copy the headers</h4>
+                                    <p>Select the header portion (everything before the email body), copy and paste into the analyzer.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Yahoo Mail -->
+                    <div class="eha-tab-content" id="tab-yahoo">
+                        <div class="eha-steps">
+                            <div class="eha-step">
+                                <div class="eha-step-num">1</div>
+                                <div class="eha-step-body">
+                                    <h4>Open the email</h4>
+                                    <p>Open the email in Yahoo Mail (web browser).</p>
+                                </div>
+                            </div>
+                            <div class="eha-step">
+                                <div class="eha-step-num">2</div>
+                                <div class="eha-step-body">
+                                    <h4>Click the three dots</h4>
+                                    <p>Click the <strong>three dots (...)</strong> or <strong>More</strong> button at the top of the email.</p>
+                                </div>
+                            </div>
+                            <div class="eha-step">
+                                <div class="eha-step-num">3</div>
+                                <div class="eha-step-body">
+                                    <h4>Select "View raw message"</h4>
+                                    <p>Click <strong>"View raw message"</strong>. A new tab or popup will show the full email source.</p>
+                                </div>
+                            </div>
+                            <div class="eha-step">
+                                <div class="eha-step-num">4</div>
+                                <div class="eha-step-body">
+                                    <h4>Copy the headers</h4>
+                                    <p>Copy the header section (everything before the blank line separating headers from body) and paste into the analyzer.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Analyzer Input -->
+                <div class="eha-analyzer" data-aos="fade-up" id="analyzerSection">
+                    <h3><i class="fas fa-search" style="color: var(--accent-primary);"></i> Analyze Email Headers</h3>
+                    <p class="eha-sub">Paste the full email headers below. All analysis is performed in your browser — nothing is sent to any server.</p>
+
+                    <textarea class="eha-textarea" id="headerInput" placeholder="Paste your email headers here...&#10;&#10;Example:&#10;Received: from mail-yw1-f169.google.com (mail-yw1-f169.google.com [209.85.128.169])&#10;        by mx.example.com (Postfix) with ESMTPS id ABC123&#10;        for <user@example.com>; Mon, 24 Mar 2026 10:30:00 -0400 (EDT)&#10;Authentication-Results: mx.example.com;&#10;        spf=pass (sender IP is 209.85.128.169) smtp.mailfrom=sender@gmail.com;&#10;        dkim=pass header.d=gmail.com;&#10;        dmarc=pass (p=NONE) header.from=gmail.com&#10;From: Sender Name <sender@gmail.com>&#10;To: recipient@example.com&#10;Subject: Test Email&#10;Date: Mon, 24 Mar 2026 10:30:00 -0400" spellcheck="false" aria-label="Email headers input"></textarea>
+
+                    <div class="eha-actions">
+                        <button class="eha-btn-analyze" id="btnAnalyze" disabled><i class="fas fa-magnifying-glass"></i> Analyze Headers</button>
+                        <button class="eha-btn-sample" id="btnSample"><i class="fas fa-flask"></i> Load Sample</button>
+                        <button class="eha-btn-clear" id="btnClear"><i class="fas fa-eraser"></i> Clear</button>
+                    </div>
+                </div>
+
+                <!-- Results -->
+                <div class="eha-results" id="resultsSection">
+
+                    <!-- Summary -->
+                    <div class="eha-summary" id="resultsSummary"></div>
+
+                    <!-- Anomalies / Findings -->
+                    <div class="eha-section" id="anomaliesSection">
+                        <h4><i class="fas fa-exclamation-circle"></i> Findings &amp; Anomalies</h4>
+                        <ul class="eha-anomalies" id="anomaliesList"></ul>
+                    </div>
+
+                    <!-- Authentication Results -->
+                    <div class="eha-section" id="authSection">
+                        <h4><i class="fas fa-shield-alt"></i> Authentication Results</h4>
+                        <div class="eha-auth-grid" id="authGrid"></div>
+                    </div>
+
+                    <!-- Hop Analysis -->
+                    <div class="eha-section" id="hopsSection">
+                        <h4><i class="fas fa-route"></i> Message Route (Hops)</h4>
+                        <div class="eha-table-wrap">
+                            <table class="eha-hop-table">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>From</th>
+                                        <th>To</th>
+                                        <th>Delay</th>
+                                        <th>Protocol</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="hopsTableBody"></tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Key Headers -->
+                    <div class="eha-section" id="keyHeadersSection">
+                        <h4><i class="fas fa-list-alt"></i> Key Headers</h4>
+                        <div class="eha-auth-grid" id="keyHeadersGrid"></div>
+                    </div>
+
+                    <!-- Raw Headers -->
+                    <div class="eha-section">
+                        <button class="eha-raw-toggle" id="rawToggle"><i class="fas fa-code"></i> Show Parsed Headers</button>
+                        <div class="eha-raw-content" id="rawContent"></div>
+                    </div>
+                </div>
+
+                <!-- CTA -->
+                <div style="background: linear-gradient(135deg, rgba(245,197,66,0.12), rgba(232,93,4,0.12)); border: 1px solid rgba(245,197,66,0.25); border-radius: var(--border-radius-lg); padding: 40px 32px; text-align: center; margin: 48px 0;" data-aos="fade-up">
+                    <h4 style="font-size: 1.3rem; font-weight: 800; color: var(--accent-primary); margin-bottom: 12px;">Found Something Suspicious?</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.92rem; line-height: 1.6; margin-bottom: 24px; max-width: 480px; margin-left: auto; margin-right: auto;">Our security experts can help you investigate phishing campaigns, compromised email accounts, and email infrastructure weaknesses.</p>
+                    <a href="/pages/contact" style="display: inline-flex; align-items: center; gap: 8px; padding: 16px 36px; background: var(--accent-gradient); color: var(--bg-primary); border: none; border-radius: var(--border-radius-sm); font-weight: 700; font-size: 1rem; text-decoration: none; transition: var(--transition);">Talk to an Expert <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="/" class="nav-brand">
+                        <i class="fas fa-dragon brand-icon"></i>
+                        <span class="brand-text">NOCTURN<span class="accent">3</span></span>
+                    </a>
+                    <p>Nocturne Information Security Inc. — Your trusted partner for cybersecurity consulting and professional development.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+                        <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="/pages/products">Products</a></li>
+                        <li><a href="/pages/blog">Blog</a></li>
+                        <li><a href="/pages/about">About Us</a></li>
+                        <li><a href="/pages/services">Services</a></li>
+                        <li><a href="/pages/contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Cyber Health Check</h4>
+                    <ul>
+                        <li><a href="/pages/scorecard">Security Scorecard</a></li>
+                        <li><a href="/pages/breach-checker">Incident Cost Calculator</a></li>
+                        <li><a href="/pages/email-header-analyzer">Email Header Analyzer</a></li>
+                    </ul>
+                    <h4 style="margin-top:20px">Services</h4>
+                    <ul>
+                        <li><a href="/pages/services">Security Consulting</a></li>
+                        <li><a href="/pages/services">Vulnerability Assessment</a></li>
+                        <li><a href="/pages/services">Compliance & Audit</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> <a href="mailto:saikat@nocturn3.com">saikat@nocturn3.com</a></li>
+                        <li><i class="fas fa-map-marker-alt"></i> Burlington, Ontario</li>
+                        <li><i class="fas fa-globe"></i> <a href="https://nocturn3.com">nocturn3.com</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="currentYear"></span> Nocturne Information Security Inc. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" integrity="sha512-A7AYk1fGKX6S2SsHywmPkrnzTZHrgiVT7GcQkLGDe2ev0aWb8zejytzS8wjo7PGEXKqJOrjQ4oORtnimIRZBtw==" crossorigin="anonymous"></script>
+    <script src="/js/main.js"></script>
+
+    <script>
+    (function() {
+        'use strict';
+
+        // ─── Tab Switching ─────────────────────────────────────
+        document.querySelectorAll('.eha-tab').forEach(function(tab) {
+            tab.addEventListener('click', function() {
+                document.querySelectorAll('.eha-tab').forEach(function(t) { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
+                document.querySelectorAll('.eha-tab-content').forEach(function(c) { c.classList.remove('active'); });
+                tab.classList.add('active');
+                tab.setAttribute('aria-selected', 'true');
+                var target = document.getElementById('tab-' + tab.getAttribute('data-tab'));
+                if (target) target.classList.add('active');
+            });
+        });
+
+        // ─── Elements ──────────────────────────────────────────
+        var input = document.getElementById('headerInput');
+        var btnAnalyze = document.getElementById('btnAnalyze');
+        var btnClear = document.getElementById('btnClear');
+        var btnSample = document.getElementById('btnSample');
+        var results = document.getElementById('resultsSection');
+
+        // Enable/disable analyze button
+        input.addEventListener('input', function() {
+            btnAnalyze.disabled = input.value.trim().length < 20;
+        });
+
+        btnClear.addEventListener('click', function() {
+            input.value = '';
+            btnAnalyze.disabled = true;
+            results.classList.remove('visible');
+        });
+
+        // ─── Sample Headers ────────────────────────────────────
+        var sampleHeaders = [
+            'Received: from suspicious-server.bad-domain.ru (unknown [185.234.72.11])',
+            '        by mx.example.com (Postfix) with ESMTP id D3F2A1234',
+            '        for <victim@example.com>; Mon, 24 Mar 2026 14:22:10 +0000 (UTC)',
+            'Received: from mail-yw1-f169.google.com (mail-yw1-f169.google.com [209.85.128.169])',
+            '        by suspicious-server.bad-domain.ru (Postfix) with ESMTPS id 9B7C3456',
+            '        for <victim@example.com>; Mon, 24 Mar 2026 14:20:05 +0000 (UTC)',
+            'Received: from internal-host.localdomain (unknown [10.0.0.55])',
+            '        by mail-yw1-f169.google.com with ESMTP id x7si123456ywb.100',
+            '        for <victim@example.com>; Mon, 24 Mar 2026 07:19:58 -0700 (PDT)',
+            'Authentication-Results: mx.example.com;',
+            '        spf=fail (sender IP is 185.234.72.11) smtp.mailfrom=ceo@trustedbank.com;',
+            '        dkim=fail (signature verification failed) header.d=trustedbank.com;',
+            '        dmarc=fail (p=REJECT) header.from=trustedbank.com',
+            'X-Spam-Status: Yes, score=8.5',
+            'X-Spam-Score: 8.5',
+            'Return-Path: <bounce-handler@bad-domain.ru>',
+            'From: CEO TrustedBank <ceo@trustedbank.com>',
+            'Reply-To: urgent-reply@freemail-provider.com',
+            'To: victim@example.com',
+            'Subject: URGENT: Wire Transfer Required Immediately',
+            'Date: Mon, 24 Mar 2026 14:22:10 +0000',
+            'Message-ID: <abc123@suspicious-server.bad-domain.ru>',
+            'MIME-Version: 1.0',
+            'Content-Type: text/html; charset="UTF-8"',
+            'X-Mailer: PHPMailer 5.2.0',
+            'X-Originating-IP: [185.234.72.11]'
+        ].join('\r\n');
+
+        btnSample.addEventListener('click', function() {
+            input.value = sampleHeaders;
+            btnAnalyze.disabled = false;
+            input.focus();
+        });
+
+        // ─── Raw headers toggle ────────────────────────────────
+        document.getElementById('rawToggle').addEventListener('click', function() {
+            var raw = document.getElementById('rawContent');
+            raw.classList.toggle('visible');
+            this.innerHTML = raw.classList.contains('visible')
+                ? '<i class="fas fa-code"></i> Hide Parsed Headers'
+                : '<i class="fas fa-code"></i> Show Parsed Headers';
+        });
+
+        // ─── ANALYZE ───────────────────────────────────────────
+        btnAnalyze.addEventListener('click', function() {
+            var rawText = input.value.trim();
+            if (rawText.length < 20) return;
+
+            var parsed = parseHeaders(rawText);
+            var hops = parseReceivedHops(rawText);
+            var auth = parseAuthentication(parsed);
+            var anomalies = detectAnomalies(parsed, hops, auth);
+
+            renderResults(parsed, hops, auth, anomalies);
+            results.classList.add('visible');
+            results.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+
+        // ─── Parse Headers into key/value pairs ────────────────
+        function parseHeaders(raw) {
+            var headers = {};
+            var lines = raw.split(/\r?\n/);
+            var currentKey = '';
+            var currentVal = '';
+
+            for (var i = 0; i < lines.length; i++) {
+                var line = lines[i];
+                // Continuation line (starts with whitespace)
+                if (/^\s+/.test(line) && currentKey) {
+                    currentVal += ' ' + line.trim();
+                } else {
+                    // Save previous header
+                    if (currentKey) {
+                        if (headers[currentKey.toLowerCase()]) {
+                            if (!Array.isArray(headers[currentKey.toLowerCase()])) {
+                                headers[currentKey.toLowerCase()] = [headers[currentKey.toLowerCase()]];
+                            }
+                            headers[currentKey.toLowerCase()].push(currentVal);
+                        } else {
+                            headers[currentKey.toLowerCase()] = currentVal;
+                        }
+                    }
+                    var match = line.match(/^([A-Za-z0-9\-_]+)\s*:\s*(.*)/);
+                    if (match) {
+                        currentKey = match[1];
+                        currentVal = match[2];
+                    } else {
+                        currentKey = '';
+                        currentVal = '';
+                    }
+                }
+            }
+            // Save last header
+            if (currentKey) {
+                if (headers[currentKey.toLowerCase()]) {
+                    if (!Array.isArray(headers[currentKey.toLowerCase()])) {
+                        headers[currentKey.toLowerCase()] = [headers[currentKey.toLowerCase()]];
+                    }
+                    headers[currentKey.toLowerCase()].push(currentVal);
+                } else {
+                    headers[currentKey.toLowerCase()] = currentVal;
+                }
+            }
+            return headers;
+        }
+
+        // ─── Parse Received Hops ───────────────────────────────
+        function parseReceivedHops(raw) {
+            var hops = [];
+            var receivedBlocks = [];
+            var lines = raw.split(/\r?\n/);
+            var currentBlock = '';
+            var inReceived = false;
+
+            for (var i = 0; i < lines.length; i++) {
+                var line = lines[i];
+                if (/^Received\s*:/i.test(line)) {
+                    if (inReceived && currentBlock) {
+                        receivedBlocks.push(currentBlock);
+                    }
+                    currentBlock = line;
+                    inReceived = true;
+                } else if (inReceived && /^\s+/.test(line)) {
+                    currentBlock += ' ' + line.trim();
+                } else {
+                    if (inReceived && currentBlock) {
+                        receivedBlocks.push(currentBlock);
+                        currentBlock = '';
+                    }
+                    inReceived = false;
+                }
+            }
+            if (inReceived && currentBlock) {
+                receivedBlocks.push(currentBlock);
+            }
+
+            // Received headers are in reverse order (most recent first)
+            receivedBlocks.reverse();
+
+            for (var j = 0; j < receivedBlocks.length; j++) {
+                var block = receivedBlocks[j];
+                var fromMatch = block.match(/from\s+(\S+)/i);
+                var byMatch = block.match(/by\s+(\S+)/i);
+                var withMatch = block.match(/with\s+(ESMTPS?A?|SMTP|LMTP|HTTP|HTTPS)/i);
+                var dateMatch = block.match(/;\s*(.+)$/);
+
+                var hop = {
+                    from: fromMatch ? fromMatch[1] : 'Unknown',
+                    to: byMatch ? byMatch[1] : 'Unknown',
+                    protocol: withMatch ? withMatch[1].toUpperCase() : 'Unknown',
+                    date: dateMatch ? dateMatch[1].trim() : '',
+                    timestamp: null,
+                    delay: null,
+                    raw: block
+                };
+
+                if (hop.date) {
+                    var ts = Date.parse(hop.date);
+                    if (!isNaN(ts)) hop.timestamp = ts;
+                }
+
+                hops.push(hop);
+            }
+
+            // Calculate delays between hops
+            for (var k = 1; k < hops.length; k++) {
+                if (hops[k].timestamp && hops[k-1].timestamp) {
+                    hops[k].delay = (hops[k].timestamp - hops[k-1].timestamp) / 1000; // seconds
+                }
+            }
+
+            return hops;
+        }
+
+        // ─── Parse Authentication ──────────────────────────────
+        function parseAuthentication(headers) {
+            var auth = { spf: null, dkim: null, dmarc: null };
+            var authResults = headers['authentication-results'];
+            if (!authResults) return auth;
+
+            var authStr = Array.isArray(authResults) ? authResults.join(' ') : authResults;
+
+            // SPF
+            var spfMatch = authStr.match(/spf\s*=\s*(pass|fail|softfail|neutral|none|temperror|permerror)(\s+\([^)]*\))?/i);
+            if (spfMatch) {
+                auth.spf = {
+                    result: spfMatch[1].toLowerCase(),
+                    detail: spfMatch[2] ? spfMatch[2].trim().replace(/^\(|\)$/g, '') : ''
+                };
+            }
+
+            // DKIM
+            var dkimMatch = authStr.match(/dkim\s*=\s*(pass|fail|none|neutral|temperror|permerror)(\s+\([^)]*\))?/i);
+            if (dkimMatch) {
+                auth.dkim = {
+                    result: dkimMatch[1].toLowerCase(),
+                    detail: dkimMatch[2] ? dkimMatch[2].trim().replace(/^\(|\)$/g, '') : ''
+                };
+            }
+
+            // DMARC
+            var dmarcMatch = authStr.match(/dmarc\s*=\s*(pass|fail|none|bestguesspass|temperror|permerror)(\s+\([^)]*\))?/i);
+            if (dmarcMatch) {
+                auth.dmarc = {
+                    result: dmarcMatch[1].toLowerCase(),
+                    detail: dmarcMatch[2] ? dmarcMatch[2].trim().replace(/^\(|\)$/g, '') : ''
+                };
+            }
+
+            return auth;
+        }
+
+        // ─── Detect Anomalies ──────────────────────────────────
+        function detectAnomalies(headers, hops, auth) {
+            var anomalies = [];
+
+            // 1. SPF fail
+            if (auth.spf && (auth.spf.result === 'fail' || auth.spf.result === 'softfail')) {
+                anomalies.push({
+                    level: 'critical',
+                    title: 'SPF ' + auth.spf.result.charAt(0).toUpperCase() + auth.spf.result.slice(1),
+                    desc: 'The sender\'s IP address is not authorized to send email for this domain. This is a strong indicator of email spoofing. ' + (auth.spf.detail || '')
+                });
+            }
+
+            // 2. DKIM fail
+            if (auth.dkim && auth.dkim.result === 'fail') {
+                anomalies.push({
+                    level: 'critical',
+                    title: 'DKIM Verification Failed',
+                    desc: 'The email\'s digital signature (DKIM) could not be verified. The message may have been tampered with or is being spoofed. ' + (auth.dkim.detail || '')
+                });
+            }
+
+            // 3. DMARC fail
+            if (auth.dmarc && auth.dmarc.result === 'fail') {
+                anomalies.push({
+                    level: 'critical',
+                    title: 'DMARC Policy Failure',
+                    desc: 'The email failed DMARC alignment checks. The domain owner\'s policy may instruct receiving servers to reject or quarantine this message. ' + (auth.dmarc.detail || '')
+                });
+            }
+
+            // 4. Reply-To mismatch
+            var from = getHeaderValue(headers, 'from');
+            var replyTo = getHeaderValue(headers, 'reply-to');
+            if (from && replyTo) {
+                var fromDomain = extractDomain(from);
+                var replyDomain = extractDomain(replyTo);
+                if (fromDomain && replyDomain && fromDomain.toLowerCase() !== replyDomain.toLowerCase()) {
+                    anomalies.push({
+                        level: 'critical',
+                        title: 'Reply-To Domain Mismatch',
+                        desc: 'The Reply-To address (' + escapeHtml(replyTo) + ') uses a different domain than the From address (' + escapeHtml(from) + '). This is a common phishing technique to redirect replies to an attacker-controlled mailbox.'
+                    });
+                }
+            }
+
+            // 5. Return-Path mismatch
+            var returnPath = getHeaderValue(headers, 'return-path');
+            if (from && returnPath) {
+                var fromDomain2 = extractDomain(from);
+                var rpDomain = extractDomain(returnPath);
+                if (fromDomain2 && rpDomain && fromDomain2.toLowerCase() !== rpDomain.toLowerCase()) {
+                    anomalies.push({
+                        level: 'warning',
+                        title: 'Return-Path Domain Mismatch',
+                        desc: 'The Return-Path (' + escapeHtml(returnPath) + ') domain differs from the From address domain. While this can happen with legitimate mailing lists, it may also indicate spoofing.'
+                    });
+                }
+            }
+
+            // 6. X-Spam-Status or high spam score
+            var spamStatus = getHeaderValue(headers, 'x-spam-status');
+            var spamScore = getHeaderValue(headers, 'x-spam-score');
+            if (spamStatus && /yes/i.test(spamStatus)) {
+                anomalies.push({
+                    level: 'warning',
+                    title: 'Marked as Spam',
+                    desc: 'The email was flagged as spam by the receiving mail server. X-Spam-Status: ' + escapeHtml(spamStatus)
+                });
+            }
+            if (spamScore) {
+                var score = parseFloat(spamScore);
+                if (!isNaN(score) && score >= 5) {
+                    anomalies.push({
+                        level: 'warning',
+                        title: 'High Spam Score (' + score + ')',
+                        desc: 'The email received a spam score of ' + score + ', which is above typical thresholds (5.0+). Higher scores indicate more spam-like characteristics.'
+                    });
+                }
+            }
+
+            // 7. Suspicious subject keywords
+            var subject = getHeaderValue(headers, 'subject');
+            if (subject) {
+                var urgentWords = /\b(urgent|immediate|wire transfer|suspended|verify your|act now|click here|confirm your identity|password expire|account locked)\b/i;
+                if (urgentWords.test(subject)) {
+                    anomalies.push({
+                        level: 'warning',
+                        title: 'Suspicious Subject Line',
+                        desc: 'The subject line contains urgency or social engineering keywords commonly used in phishing: "' + escapeHtml(subject) + '"'
+                    });
+                }
+            }
+
+            // 8. Excessive delay in hops
+            for (var i = 0; i < hops.length; i++) {
+                if (hops[i].delay !== null && hops[i].delay > 300) {
+                    anomalies.push({
+                        level: 'warning',
+                        title: 'Excessive Delay at Hop ' + (i + 1),
+                        desc: 'There was a ' + formatDelay(hops[i].delay) + ' delay between hop ' + i + ' and hop ' + (i + 1) + '. Large delays can indicate greylisting, server issues, or message manipulation.'
+                    });
+                }
+            }
+
+            // 9. Private/suspicious IPs in Received headers
+            for (var m = 0; m < hops.length; m++) {
+                if (/unknown/i.test(hops[m].raw) && /\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b/.test(hops[m].raw)) {
+                    var ipMatch = hops[m].raw.match(/\b(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})\b/);
+                    if (ipMatch) {
+                        anomalies.push({
+                            level: 'info',
+                            title: 'Unknown Sender at Hop ' + (m + 1),
+                            desc: 'The sending server at hop ' + (m + 1) + ' identified itself with an IP (' + escapeHtml(ipMatch[1]) + ') that did not have a matching reverse DNS record. This may indicate a misconfigured or suspicious server.'
+                        });
+                    }
+                }
+            }
+
+            // 10. X-Mailer / outdated software
+            var xMailer = getHeaderValue(headers, 'x-mailer');
+            if (xMailer) {
+                anomalies.push({
+                    level: 'info',
+                    title: 'X-Mailer Detected',
+                    desc: 'The email was sent using: ' + escapeHtml(xMailer) + '. Unusual or outdated mail clients may indicate automated/bulk sending tools.'
+                });
+            }
+
+            // 11. X-Originating-IP
+            var origIP = getHeaderValue(headers, 'x-originating-ip');
+            if (origIP) {
+                anomalies.push({
+                    level: 'info',
+                    title: 'Originating IP Found',
+                    desc: 'The email originated from IP: ' + escapeHtml(origIP) + '. This may reveal the sender\'s actual IP address.'
+                });
+            }
+
+            // 12. Missing authentication
+            if (!auth.spf && !auth.dkim && !auth.dmarc) {
+                anomalies.push({
+                    level: 'warning',
+                    title: 'No Authentication Results Found',
+                    desc: 'No SPF, DKIM, or DMARC authentication results were found in the headers. This could mean the receiving server did not perform checks, or the headers were stripped.'
+                });
+            }
+
+            // 13. No encryption (no ESMTPS)
+            var hasEncryption = false;
+            for (var n = 0; n < hops.length; n++) {
+                if (/ESMTPS|TLS|HTTPS/i.test(hops[n].protocol) || /TLS|ESMTPS/i.test(hops[n].raw)) {
+                    hasEncryption = true;
+                    break;
+                }
+            }
+            if (hops.length > 0 && !hasEncryption) {
+                anomalies.push({
+                    level: 'warning',
+                    title: 'No TLS Encryption Detected',
+                    desc: 'None of the mail server hops appear to have used TLS encryption (ESMTPS). The email may have been transmitted in plain text, making it vulnerable to interception.'
+                });
+            }
+
+            return anomalies;
+        }
+
+        // ─── Render Results ────────────────────────────────────
+        function renderResults(headers, hops, auth, anomalies) {
+            var criticalCount = 0, warningCount = 0, infoCount = 0;
+            for (var i = 0; i < anomalies.length; i++) {
+                if (anomalies[i].level === 'critical') criticalCount++;
+                else if (anomalies[i].level === 'warning') warningCount++;
+                else infoCount++;
+            }
+
+            // Summary cards
+            var summaryHtml = '';
+            summaryHtml += buildSummaryCard(criticalCount > 0 ? 'fail' : 'pass', 'fas fa-exclamation-triangle', 'Critical', criticalCount + ' found');
+            summaryHtml += buildSummaryCard(warningCount > 0 ? 'warn' : 'pass', 'fas fa-exclamation-circle', 'Warnings', warningCount + ' found');
+            summaryHtml += buildSummaryCard('info', 'fas fa-info-circle', 'Info', infoCount + ' notes');
+            summaryHtml += buildSummaryCard('info', 'fas fa-route', 'Hops', hops.length + ' servers');
+
+            // Auth summary
+            var authStatus = 'pass';
+            if (auth.spf && auth.spf.result === 'fail') authStatus = 'fail';
+            if (auth.dkim && auth.dkim.result === 'fail') authStatus = 'fail';
+            if (auth.dmarc && auth.dmarc.result === 'fail') authStatus = 'fail';
+            if (authStatus === 'pass' && (auth.spf && auth.spf.result === 'softfail')) authStatus = 'warn';
+            summaryHtml += buildSummaryCard(authStatus, 'fas fa-shield-alt', 'Auth', authStatus === 'pass' ? 'Passed' : authStatus === 'fail' ? 'Failed' : 'Warning');
+            document.getElementById('resultsSummary').innerHTML = summaryHtml;
+
+            // Anomalies
+            var anomalyHtml = '';
+            if (anomalies.length === 0) {
+                anomalyHtml = '<li class="eha-anomaly info"><div class="eha-anomaly-icon"><i class="fas fa-check"></i></div><div class="eha-anomaly-body"><h5>No Anomalies Detected</h5><p>No obvious issues were found in the email headers. This does not guarantee the email is safe — always exercise caution.</p></div></li>';
+            } else {
+                // Sort: critical first, then warning, then info
+                anomalies.sort(function(a, b) {
+                    var order = { critical: 0, warning: 1, info: 2 };
+                    return (order[a.level] || 2) - (order[b.level] || 2);
+                });
+                for (var j = 0; j < anomalies.length; j++) {
+                    var a = anomalies[j];
+                    var icon = a.level === 'critical' ? 'fa-times' : a.level === 'warning' ? 'fa-exclamation' : 'fa-info';
+                    anomalyHtml += '<li class="eha-anomaly ' + a.level + '"><div class="eha-anomaly-icon"><i class="fas ' + icon + '"></i></div><div class="eha-anomaly-body"><h5>' + escapeHtml(a.title) + '</h5><p>' + a.desc + '</p></div></li>';
+                }
+            }
+            document.getElementById('anomaliesList').innerHTML = anomalyHtml;
+
+            // Authentication
+            var authHtml = '';
+            authHtml += buildAuthCard('SPF', auth.spf, 'Sender Policy Framework verifies the sending IP is authorized for the domain.');
+            authHtml += buildAuthCard('DKIM', auth.dkim, 'DomainKeys Identified Mail verifies the email was not altered in transit.');
+            authHtml += buildAuthCard('DMARC', auth.dmarc, 'Domain-based Message Authentication checks alignment of SPF and DKIM with the From domain.');
+            document.getElementById('authGrid').innerHTML = authHtml;
+
+            // Hops table
+            var hopsHtml = '';
+            for (var k = 0; k < hops.length; k++) {
+                var h = hops[k];
+                var delayBadge = '';
+                if (h.delay !== null) {
+                    var cls = h.delay < 5 ? 'fast' : h.delay < 300 ? 'slow' : 'very-slow';
+                    delayBadge = '<span class="eha-delay-badge ' + cls + '">' + formatDelay(h.delay) + '</span>';
+                } else {
+                    delayBadge = '<span class="eha-delay-badge fast">—</span>';
+                }
+                hopsHtml += '<tr><td>' + (k + 1) + '</td><td>' + escapeHtml(h.from) + '</td><td>' + escapeHtml(h.to) + '</td><td>' + delayBadge + '</td><td>' + escapeHtml(h.protocol) + '</td></tr>';
+            }
+            if (hops.length === 0) {
+                hopsHtml = '<tr><td colspan="5" style="text-align:center;color:var(--text-muted);padding:24px;">No Received headers found</td></tr>';
+            }
+            document.getElementById('hopsTableBody').innerHTML = hopsHtml;
+
+            // Key headers
+            var keyHeaders = ['from', 'to', 'subject', 'date', 'message-id', 'return-path', 'reply-to', 'x-mailer', 'x-originating-ip', 'content-type'];
+            var keyHtml = '';
+            for (var m = 0; m < keyHeaders.length; m++) {
+                var val = getHeaderValue(headers, keyHeaders[m]);
+                if (val) {
+                    keyHtml += '<div class="eha-auth-card"><h5>' + escapeHtml(keyHeaders[m]) + '</h5><p>' + escapeHtml(val) + '</p></div>';
+                }
+            }
+            document.getElementById('keyHeadersGrid').innerHTML = keyHtml || '<p style="color:var(--text-muted);">No key headers found.</p>';
+
+            // Raw headers
+            var rawOut = '';
+            var keys = Object.keys(headers);
+            for (var p = 0; p < keys.length; p++) {
+                var v = headers[keys[p]];
+                if (Array.isArray(v)) {
+                    for (var q = 0; q < v.length; q++) {
+                        rawOut += escapeHtml(keys[p]) + ': ' + escapeHtml(v[q]) + '\n';
+                    }
+                } else {
+                    rawOut += escapeHtml(keys[p]) + ': ' + escapeHtml(v) + '\n';
+                }
+            }
+            document.getElementById('rawContent').textContent = rawOut;
+        }
+
+        // ─── Helpers ───────────────────────────────────────────
+        function buildSummaryCard(type, icon, label, value) {
+            return '<div class="eha-summary-card ' + type + '"><div class="eha-summary-icon ' + type + '"><i class="' + icon + '"></i></div><div class="eha-summary-label">' + label + '</div><div class="eha-summary-value">' + escapeHtml(value) + '</div></div>';
+        }
+
+        function buildAuthCard(name, result, desc) {
+            var status, statusClass;
+            if (!result) {
+                status = 'Not Found';
+                statusClass = 'neutral';
+            } else if (result.result === 'pass') {
+                status = 'Pass';
+                statusClass = 'pass';
+            } else if (result.result === 'fail') {
+                status = 'Fail';
+                statusClass = 'fail';
+            } else {
+                status = result.result.charAt(0).toUpperCase() + result.result.slice(1);
+                statusClass = 'neutral';
+            }
+            return '<div class="eha-auth-card"><h5>' + name + ' <span class="eha-auth-status ' + statusClass + '">' + status + '</span></h5><p>' + desc + (result && result.detail ? '<br><em>' + escapeHtml(result.detail) + '</em>' : '') + '</p></div>';
+        }
+
+        function getHeaderValue(headers, key) {
+            var val = headers[key.toLowerCase()];
+            if (!val) return null;
+            if (Array.isArray(val)) return val[0];
+            return val;
+        }
+
+        function extractDomain(emailField) {
+            var match = emailField.match(/@([A-Za-z0-9.\-]+)/);
+            return match ? match[1] : null;
+        }
+
+        function formatDelay(seconds) {
+            if (seconds < 0) seconds = 0;
+            if (seconds < 1) return '<1s';
+            if (seconds < 60) return Math.round(seconds) + 's';
+            if (seconds < 3600) return Math.round(seconds / 60) + 'm ' + Math.round(seconds % 60) + 's';
+            return Math.round(seconds / 3600) + 'h ' + Math.round((seconds % 3600) / 60) + 'm';
+        }
+
+        function escapeHtml(str) {
+            if (!str) return '';
+            var div = document.createElement('div');
+            div.appendChild(document.createTextNode(str));
+            return div.innerHTML;
+        }
+
+    })();
+    </script>
+</body>
+</html>
