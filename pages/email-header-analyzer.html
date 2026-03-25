@@ -89,6 +89,41 @@
     .eha-step-body p { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; }
     .eha-step-body code { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; background: rgba(245,197,66,0.08); padding: 2px 6px; border-radius: 4px; color: var(--accent-primary); }
 
+    /* UI Mockup screenshots */
+    .eha-mockup { margin: 12px 0 4px; background: var(--bg-primary); border: 1px solid var(--border-color); border-radius: 8px; overflow: hidden; font-size: 0.78rem; }
+    .eha-mockup-titlebar { display: flex; align-items: center; gap: 8px; padding: 8px 12px; background: rgba(245,197,66,0.06); border-bottom: 1px solid var(--border-color); }
+    .eha-mockup-dots { display: flex; gap: 5px; }
+    .eha-mockup-dots span { width: 8px; height: 8px; border-radius: 50%; }
+    .eha-mockup-dots span:nth-child(1) { background: #f87171; }
+    .eha-mockup-dots span:nth-child(2) { background: #fbbf24; }
+    .eha-mockup-dots span:nth-child(3) { background: #34d399; }
+    .eha-mockup-title { font-size: 0.72rem; color: var(--text-muted); font-weight: 600; }
+    .eha-mockup-body { padding: 14px 16px; }
+    .eha-mockup-menu { display: inline-flex; flex-direction: column; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 6px; overflow: hidden; min-width: 200px; }
+    .eha-mockup-menu-item { padding: 8px 14px; color: var(--text-secondary); font-size: 0.78rem; border-bottom: 1px solid var(--border-color); display: flex; align-items: center; gap: 8px; cursor: default; }
+    .eha-mockup-menu-item:last-child { border-bottom: none; }
+    .eha-mockup-menu-item.highlighted { background: rgba(245,197,66,0.1); color: var(--accent-primary); font-weight: 600; }
+    .eha-mockup-menu-item i { font-size: 0.72rem; width: 16px; text-align: center; }
+    .eha-mockup-toolbar { display: flex; align-items: center; gap: 12px; padding: 8px 12px; background: var(--bg-card); border-bottom: 1px solid var(--border-color); font-size: 0.78rem; color: var(--text-muted); }
+    .eha-mockup-toolbar .active-tab { color: var(--accent-primary); font-weight: 600; border-bottom: 2px solid var(--accent-primary); padding-bottom: 4px; }
+    .eha-mockup-btn { display: inline-flex; align-items: center; gap: 4px; padding: 4px 10px; background: rgba(245,197,66,0.08); border: 1px solid var(--border-color); border-radius: 4px; color: var(--text-secondary); font-size: 0.72rem; cursor: default; }
+    .eha-mockup-btn.primary { background: var(--accent-gradient); color: var(--bg-primary); border: none; font-weight: 600; }
+    .eha-mockup-dots-btn { width: 24px; height: 24px; display: inline-flex; align-items: center; justify-content: center; background: rgba(245,197,66,0.08); border: 1px solid var(--border-color); border-radius: 4px; color: var(--text-secondary); font-size: 0.7rem; cursor: default; }
+    .eha-mockup-header-box { background: var(--bg-primary); border: 1px solid var(--border-color); border-radius: 6px; padding: 10px 12px; font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; color: var(--text-muted); line-height: 1.6; max-height: 80px; overflow: hidden; }
+    .eha-mockup-label { font-size: 0.72rem; color: var(--text-muted); margin-bottom: 6px; font-weight: 600; }
+    .eha-mockup-caption { font-size: 0.72rem; color: var(--text-muted); text-align: center; margin-top: 8px; font-style: italic; }
+
+    /* Pro tips box */
+    .eha-tips { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--border-radius); padding: 24px; margin-top: 24px; }
+    .eha-tips h4 { font-size: 1rem; font-weight: 700; color: var(--accent-primary); margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+    .eha-tips-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    @media (max-width: 600px) { .eha-tips-grid { grid-template-columns: 1fr; } }
+    .eha-tips-col h5 { font-size: 0.88rem; font-weight: 700; color: var(--text-primary); margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
+    .eha-tips-col h5 i { color: var(--accent-primary); font-size: 0.82rem; }
+    .eha-tips-col ul { list-style: none; padding: 0; }
+    .eha-tips-col ul li { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.6; padding: 3px 0; padding-left: 16px; position: relative; }
+    .eha-tips-col ul li::before { content: '\f00c'; font-family: 'Font Awesome 6 Free'; font-weight: 900; font-size: 0.6rem; position: absolute; left: 0; top: 6px; color: var(--success); }
+
     /* Analyzer card */
     .eha-analyzer { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--border-radius-lg); padding: 40px; margin: 32px 0; }
     .eha-analyzer h3 { font-size: 1.2rem; font-weight: 700; color: var(--text-primary); margin-bottom: 8px; }
@@ -313,11 +348,12 @@
                     <h3><i class="fas fa-book-open" style="color: var(--accent-primary);"></i> How to Get Email Headers</h3>
 
                     <div class="eha-tabs" role="tablist">
-                        <button class="eha-tab active" data-tab="gmail" role="tab" aria-selected="true">Gmail</button>
-                        <button class="eha-tab" data-tab="outlook" role="tab" aria-selected="false">Outlook</button>
-                        <button class="eha-tab" data-tab="outlook365" role="tab" aria-selected="false">Outlook 365 / Web</button>
-                        <button class="eha-tab" data-tab="apple" role="tab" aria-selected="false">Apple Mail</button>
-                        <button class="eha-tab" data-tab="yahoo" role="tab" aria-selected="false">Yahoo Mail</button>
+                        <button class="eha-tab active" data-tab="gmail" role="tab" aria-selected="true"><i class="fab fa-google"></i> Gmail</button>
+                        <button class="eha-tab" data-tab="newoutlook" role="tab" aria-selected="false"><i class="fas fa-envelope"></i> New Outlook</button>
+                        <button class="eha-tab" data-tab="classicoutlook" role="tab" aria-selected="false"><i class="fab fa-microsoft"></i> Classic Outlook</button>
+                        <button class="eha-tab" data-tab="outlookweb" role="tab" aria-selected="false"><i class="fas fa-globe"></i> Outlook Web / 365</button>
+                        <button class="eha-tab" data-tab="apple" role="tab" aria-selected="false"><i class="fab fa-apple"></i> Apple Mail</button>
+                        <button class="eha-tab" data-tab="yahoo" role="tab" aria-selected="false"><i class="fab fa-yahoo"></i> Yahoo Mail</button>
                     </div>
 
                     <!-- Gmail -->
@@ -326,97 +362,234 @@
                             <div class="eha-step">
                                 <div class="eha-step-num">1</div>
                                 <div class="eha-step-body">
-                                    <h4>Open the email</h4>
-                                    <p>Open the suspicious email in Gmail (web browser, not the app).</p>
+                                    <h4>Open the email in your browser</h4>
+                                    <p>Go to <strong>mail.google.com</strong> and open the email you want to analyze. This must be done in a web browser — the Gmail mobile app does not expose email headers.</p>
                                 </div>
                             </div>
                             <div class="eha-step">
                                 <div class="eha-step-num">2</div>
                                 <div class="eha-step-body">
-                                    <h4>Click the three dots menu</h4>
-                                    <p>In the top-right corner of the email, click the <strong>three vertical dots</strong> (More options).</p>
+                                    <h4>Click the three dots menu (More options)</h4>
+                                    <p>In the top-right corner of the email (next to the Reply button), click the <strong>three vertical dots</strong> <i class="fas fa-ellipsis-vertical" style="color:var(--accent-primary)"></i> icon.</p>
+                                    <div class="eha-mockup">
+                                        <div class="eha-mockup-titlebar"><div class="eha-mockup-dots"><span></span><span></span><span></span></div><div class="eha-mockup-title">Gmail</div></div>
+                                        <div class="eha-mockup-body">
+                                            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
+                                                <span style="color:var(--text-primary);font-weight:600;">Suspicious Email Subject</span>
+                                                <div style="display:flex;gap:8px;">
+                                                    <span class="eha-mockup-btn"><i class="fas fa-reply"></i></span>
+                                                    <span class="eha-mockup-dots-btn" style="border-color:var(--accent-primary);color:var(--accent-primary);"><i class="fas fa-ellipsis-vertical"></i></span>
+                                                </div>
+                                            </div>
+                                            <div class="eha-mockup-menu">
+                                                <div class="eha-mockup-menu-item"><i class="fas fa-reply"></i> Reply</div>
+                                                <div class="eha-mockup-menu-item"><i class="fas fa-reply-all"></i> Reply all</div>
+                                                <div class="eha-mockup-menu-item"><i class="fas fa-share"></i> Forward</div>
+                                                <div class="eha-mockup-menu-item highlighted"><i class="fas fa-code"></i> Show original</div>
+                                                <div class="eha-mockup-menu-item"><i class="fas fa-download"></i> Download message</div>
+                                            </div>
+                                        </div>
+                                        <div class="eha-mockup-caption">Click the three dots, then select "Show original"</div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="eha-step">
                                 <div class="eha-step-num">3</div>
                                 <div class="eha-step-body">
                                     <h4>Select "Show original"</h4>
-                                    <p>Click <strong>"Show original"</strong> from the dropdown menu. A new tab will open.</p>
+                                    <p>Click <strong>"Show original"</strong> from the dropdown menu. A new tab will open showing the raw email source with SPF, DKIM, and DMARC results displayed at the top.</p>
                                 </div>
                             </div>
                             <div class="eha-step">
                                 <div class="eha-step-num">4</div>
                                 <div class="eha-step-body">
                                     <h4>Copy the headers</h4>
-                                    <p>Click <strong>"Copy to clipboard"</strong> or select all the text and copy it. Paste it into the analyzer below.</p>
+                                    <p>Click the <strong>"Copy to clipboard"</strong> button at the top, or select all the text (<code>Ctrl+A</code>) and copy (<code>Ctrl+C</code>). Then paste it into the analyzer below.</p>
+                                    <div class="eha-mockup">
+                                        <div class="eha-mockup-titlebar"><div class="eha-mockup-dots"><span></span><span></span><span></span></div><div class="eha-mockup-title">Original Message</div></div>
+                                        <div class="eha-mockup-body">
+                                            <div style="display:flex;gap:8px;margin-bottom:10px;">
+                                                <span class="eha-mockup-btn primary"><i class="fas fa-copy"></i> Copy to clipboard</span>
+                                                <span class="eha-mockup-btn"><i class="fas fa-download"></i> Download Original</span>
+                                            </div>
+                                            <div class="eha-mockup-header-box">Received: from mail-yw1-f169.google.com...<br>Authentication-Results: mx.google.com; spf=pass...<br>DKIM-Signature: v=1; a=rsa-sha256; c=...</div>
+                                        </div>
+                                        <div class="eha-mockup-caption">Click "Copy to clipboard" to grab the full headers</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Outlook Desktop -->
-                    <div class="eha-tab-content" id="tab-outlook">
+                    <!-- New Outlook for Windows -->
+                    <div class="eha-tab-content" id="tab-newoutlook">
                         <div class="eha-steps">
                             <div class="eha-step">
                                 <div class="eha-step-num">1</div>
                                 <div class="eha-step-body">
                                     <h4>Open the email</h4>
-                                    <p>Double-click the email to open it in its own window.</p>
+                                    <p>Open the email you want to analyze in the <strong>new Outlook for Windows</strong> app (the modern, simplified Outlook that replaced Windows Mail).</p>
                                 </div>
                             </div>
                             <div class="eha-step">
                                 <div class="eha-step-num">2</div>
                                 <div class="eha-step-body">
-                                    <h4>Go to File &gt; Properties</h4>
-                                    <p>Click <strong>File</strong> in the top menu, then select <strong>Properties</strong>.</p>
+                                    <h4>Click the More actions button (three dots)</h4>
+                                    <p>At the top of the open message, click the <strong>More actions</strong> button — the <strong>three dots (&hellip;)</strong> icon in the message toolbar.</p>
+                                    <div class="eha-mockup">
+                                        <div class="eha-mockup-titlebar"><div class="eha-mockup-dots"><span></span><span></span><span></span></div><div class="eha-mockup-title">New Outlook for Windows</div></div>
+                                        <div class="eha-mockup-toolbar">
+                                            <span><i class="fas fa-reply"></i> Reply</span>
+                                            <span><i class="fas fa-reply-all"></i> Reply All</span>
+                                            <span><i class="fas fa-share"></i> Forward</span>
+                                            <span class="eha-mockup-dots-btn" style="border-color:var(--accent-primary);color:var(--accent-primary);"><i class="fas fa-ellipsis-h"></i></span>
+                                        </div>
+                                        <div class="eha-mockup-body">
+                                            <div class="eha-mockup-menu">
+                                                <div class="eha-mockup-menu-item"><i class="fas fa-print"></i> Print</div>
+                                                <div class="eha-mockup-menu-item"><i class="fas fa-flag"></i> Report</div>
+                                                <div class="eha-mockup-menu-item highlighted"><i class="fas fa-eye"></i> View &rarr; View message details</div>
+                                                <div class="eha-mockup-menu-item"><i class="fas fa-external-link-alt"></i> Open in new window</div>
+                                            </div>
+                                        </div>
+                                        <div class="eha-mockup-caption">Click (&hellip;) &rarr; View &rarr; View message details</div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="eha-step">
                                 <div class="eha-step-num">3</div>
                                 <div class="eha-step-body">
-                                    <h4>Copy the Internet Headers</h4>
-                                    <p>In the Properties dialog, find the <strong>"Internet headers"</strong> box at the bottom. Select all text (<code>Ctrl+A</code>) and copy it (<code>Ctrl+C</code>).</p>
+                                    <h4>Select View &rarr; View message details</h4>
+                                    <p>From the dropdown, click <strong>View</strong>, then <strong>View message details</strong>. A side panel or pop-up window will open showing the full message headers.</p>
+                                </div>
+                            </div>
+                            <div class="eha-step">
+                                <div class="eha-step-num">4</div>
+                                <div class="eha-step-body">
+                                    <h4>Copy the headers</h4>
+                                    <p>Select all the text in the message details window (<code>Ctrl+A</code>), copy it (<code>Ctrl+C</code>), and paste it into the analyzer below.</p>
+                                    <div class="eha-mockup">
+                                        <div class="eha-mockup-titlebar"><div class="eha-mockup-dots"><span></span><span></span><span></span></div><div class="eha-mockup-title">Message Details</div></div>
+                                        <div class="eha-mockup-body">
+                                            <div class="eha-mockup-header-box">Received: from BN9PR03MB5765.namprd03...<br>Authentication-Results: spf=pass (sender IP is...);<br>&nbsp;&nbsp;dkim=pass (signature was verified);<br>&nbsp;&nbsp;dmarc=pass action=none header.from=...</div>
+                                        </div>
+                                        <div class="eha-mockup-caption">Select all text (Ctrl+A) and copy (Ctrl+C)</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Classic Outlook for Windows -->
+                    <div class="eha-tab-content" id="tab-classicoutlook">
+                        <div class="eha-steps">
+                            <div class="eha-step">
+                                <div class="eha-step-num">1</div>
+                                <div class="eha-step-body">
+                                    <h4>Open the email in its own window</h4>
+                                    <p><strong>Double-click</strong> the email to open it in a separate window — not just the reading pane. This is required to access the File menu for that message.</p>
+                                </div>
+                            </div>
+                            <div class="eha-step">
+                                <div class="eha-step-num">2</div>
+                                <div class="eha-step-body">
+                                    <h4>Go to File &rarr; Properties</h4>
+                                    <p>In the opened message window, click <strong>File</strong> in the top ribbon, then click <strong>Properties</strong>.</p>
+                                    <div class="eha-mockup">
+                                        <div class="eha-mockup-titlebar"><div class="eha-mockup-dots"><span></span><span></span><span></span></div><div class="eha-mockup-title">Classic Outlook — Message Window</div></div>
+                                        <div class="eha-mockup-toolbar">
+                                            <span class="active-tab">File</span>
+                                            <span>Message</span>
+                                            <span>Insert</span>
+                                            <span>Options</span>
+                                        </div>
+                                        <div class="eha-mockup-body">
+                                            <div class="eha-mockup-menu">
+                                                <div class="eha-mockup-menu-item"><i class="fas fa-save"></i> Save As</div>
+                                                <div class="eha-mockup-menu-item"><i class="fas fa-print"></i> Print</div>
+                                                <div class="eha-mockup-menu-item highlighted"><i class="fas fa-cog"></i> Properties</div>
+                                                <div class="eha-mockup-menu-item"><i class="fas fa-times"></i> Close</div>
+                                            </div>
+                                        </div>
+                                        <div class="eha-mockup-caption">File &rarr; Properties to open the message properties dialog</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="eha-step">
+                                <div class="eha-step-num">3</div>
+                                <div class="eha-step-body">
+                                    <h4>Find and copy the Internet Headers</h4>
+                                    <p>In the Properties dialog, scroll down to find the <strong>"Internet headers"</strong> text box at the bottom. Click inside the box, press <code>Ctrl+A</code> to select all, then <code>Ctrl+C</code> to copy.</p>
+                                    <div class="eha-mockup">
+                                        <div class="eha-mockup-titlebar"><div class="eha-mockup-dots"><span></span><span></span><span></span></div><div class="eha-mockup-title">Properties Dialog</div></div>
+                                        <div class="eha-mockup-body">
+                                            <div class="eha-mockup-label">Internet headers:</div>
+                                            <div class="eha-mockup-header-box" style="border-color:var(--accent-primary);box-shadow:0 0 0 2px rgba(245,197,66,0.15);">Received: from DM6PR02MB123.namprd02...<br>Authentication-Results: spf=pass;<br>&nbsp;&nbsp;dkim=pass header.d=example.com;<br>X-MS-Exchange-Organization-SCL: 1...</div>
+                                            <div style="margin-top:8px;display:flex;gap:8px;">
+                                                <span class="eha-mockup-btn primary">Ctrl+A → Ctrl+C</span>
+                                            </div>
+                                        </div>
+                                        <div class="eha-mockup-caption">The Internet headers box is at the bottom of the Properties dialog</div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="eha-step">
                                 <div class="eha-step-num">4</div>
                                 <div class="eha-step-body">
                                     <h4>Paste into the analyzer</h4>
-                                    <p>Paste the copied headers into the text area below.</p>
+                                    <p>Paste the copied headers (<code>Ctrl+V</code>) into the text area below and click Analyze.</p>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Outlook 365 / Web -->
-                    <div class="eha-tab-content" id="tab-outlook365">
+                    <!-- Outlook Web / Microsoft 365 -->
+                    <div class="eha-tab-content" id="tab-outlookweb">
                         <div class="eha-steps">
                             <div class="eha-step">
                                 <div class="eha-step-num">1</div>
                                 <div class="eha-step-body">
                                     <h4>Open the email</h4>
-                                    <p>Open the email in Outlook on the web (outlook.office.com or outlook.live.com).</p>
+                                    <p>Go to <strong>outlook.office.com</strong>, <strong>outlook.live.com</strong>, or your Microsoft 365 web mail and open the email you want to analyze.</p>
                                 </div>
                             </div>
                             <div class="eha-step">
                                 <div class="eha-step-num">2</div>
                                 <div class="eha-step-body">
-                                    <h4>Click the three dots</h4>
-                                    <p>Click the <strong>three dots (...)</strong> at the top-right of the email (More actions).</p>
+                                    <h4>Click the More actions button (three dots)</h4>
+                                    <p>At the top-right of the open message, click the <strong>three dots (&hellip;)</strong> — the "More actions" button.</p>
+                                    <div class="eha-mockup">
+                                        <div class="eha-mockup-titlebar"><div class="eha-mockup-dots"><span></span><span></span><span></span></div><div class="eha-mockup-title">Outlook on the Web — outlook.office.com</div></div>
+                                        <div class="eha-mockup-toolbar">
+                                            <span><i class="fas fa-reply"></i> Reply</span>
+                                            <span><i class="fas fa-reply-all"></i> Reply All</span>
+                                            <span><i class="fas fa-share"></i> Forward</span>
+                                            <span class="eha-mockup-dots-btn" style="border-color:var(--accent-primary);color:var(--accent-primary);"><i class="fas fa-ellipsis-h"></i></span>
+                                        </div>
+                                        <div class="eha-mockup-body">
+                                            <div class="eha-mockup-menu">
+                                                <div class="eha-mockup-menu-item"><i class="fas fa-print"></i> Print</div>
+                                                <div class="eha-mockup-menu-item"><i class="fas fa-flag"></i> Report phishing</div>
+                                                <div class="eha-mockup-menu-item highlighted"><i class="fas fa-eye"></i> View &rarr; View message details</div>
+                                                <div class="eha-mockup-menu-item"><i class="fas fa-code"></i> View message source</div>
+                                            </div>
+                                        </div>
+                                        <div class="eha-mockup-caption">Click (&hellip;) &rarr; View &rarr; View message details</div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="eha-step">
                                 <div class="eha-step-num">3</div>
                                 <div class="eha-step-body">
-                                    <h4>Select "View message source" or "View message details"</h4>
-                                    <p>Click <strong>"View message source"</strong> (new Outlook) or go to <strong>More actions &gt; View message details</strong> (classic Outlook). A popup will appear with the full headers.</p>
+                                    <h4>Select "View message details"</h4>
+                                    <p>Click <strong>View &rarr; View message details</strong> (or <strong>View message source</strong> in some versions). A popup window will appear showing the full email headers and message source.</p>
                                 </div>
                             </div>
                             <div class="eha-step">
                                 <div class="eha-step-num">4</div>
                                 <div class="eha-step-body">
                                     <h4>Copy and paste</h4>
-                                    <p>Select all the header text, copy it, and paste it into the analyzer below.</p>
+                                    <p>Select all the text in the popup (<code>Ctrl+A</code>), copy it (<code>Ctrl+C</code>), and paste into the analyzer below. Microsoft recommends pasting headers into a text editor first for easier reading.</p>
                                 </div>
                             </div>
                         </div>
@@ -429,28 +602,53 @@
                                 <div class="eha-step-num">1</div>
                                 <div class="eha-step-body">
                                     <h4>Open the email</h4>
-                                    <p>Select the email in Apple Mail.</p>
+                                    <p>Select or open the email you want to analyze in <strong>Apple Mail</strong> on your Mac.</p>
                                 </div>
                             </div>
                             <div class="eha-step">
                                 <div class="eha-step-num">2</div>
                                 <div class="eha-step-body">
-                                    <h4>View &gt; Message &gt; All Headers</h4>
-                                    <p>In the menu bar, go to <strong>View &gt; Message &gt; All Headers</strong> (or press <code>Cmd+Shift+H</code>).</p>
+                                    <h4>View &rarr; Message &rarr; All Headers</h4>
+                                    <p>In the top menu bar, go to <strong>View &rarr; Message &rarr; All Headers</strong> (or press <code>Cmd+Shift+H</code>). This will display all header fields directly in the message view.</p>
+                                    <div class="eha-mockup">
+                                        <div class="eha-mockup-titlebar"><div class="eha-mockup-dots"><span></span><span></span><span></span></div><div class="eha-mockup-title">Apple Mail — Menu Bar</div></div>
+                                        <div class="eha-mockup-toolbar">
+                                            <span>Mail</span>
+                                            <span>File</span>
+                                            <span>Edit</span>
+                                            <span class="active-tab">View</span>
+                                            <span>Mailbox</span>
+                                            <span>Message</span>
+                                        </div>
+                                        <div class="eha-mockup-body">
+                                            <div class="eha-mockup-menu">
+                                                <div class="eha-mockup-menu-item"><i class="fas fa-columns"></i> Show Sidebar</div>
+                                                <div class="eha-mockup-menu-item">Message &rarr;</div>
+                                                <div style="padding-left:20px;">
+                                                    <div class="eha-mockup-menu" style="margin:4px 0;">
+                                                        <div class="eha-mockup-menu-item"><i class="fas fa-list"></i> Default Headers</div>
+                                                        <div class="eha-mockup-menu-item highlighted"><i class="fas fa-list-alt"></i> All Headers</div>
+                                                        <div class="eha-mockup-menu-item"><i class="fas fa-code"></i> Raw Source</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="eha-mockup-caption">View &rarr; Message &rarr; All Headers (or &#8984;Shift+H)</div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="eha-step">
                                 <div class="eha-step-num">3</div>
                                 <div class="eha-step-body">
-                                    <h4>View raw source</h4>
-                                    <p>Alternatively, go to <strong>View &gt; Message &gt; Raw Source</strong> to see the full email source including headers.</p>
+                                    <h4>Alternatively: View Raw Source</h4>
+                                    <p>For the full raw source, go to <strong>View &rarr; Message &rarr; Raw Source</strong>. This opens a new window with the complete email including all headers and the body.</p>
                                 </div>
                             </div>
                             <div class="eha-step">
                                 <div class="eha-step-num">4</div>
                                 <div class="eha-step-body">
                                     <h4>Copy the headers</h4>
-                                    <p>Select the header portion (everything before the email body), copy and paste into the analyzer.</p>
+                                    <p>Select the header portion (everything above the email body content), press <code>Cmd+C</code> to copy, and paste into the analyzer below.</p>
                                 </div>
                             </div>
                         </div>
@@ -462,30 +660,76 @@
                             <div class="eha-step">
                                 <div class="eha-step-num">1</div>
                                 <div class="eha-step-body">
-                                    <h4>Open the email</h4>
-                                    <p>Open the email in Yahoo Mail (web browser).</p>
+                                    <h4>Open the email in your browser</h4>
+                                    <p>Go to <strong>mail.yahoo.com</strong> and open the email you want to analyze. Headers are only accessible via the web interface.</p>
                                 </div>
                             </div>
                             <div class="eha-step">
                                 <div class="eha-step-num">2</div>
                                 <div class="eha-step-body">
-                                    <h4>Click the three dots</h4>
-                                    <p>Click the <strong>three dots (...)</strong> or <strong>More</strong> button at the top of the email.</p>
+                                    <h4>Click the More actions button</h4>
+                                    <p>Click the <strong>three dots (&hellip;)</strong> or <strong>"More"</strong> button at the top of the email message.</p>
+                                    <div class="eha-mockup">
+                                        <div class="eha-mockup-titlebar"><div class="eha-mockup-dots"><span></span><span></span><span></span></div><div class="eha-mockup-title">Yahoo Mail</div></div>
+                                        <div class="eha-mockup-body">
+                                            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
+                                                <span style="color:var(--text-primary);font-weight:600;">Suspicious Email</span>
+                                                <div style="display:flex;gap:8px;">
+                                                    <span class="eha-mockup-btn"><i class="fas fa-reply"></i></span>
+                                                    <span class="eha-mockup-btn"><i class="fas fa-share"></i></span>
+                                                    <span class="eha-mockup-dots-btn" style="border-color:var(--accent-primary);color:var(--accent-primary);"><i class="fas fa-ellipsis-h"></i></span>
+                                                </div>
+                                            </div>
+                                            <div class="eha-mockup-menu">
+                                                <div class="eha-mockup-menu-item"><i class="fas fa-print"></i> Print</div>
+                                                <div class="eha-mockup-menu-item"><i class="fas fa-download"></i> Download</div>
+                                                <div class="eha-mockup-menu-item highlighted"><i class="fas fa-code"></i> View raw message</div>
+                                                <div class="eha-mockup-menu-item"><i class="fas fa-ban"></i> Block sender</div>
+                                            </div>
+                                        </div>
+                                        <div class="eha-mockup-caption">Click (More) &rarr; "View raw message"</div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="eha-step">
                                 <div class="eha-step-num">3</div>
                                 <div class="eha-step-body">
                                     <h4>Select "View raw message"</h4>
-                                    <p>Click <strong>"View raw message"</strong>. A new tab or popup will show the full email source.</p>
+                                    <p>Click <strong>"View raw message"</strong>. A new browser tab will open displaying the full raw email source, with headers at the top.</p>
                                 </div>
                             </div>
                             <div class="eha-step">
                                 <div class="eha-step-num">4</div>
                                 <div class="eha-step-body">
                                     <h4>Copy the headers</h4>
-                                    <p>Copy the header section (everything before the blank line separating headers from body) and paste into the analyzer.</p>
+                                    <p>Select all text (<code>Ctrl+A</code>), copy (<code>Ctrl+C</code>), and paste into the analyzer. The headers are everything before the first blank line that separates them from the message body.</p>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pro Tips -->
+                    <div class="eha-tips">
+                        <h4><i class="fas fa-lightbulb"></i> Pro Tips</h4>
+                        <div class="eha-tips-grid">
+                            <div class="eha-tips-col">
+                                <h5><i class="fas fa-clipboard"></i> Best Way to Copy Headers</h5>
+                                <ul>
+                                    <li>Once the headers window is open, select all text and copy it</li>
+                                    <li>Paste into Notepad or a text editor first for easier reading</li>
+                                    <li>Microsoft recommends pasting into a text editor to view full content clearly</li>
+                                    <li>You can paste the full raw message — our analyzer will extract the headers automatically</li>
+                                </ul>
+                            </div>
+                            <div class="eha-tips-col">
+                                <h5><i class="fas fa-search"></i> Key Headers to Look For</h5>
+                                <ul>
+                                    <li><code>From</code> — Who the email claims to be from</li>
+                                    <li><code>Return-Path</code> — Where bounces go (compare with From)</li>
+                                    <li><code>Reply-To</code> — Where replies are directed (phishing red flag if different)</li>
+                                    <li><code>Received</code> — The route the email took (read bottom to top)</li>
+                                    <li><code>Authentication-Results</code> — SPF, DKIM, and DMARC verdicts</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
