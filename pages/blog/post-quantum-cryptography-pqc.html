@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-907Z6SFM3R"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-907Z6SFM3R');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https://www.google-analytics.com https://www.googletagmanager.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://*.google-analytics.com; frame-src https://www.google.com; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta name="description" content="Post-quantum cryptography is not a future problem. Learn why the harvest-now-decrypt-later threat makes PQC migration urgent, what NIST standards are ready, and how organizations should prepare now.">
+    <title>Post-Quantum Cryptography: Why the Clock Is Already Ticking | Nocturne Blog</title>
+
+    <link rel="canonical" href="https://nocturn3.com/pages/blog/post-quantum-cryptography-pqc.html">
+
+    <meta property="og:title" content="Post-Quantum Cryptography: Why the Clock Is Already Ticking">
+    <meta property="og:description" content="The encryption protecting your data today may be breakable within a decade. Learn why post-quantum cryptography migration needs to start now.">
+    <meta property="og:url" content="https://nocturn3.com/pages/blog/post-quantum-cryptography-pqc.html">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="https://nocturn3.com/images/og-image.svg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Nocturne Information Security Inc.">
+    <meta property="article:published_time" content="2026-03-28">
+    <meta property="article:author" content="Nocturne Information Security Inc.">
+    <meta property="article:section" content="Cybersecurity">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Post-Quantum Cryptography: Why the Clock Is Already Ticking">
+    <meta name="twitter:description" content="The encryption protecting your data today may be breakable within a decade. Learn why PQC migration needs to start now.">
+    <meta name="twitter:image" content="https://nocturn3.com/images/og-image.svg">
+
+    <!-- JSON-LD Article Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Post-Quantum Cryptography: Why the Clock Is Already Ticking",
+      "description": "Post-quantum cryptography is not a future problem. Learn why the harvest-now-decrypt-later threat makes PQC migration urgent, what NIST standards are ready, and how organizations should prepare now.",
+      "datePublished": "2026-03-28",
+      "author": {
+        "@type": "Organization",
+        "name": "Nocturne Information Security Inc.",
+        "url": "https://nocturn3.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Nocturne Information Security Inc.",
+        "url": "https://nocturn3.com"
+      }
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous"></noscript>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" media="print" onload="this.media='all'" integrity="sha512-1cK78a1o+ht2JcaW6g8OXYwqpev9+6GqOkz9xmBN9iUUhIndKtxwILGWYOSibOKjLsEdjyjZvYDq/cZwNeak0w==" crossorigin="anonymous">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" integrity="sha512-1cK78a1o+ht2JcaW6g8OXYwqpev9+6GqOkz9xmBN9iUUhIndKtxwILGWYOSibOKjLsEdjyjZvYDq/cZwNeak0w==" crossorigin="anonymous"></noscript>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+</head>
+<body>
+    <!-- --- Navigation ------------------------------------------------------ -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="/" class="nav-brand">
+                <i class="fas fa-dragon brand-icon"></i>
+                <span class="brand-text">NOCTURN<span class="accent">3</span></span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="/" >Home</a></li>
+                <li class="nav-dropdown">
+                    <a href="#" >Services <i class="fas fa-chevron-down dropdown-arrow"></i></a>
+                    <div class="nav-dropdown-menu">
+                        <a href="/pages/services" class="nav-dropdown-item">
+                            <span class="dd-icon"><i class="fas fa-user-shield"></i></span>
+                            <span class="dd-content">
+                                <span class="dd-title">Consulting Services</span>
+                                <span class="dd-desc">Security assessments, compliance & consulting</span>
+                            </span>
+                        </a>
+                        <a href="/pages/training" class="nav-dropdown-item">
+                            <span class="dd-icon"><i class="fas fa-graduation-cap"></i></span>
+                            <span class="dd-content">
+                                <span class="dd-title">Training & Certifications</span>
+                                <span class="dd-desc">CISSP, CompTIA Security+, CISA prep courses</span>
+                            </span>
+                        </a>
+                    </div>
+                </li>
+                <li class="nav-dropdown">
+                    <a href="#" >Free Tools <i class="fas fa-chevron-down dropdown-arrow"></i></a>
+                    <div class="nav-dropdown-menu">
+                        <a href="/pages/scorecard" class="nav-dropdown-item">
+                            <span class="dd-icon"><i class="fas fa-shield-alt"></i></span>
+                            <span class="dd-content">
+                                <span class="dd-title">Security Scorecard</span>
+                                <span class="dd-desc">Rate your business security in 2 minutes</span>
+                            </span>
+                            <span class="dd-label">Free &rarr;</span>
+                        </a>
+                        <a href="/pages/breach-checker" class="nav-dropdown-item">
+                            <span class="dd-icon"><i class="fas fa-calculator"></i></span>
+                            <span class="dd-content">
+                                <span class="dd-title">Incident Cost Calculator</span>
+                                <span class="dd-desc">What would a breach cost your business?</span>
+                            </span>
+                            <span class="dd-label">Free &rarr;</span>
+                        </a>
+                        <a href="/pages/email-header-analyzer" class="nav-dropdown-item">
+                            <span class="dd-icon"><i class="fas fa-envelope-open-text"></i></span>
+                            <span class="dd-content">
+                                <span class="dd-title">Email Header Analyzer</span>
+                                <span class="dd-desc">Detect spoofing & routing anomalies</span>
+                            </span>
+                            <span class="dd-label">Free &rarr;</span>
+                        </a>
+                    </div>
+                </li>
+                <li><a href="/pages/products" >Products</a></li>
+                <li><a href="/pages/blog" class="active">Blog</a></li>
+                <li><a href="/pages/about" >About</a></li>
+                <li><a href="/pages/contact" >Contact</a></li>
+            </ul>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <a href="#main-content" class="skip-nav">Skip to content</a>
+    <main id="main-content">
+    <!-- --- Article Header -------------------------------------------------- -->
+    <section class="page-header">
+        <div class="hero-bg">
+            <div class="grid-overlay"></div>
+        </div>
+        <div class="container">
+            <div class="page-header-content" data-aos="fade-up">
+                <span class="section-tag"><i class="fas fa-lock"></i> Cybersecurity</span>
+                <h1>Post-Quantum Cryptography: Why the Clock Is Already <span class="gradient-text">Ticking</span></h1>
+                <div class="blog-card-meta" style="justify-content: center; margin-top: 1rem;">
+                    <span class="blog-date"><i class="fas fa-calendar"></i> March 28, 2026</span>
+                    <span class="blog-category"><i class="fas fa-clock"></i> 10 min read</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- --- Article Content ------------------------------------------------- -->
+    <section class="content-section">
+        <div class="container">
+            <div class="article-content" data-aos="fade-up">
+                <p class="article-lead">The encryption protecting your data right now &mdash; the same technology securing your bank transfers, health records, corporate emails, and government communications &mdash; was built on a simple assumption: that no computer on Earth could break it in a reasonable amount of time. That assumption is running out of runway.</p>
+
+                <p>Quantum computing is advancing faster than most organizations realize, and the cybersecurity community is sounding the alarm. Gartner predicts quantum computers will render current asymmetric encryption unsafe by 2030. The more chilling news? Adversaries don't need to wait until then. The attack is already underway &mdash; it just hasn't been completed yet.</p>
+
+                <h2>What Is Post-Quantum Cryptography?</h2>
+                <p>Post-quantum cryptography (PQC) refers to cryptographic algorithms designed to resist attacks from quantum computers. Today's most widely used encryption standards &mdash; RSA, Elliptic Curve Cryptography (ECC), and Diffie-Hellman key exchange &mdash; rely on mathematical problems that classical computers find practically impossible to solve. Quantum computers, using a technique called Shor's algorithm, can theoretically crack these same problems exponentially faster.</p>
+                <p>PQC replaces these vulnerable algorithms with new mathematical structures &mdash; lattice-based, hash-based, and code-based schemes &mdash; that quantum computers cannot efficiently attack, even with the processing power of a fully realized quantum machine.</p>
+                <p>The critical distinction: <strong>PQC does not require quantum hardware to run.</strong> It operates on today's classical infrastructure, which means organizations can begin migrating now.</p>
+
+                <h2>The "Harvest Now, Decrypt Later" Threat &mdash; And Why It's Already Happening</h2>
+                <p>Here's what makes the quantum threat uniquely dangerous: you don't need a quantum computer to start the attack.</p>
+                <p>Nation-state intelligence agencies and sophisticated threat actors are already intercepting and storing encrypted data today &mdash; financial transactions, healthcare records, diplomatic communications, corporate trade secrets, and VPN traffic. That data is encrypted with RSA or ECC, so it's unreadable now. But storage is cheap. And adversaries are betting that within a decade, a quantum computer will be able to decrypt everything they've collected.</p>
+                <p>This strategy is known as <strong>"Harvest Now, Decrypt Later" (HNDL)</strong> &mdash; and it transforms what sounds like a future problem into a present-day breach.</p>
+                <p>Any sensitive data transmitted over a network today that must remain confidential for five, ten, or twenty years is already at risk. Medical records. Legal communications. Financial archives. Intellectual property. Government secrets. If it was intercepted in transit in 2024 or 2025, it may be readable by 2030 or 2035.</p>
+                <p><strong>The window to act is not measured in decades. It is measured in years &mdash; and for many organizations, those years are almost up.</strong></p>
+
+                <h2>The Timeline: How Close Are We?</h2>
+                <p>There is no consensus on the exact date a Cryptographically Relevant Quantum Computer (CRQC) will exist. But the leading estimates are sobering:</p>
+                <ul>
+                    <li><strong>Gartner</strong> predicts current asymmetric encryption will be unsafe by 2030</li>
+                    <li><strong>The Global Risk Institute's 2026 Quantum Threat Timeline</strong> estimates a CRQC is "quite possible" within 10 years and "likely" within 15</li>
+                    <li><strong>NIST's own transition guidance</strong> targets full migration away from vulnerable algorithms by 2035, citing the harvest-now-decrypt-later threat as a key driver of urgency</li>
+                    <li><strong>Google</strong>, following the unveiling of its Willow quantum processor in late 2024, publicly called on governments and industry to "prepare now" &mdash; citing accelerating breakthroughs that are compressing earlier timelines</li>
+                    <li><strong>Canada</strong> has set federal deadlines requiring departments to submit PQC migration plans by April 2026, prioritize critical systems by 2031, and complete full migration by 2035</li>
+                </ul>
+                <p><strong>Mosca's Theorem</strong> frames the urgency mathematically: if the time required to complete your organization's cryptographic migration (Y) plus the sensitivity window of your data (X) exceeds the number of years until a viable quantum computer exists (Z), you are already behind. For most enterprises handling long-lived sensitive data, that calculation leads to one conclusion &mdash; the time to start is now.</p>
+
+                <h2>The NIST Standards: The Foundation Is Ready</h2>
+                <p>After an eight-year global evaluation process involving 69 candidate submissions and four rounds of rigorous peer review, the National Institute of Standards and Technology (NIST) published the world's first finalized post-quantum cryptography standards in August 2024:</p>
+                <ul>
+                    <li><strong>FIPS 203 &mdash; ML-KEM</strong> (Module-Lattice-Based Key Encapsulation Mechanism): The primary standard for quantum-safe key exchange, replacing RSA and ECC in protocols like TLS</li>
+                    <li><strong>FIPS 204 &mdash; ML-DSA</strong> (Module-Lattice-Based Digital Signature Algorithm): For quantum-resistant digital signatures</li>
+                    <li><strong>FIPS 205 &mdash; SLH-DSA</strong> (Stateless Hash-Based Digital Signature Algorithm): A hash-based backup signature scheme</li>
+                </ul>
+                <p>In March 2025, NIST selected <strong>HQC</strong> as an additional key encapsulation mechanism &mdash; a backup algorithm designed to ensure resilience if vulnerabilities are ever discovered in the primary lattice-based approaches.</p>
+                <p>The cryptographic foundation is no longer theoretical. The standards are published, vetted, and ready to implement.</p>
+
+                <h2>What's Most Vulnerable Right Now?</h2>
+                <p>Not all systems face equal risk. Organizations should prioritize based on data sensitivity and longevity:</p>
+
+                <h3>Highest Risk (Act Immediately)</h3>
+                <ul>
+                    <li>Long-lived encryption keys and certificates</li>
+                    <li>TLS/HTTPS traffic carrying sensitive data in transit</li>
+                    <li>VPN tunnels protecting classified or confidential communications</li>
+                    <li>Archived encrypted records with multi-year sensitivity windows (health, legal, financial)</li>
+                    <li>Code signing certificates</li>
+                </ul>
+
+                <h3>High Risk (Plan Migration Now)</h3>
+                <ul>
+                    <li>PKI infrastructure and certificate authorities</li>
+                    <li>Encrypted database backups</li>
+                    <li>Email encryption (S/MIME, PGP)</li>
+                    <li>Authentication systems using RSA or ECC</li>
+                </ul>
+
+                <h3>Moderate Risk (Include in Roadmap)</h3>
+                <ul>
+                    <li>Internal encrypted communications</li>
+                    <li>Device authentication and IoT credentials</li>
+                    <li>Short-lived session tokens</li>
+                </ul>
+
+                <h2>The Path Forward: Practical Steps for Organizations</h2>
+
+                <h3>1. Build a Cryptographic Inventory</h3>
+                <p>You cannot protect what you cannot see. Map every place encryption is used across your environment: applications, APIs, network devices, cloud services, and third-party integrations. Identify which algorithms are in use and where.</p>
+
+                <h3>2. Prioritize Data with Long Confidentiality Requirements</h3>
+                <p>Any data that must remain confidential for five or more years should be considered at risk today. These systems and datasets should lead your migration effort.</p>
+
+                <h3>3. Adopt Crypto-Agility</h3>
+                <p>Design systems to support swapping cryptographic components without rewriting application logic. Hardcoded algorithms will dramatically slow your migration. Crypto-agility is the architectural principle that makes PQC transitions manageable.</p>
+
+                <h3>4. Start with Hybrid Deployments</h3>
+                <p>A hybrid approach combines classical algorithms (like X25519) with post-quantum algorithms (like ML-KEM) during the transition period. If either component is secure, the communication is secure. This reduces risk while preserving compatibility with systems that haven't yet migrated.</p>
+
+                <h3>5. Engage Your Vendors and Supply Chain</h3>
+                <p>Your PQC posture is only as strong as your weakest vendor. Begin conversations with software vendors, cloud providers, and third-party partners about their PQC roadmaps. Regulatory pressure from government supply chain mandates is already cascading into private sector requirements.</p>
+
+                <h3>6. Shorten Data Retention Where Possible</h3>
+                <p>Data that no longer exists cannot be decrypted later. Review archival policies and delete data that no longer serves a business purpose. Minimizing your exposure window is a legitimate risk reduction strategy.</p>
+
+                <h2>The Canadian Context</h2>
+                <p>For Canadian organizations, the timeline carries specific weight. The Canadian Centre for Cyber Security (CCCS) has issued formal guidance encouraging organizations to begin PQC planning immediately. The federal government has set concrete migration milestones for departments, and given how government procurement requirements typically cascade into private sector suppliers, Canadian businesses in regulated industries &mdash; financial services, healthcare, critical infrastructure &mdash; should treat this as a near-term compliance issue, not a distant research topic.</p>
+                <p>The .ca regulatory environment is evolving in lockstep with NIST and EU frameworks. Organizations that build PQC readiness into their security programs now will be ahead of mandatory requirements that are almost certainly coming.</p>
+
+                <h2>The Bottom Line</h2>
+                <p>Post-quantum cryptography is not a future problem with a future solution. It is a <strong>present problem</strong> with available solutions and a tightening window to implement them.</p>
+                <p>The "harvest now, decrypt later" strategy is not a theoretical attack vector. It is an active, ongoing collection effort by sophisticated adversaries who are betting that quantum computing will eventually deliver the decryption capability they're waiting for. Every day that sensitive data travels over a network protected by RSA or ECC is another day that data could be collected and held.</p>
+                <p>NIST has published the standards. The algorithms are ready. The migration path is clear. What's missing in most organizations is the <strong>urgency to start</strong>.</p>
+                <p>The organizations that treat this as a 2030 problem will find that 2030 arrives faster than expected &mdash; and that by then, some of their most sensitive data has already been compromised in ways they may never even detect.</p>
+
+                <h2>Build Your Quantum-Ready Security Program</h2>
+                <p>At Nocturne, we help organizations understand and address their cryptographic risk exposure &mdash; from initial inventory and gap assessment through to PQC migration planning. <a href="/pages/contact">Contact us</a> to learn how quantum-readiness fits into your security roadmap.</p>
+                <p><a href="/pages/contact" class="btn btn-primary"><i class="fas fa-shield-halved"></i> Get a Security Assessment</a></p>
+
+                <!-- Back to Blog -->
+                <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(179, 102, 255, 0.1);">
+                    <a href="/pages/blog" class="card-link"><i class="fas fa-arrow-left"></i> Back to Blog</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    </main>
+
+    <!-- --- Footer ---------------------------------------------------------- -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="/" class="nav-brand">
+                        <i class="fas fa-dragon brand-icon"></i>
+                        <span class="brand-text">NOCTURN<span class="accent">3</span></span>
+                    </a>
+                    <p>Nocturne Information Security Inc. — Your trusted partner for cybersecurity consulting and professional development.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+                        <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="/pages/products" >Products</a></li>
+                <li><a href="/pages/blog">Blog</a></li>
+                <li><a href="/pages/about">About Us</a></li>
+                        <li><a href="/pages/services">Services</a></li>
+                        <li><a href="/pages/contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Free Tools</h4>
+                    <ul>
+                        <li><a href="/pages/scorecard">Security Scorecard</a></li>
+                        <li><a href="/pages/breach-checker">Incident Cost Calculator</a></li>
+                        <li><a href="/pages/email-header-analyzer">Email Header Analyzer</a></li>
+                    </ul>
+                    <h4 style="margin-top:20px">Services</h4>
+                    <ul>
+                        <li><a href="/pages/services">Security Consulting</a></li>
+                        <li><a href="/pages/services">Vulnerability Assessment</a></li>
+                        <li><a href="/pages/services">Compliance & Audit</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> <a href="mailto:saikat@nocturn3.com">saikat@nocturn3.com</a></li>
+                        <li><i class="fas fa-map-marker-alt"></i> Burlington, Ontario</li>
+                        <li><i class="fas fa-globe"></i> <a href="https://nocturn3.com">nocturn3.com</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="currentYear"></span> Nocturne Information Security Inc. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" integrity="sha512-A7AYk1fGKX6S2SsHywmPkrnzTZHrgiVT7GcQkLGDe2ev0aWb8zejytzS8wjo7PGEXKqJOrjQ4oORtnimIRZBtw==" crossorigin="anonymous"></script>
+    <script src="/js/main.js"></script>
+</body>
+</html>
