@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-907Z6SFM3R"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-907Z6SFM3R');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https://www.google-analytics.com https://www.googletagmanager.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://*.google-analytics.com; frame-src https://www.google.com; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta name="description" content="Free Local LLM Configuration Auditor — Scan your machine or network for exposed AI model endpoints like Ollama, LM Studio, vLLM and audit their security. Open-source Python tool by Nocturn3.">
+    <meta name="keywords" content="LLM security scanner, Ollama security audit, local AI security, LM Studio vulnerability, vLLM security check, llama.cpp audit, local LLM configuration, AI endpoint scanner, free AI security tool">
+    <title>Free Local LLM Configuration Auditor | Scan Exposed AI Endpoints | Nocturn3</title>
+
+    <link rel="canonical" href="https://nocturn3.com/pages/llm-auditor">
+
+    <meta property="og:title" content="Free Local LLM Configuration Auditor — Find Exposed AI Endpoints">
+    <meta property="og:description" content="Scan your machine or network for exposed local AI model endpoints and audit their security configuration. Supports Ollama, LM Studio, vLLM, llama.cpp, and more.">
+    <meta property="og:url" content="https://nocturn3.com/pages/llm-auditor">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://nocturn3.com/images/og-image.svg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Nocturne Information Security Inc.">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Free Local LLM Configuration Auditor — Find Exposed AI Endpoints">
+    <meta name="twitter:description" content="Scan for exposed Ollama, LM Studio, vLLM endpoints and audit their configuration. Open-source, free, no signup.">
+    <meta name="twitter:image" content="https://nocturn3.com/images/og-image.svg">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous"></noscript>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" media="print" onload="this.media='all'" integrity="sha512-1cK78a1o+ht2JcaW6g8OXYwqpev9+6GqOkz9xmBN9iUUhIndKtxwILGWYOSibOKjLsEdjyjZvYDq/cZwNeak0w==" crossorigin="anonymous">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" integrity="sha512-1cK78a1o+ht2JcaW6g8OXYwqpev9+6GqOkz9xmBN9iUUhIndKtxwILGWYOSibOKjLsEdjyjZvYDq/cZwNeak0w==" crossorigin="anonymous"></noscript>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Nocturn3 Local LLM Configuration Auditor",
+      "url": "https://nocturn3.com/pages/llm-auditor",
+      "description": "Free open-source security scanner that detects exposed local AI model endpoints (Ollama, LocalAI, LM Studio, llama.cpp, vLLM) and audits their configuration.",
+      "applicationCategory": "SecurityApplication",
+      "operatingSystem": "Windows, macOS, Linux",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "provider": {
+        "@type": "Organization",
+        "name": "Nocturne Information Security Inc.",
+        "url": "https://nocturn3.com"
+      }
+    }
+    </script>
+
+    <style>
+    /* ── LLM Auditor Page ──────────────────────── */
+    .lla-app { max-width: 900px; margin: 0 auto; }
+
+    /* Trust badges */
+    .lla-trust-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 24px; margin: 32px 0 0; }
+    .lla-trust-badge { display: flex; align-items: center; gap: 8px; font-size: 0.82rem; color: var(--text-muted); }
+    .lla-trust-badge i { color: var(--accent-primary); }
+
+    /* Stats section */
+    .lla-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin: 48px 0; }
+    .lla-stat-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--border-radius); padding: 28px 24px; text-align: center; }
+    .lla-stat-num { font-size: 2.2rem; font-weight: 800; color: var(--accent-primary); margin-bottom: 8px; }
+    .lla-stat-label { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 6px; }
+    .lla-stat-src { font-size: 0.72rem; color: var(--text-muted); font-style: italic; }
+
+    /* Main content card */
+    .lla-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--border-radius-lg); padding: 40px; margin-bottom: 32px; }
+    .lla-card h3 { font-size: 1.3rem; font-weight: 700; color: var(--text-primary); margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+    .lla-card h3 i { color: var(--accent-primary); font-size: 1.1rem; }
+    .lla-card p { font-size: 0.92rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 16px; }
+
+    /* Platform grid */
+    .lla-platforms { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; margin: 24px 0; }
+    .lla-platform { background: var(--bg-primary); border: 1px solid var(--border-color); border-radius: var(--border-radius); padding: 20px; transition: var(--transition); }
+    .lla-platform:hover { border-color: rgba(245,197,66,0.4); }
+    .lla-platform h4 { font-size: 1rem; font-weight: 700; color: var(--text-primary); margin-bottom: 6px; }
+    .lla-platform .lla-port { font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; color: var(--accent-primary); background: rgba(245,197,66,0.08); padding: 2px 8px; border-radius: 4px; margin-left: 8px; }
+    .lla-platform p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; margin: 0; }
+
+    /* Checks table */
+    .lla-checks { width: 100%; border-collapse: collapse; margin: 20px 0; }
+    .lla-checks th { text-align: left; font-size: 0.78rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; padding: 12px 16px; border-bottom: 2px solid var(--border-color); }
+    .lla-checks td { padding: 14px 16px; border-bottom: 1px solid var(--border-color); font-size: 0.88rem; color: var(--text-secondary); }
+    .lla-checks tr:last-child td { border-bottom: none; }
+    .lla-severity { display: inline-block; padding: 3px 10px; border-radius: 999px; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; }
+    .lla-severity.critical { background: rgba(239,68,68,0.15); color: #f87171; }
+    .lla-severity.high { background: rgba(251,146,60,0.15); color: #fb923c; }
+    .lla-severity.medium { background: rgba(250,204,21,0.15); color: #facc15; }
+    .lla-severity.low { background: rgba(74,222,128,0.15); color: #4ade80; }
+
+    /* Feature list */
+    .lla-features { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 24px 0; }
+    @media (max-width: 600px) { .lla-features { grid-template-columns: 1fr; } }
+    .lla-feature { display: flex; gap: 12px; align-items: flex-start; }
+    .lla-feature i { color: var(--accent-primary); margin-top: 3px; flex-shrink: 0; }
+    .lla-feature span { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.5; }
+
+    /* Quick start code block */
+    .lla-code { background: var(--bg-primary); border: 1px solid var(--border-color); border-radius: var(--border-radius); padding: 24px; font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; line-height: 1.8; color: var(--text-secondary); overflow-x: auto; position: relative; }
+    .lla-code .lla-comment { color: var(--text-muted); }
+    .lla-code .lla-cmd { color: var(--accent-primary); }
+    .lla-copy-btn { position: absolute; top: 12px; right: 12px; padding: 6px 14px; background: rgba(245,197,66,0.08); border: 1px solid var(--border-color); border-radius: var(--border-radius-sm); color: var(--text-muted); font-size: 0.75rem; font-weight: 600; cursor: pointer; transition: var(--transition); font-family: inherit; }
+    .lla-copy-btn:hover { border-color: var(--accent-primary); color: var(--accent-primary); }
+
+    /* CTA button */
+    .lla-cta { display: inline-flex; align-items: center; gap: 10px; padding: 14px 32px; background: var(--accent-gradient); color: var(--bg-primary); border: none; border-radius: var(--border-radius-sm); cursor: pointer; font-weight: 700; font-size: 0.95rem; text-decoration: none; transition: var(--transition); font-family: inherit; }
+    .lla-cta:hover { transform: translateY(-2px); box-shadow: var(--shadow-glow); }
+    .lla-cta-secondary { display: inline-flex; align-items: center; gap: 10px; padding: 14px 32px; background: transparent; color: var(--text-primary); border: 1px solid var(--border-color); border-radius: var(--border-radius-sm); cursor: pointer; font-weight: 600; font-size: 0.95rem; text-decoration: none; transition: var(--transition); font-family: inherit; margin-left: 12px; }
+    .lla-cta-secondary:hover { border-color: var(--accent-primary); color: var(--accent-primary); }
+
+    /* Deep scan info */
+    .lla-deep-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 20px 0; }
+    @media (max-width: 600px) { .lla-deep-grid { grid-template-columns: 1fr; } }
+    .lla-deep-item { display: flex; gap: 12px; background: var(--bg-primary); border: 1px solid var(--border-color); border-radius: var(--border-radius); padding: 16px; }
+    .lla-deep-item i { color: var(--accent-primary); margin-top: 2px; flex-shrink: 0; }
+    .lla-deep-item strong { font-size: 0.88rem; color: var(--text-primary); display: block; margin-bottom: 2px; }
+    .lla-deep-item span { font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; }
+
+    /* FAQ */
+    .lla-faq { margin-top: 48px; }
+    .lla-faq h3 { font-size: 1.3rem; font-weight: 700; color: var(--text-primary); margin-bottom: 24px; text-align: center; }
+    .lla-faq-item { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--border-radius); margin-bottom: 12px; overflow: hidden; }
+    .lla-faq-q { padding: 20px 24px; font-size: 0.95rem; font-weight: 700; color: var(--text-primary); cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: var(--transition); }
+    .lla-faq-q:hover { color: var(--accent-primary); }
+    .lla-faq-q i { transition: transform 0.3s ease; color: var(--text-muted); font-size: 0.8rem; }
+    .lla-faq-q.open i { transform: rotate(180deg); }
+    .lla-faq-a { padding: 0 24px 20px; font-size: 0.88rem; color: var(--text-secondary); line-height: 1.7; display: none; }
+    .lla-faq-q.open + .lla-faq-a { display: block; }
+
+    /* Disclaimer */
+    .lla-disclaimer { background: rgba(239,68,68,0.06); border: 1px solid rgba(239,68,68,0.2); border-radius: var(--border-radius); padding: 20px 24px; margin-bottom: 32px; }
+    .lla-disclaimer h4 { font-size: 0.92rem; font-weight: 700; color: #f87171; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
+    .lla-disclaimer p { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.6; margin: 0; }
+    </style>
+</head>
+
+<body>
+
+<!-- Navigation -->
+<nav class="navbar" id="navbar">
+    <div class="container">
+        <a href="/" class="nav-brand">
+            <i class="fas fa-dragon brand-icon"></i>
+            <span class="brand-text">NOCTURN<span class="accent">3</span></span>
+        </a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="/">Home</a></li>
+            <li class="nav-dropdown">
+                <a href="#" >Services <i class="fas fa-chevron-down dropdown-arrow"></i></a>
+                <div class="nav-dropdown-menu">
+                    <a href="/pages/services" class="nav-dropdown-item">
+                        <span class="dd-icon"><i class="fas fa-user-shield"></i></span>
+                        <span class="dd-content">
+                            <span class="dd-title">Consulting Services</span>
+                            <span class="dd-desc">Security assessments, compliance & consulting</span>
+                        </span>
+                    </a>
+                    <a href="/pages/training" class="nav-dropdown-item">
+                        <span class="dd-icon"><i class="fas fa-graduation-cap"></i></span>
+                        <span class="dd-content">
+                            <span class="dd-title">Training & Certifications</span>
+                            <span class="dd-desc">CISSP, CompTIA Security+, CISA prep courses</span>
+                        </span>
+                    </a>
+                </div>
+            </li>
+            <li class="nav-dropdown">
+                <a href="#" class="active">Free Tools <i class="fas fa-chevron-down dropdown-arrow"></i></a>
+                <div class="nav-dropdown-menu">
+                    <a href="/pages/scorecard" class="nav-dropdown-item">
+                        <span class="dd-icon"><i class="fas fa-shield-alt"></i></span>
+                        <span class="dd-content">
+                            <span class="dd-title">Security Scorecard</span>
+                            <span class="dd-desc">Rate your business security in 2 minutes</span>
+                        </span>
+                        <span class="dd-label">Free &rarr;</span>
+                    </a>
+                    <a href="/pages/breach-checker" class="nav-dropdown-item">
+                        <span class="dd-icon"><i class="fas fa-calculator"></i></span>
+                        <span class="dd-content">
+                            <span class="dd-title">Incident Cost Calculator</span>
+                            <span class="dd-desc">What would a breach cost your business?</span>
+                        </span>
+                        <span class="dd-label">Free &rarr;</span>
+                    </a>
+                    <a href="/pages/email-header-analyzer" class="nav-dropdown-item">
+                        <span class="dd-icon"><i class="fas fa-envelope-open-text"></i></span>
+                        <span class="dd-content">
+                            <span class="dd-title">Email Header Analyzer</span>
+                            <span class="dd-desc">Detect spoofing & routing anomalies</span>
+                        </span>
+                        <span class="dd-label">Free &rarr;</span>
+                    </a>
+                    <a href="/pages/llm-auditor" class="nav-dropdown-item">
+                        <span class="dd-icon"><i class="fas fa-robot"></i></span>
+                        <span class="dd-content">
+                            <span class="dd-title">LLM Configuration Auditor</span>
+                            <span class="dd-desc">Scan for exposed local AI endpoints</span>
+                        </span>
+                        <span class="dd-label">Free &rarr;</span>
+                    </a>
+                </div>
+            </li>
+            <li><a href="/pages/products" >Products</a></li>
+            <li><a href="/pages/blog" >Blog</a></li>
+            <li><a href="/pages/about">About</a></li>
+            <li><a href="/pages/contact">Contact</a></li>
+        </ul>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+</nav>
+
+<a href="#main-content" class="skip-nav">Skip to content</a>
+<main id="main-content">
+
+    <!-- Breadcrumb -->
+    <div class="container breadcrumb" style="padding-top:100px">
+        <a href="/">Home</a><span class="sep">&rarr;</span><a href="#">Free Tools</a><span class="sep">&rarr;</span><span class="current">LLM Configuration Auditor</span>
+    </div>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="hero-bg"><div class="grid-overlay"></div></div>
+        <div class="container">
+            <div class="page-header-content" data-aos="fade-up">
+                <span class="section-tag"><i class="fas fa-robot"></i> Free Tool &mdash; Open Source</span>
+                <h1>Local LLM <span class="gradient-text">Configuration Auditor</span></h1>
+                <p>You downloaded Ollama, pulled a model, and started chatting. But did you check who <em>else</em> on your network can too? This free, open-source scanner finds every local AI endpoint on your machine or network and audits its security &mdash; before someone else finds it first.</p>
+                <div class="lla-trust-row">
+                    <div class="lla-trust-badge"><i class="fas fa-lock"></i> 100% Local &mdash; No Data Leaves Your Machine</div>
+                    <div class="lla-trust-badge"><i class="fab fa-github"></i> Open Source (MIT License)</div>
+                    <div class="lla-trust-badge"><i class="fab fa-python"></i> Python 3.8+</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content -->
+    <section class="content-section">
+        <div class="container">
+            <div class="lla-app">
+
+                <!-- Stats -->
+                <div class="lla-stats" data-aos="fade-up">
+                    <div class="lla-stat-card">
+                        <div class="lla-stat-num">6</div>
+                        <div class="lla-stat-label">LLM Platforms Supported</div>
+                        <div class="lla-stat-src">Ollama, LM Studio, vLLM, LocalAI, llama.cpp, text-gen-webui</div>
+                    </div>
+                    <div class="lla-stat-card">
+                        <div class="lla-stat-num">7</div>
+                        <div class="lla-stat-label">Security Checks Per Service</div>
+                        <div class="lla-stat-src">From critical (no auth) to low (version disclosure)</div>
+                    </div>
+                    <div class="lla-stat-card">
+                        <div class="lla-stat-num">5</div>
+                        <div class="lla-stat-label">Deep-Scan Detection Methods</div>
+                        <div class="lla-stat-src">Processes, ports, configs, env vars, Docker</div>
+                    </div>
+                </div>
+
+                <!-- The Problem -->
+                <div class="lla-card" data-aos="fade-up">
+                    <h3><i class="fas fa-exclamation-triangle"></i> The Problem</h3>
+                    <p>The local AI boom is real. Ollama has millions of downloads. LM Studio runs on every developer's laptop. vLLM powers production inference. But <strong>security hasn't kept up</strong>:</p>
+                    <ul style="list-style:none; padding:0; margin:0 0 16px;">
+                        <li style="display:flex; gap:10px; margin-bottom:12px; font-size:0.9rem; color:var(--text-secondary); line-height:1.6;">
+                            <i class="fas fa-times-circle" style="color:#f87171; margin-top:3px; flex-shrink:0;"></i>
+                            <span><strong>Ollama</strong> binds to <code style="font-family:'JetBrains Mono',monospace; font-size:0.82rem; background:rgba(245,197,66,0.08); padding:2px 6px; border-radius:4px; color:var(--accent-primary);">0.0.0.0:11434</code> with <em>no authentication</em> &mdash; anyone can pull models, read your prompts, and run inference on your GPU</span>
+                        </li>
+                        <li style="display:flex; gap:10px; margin-bottom:12px; font-size:0.9rem; color:var(--text-secondary); line-height:1.6;">
+                            <i class="fas fa-times-circle" style="color:#f87171; margin-top:3px; flex-shrink:0;"></i>
+                            <span><strong>LM Studio</strong> exposes an OpenAI-compatible API with no access controls</span>
+                        </li>
+                        <li style="display:flex; gap:10px; margin-bottom:12px; font-size:0.9rem; color:var(--text-secondary); line-height:1.6;">
+                            <i class="fas fa-times-circle" style="color:#f87171; margin-top:3px; flex-shrink:0;"></i>
+                            <span>Most platforms <strong>leak their version</strong>, list all loaded models, and expose system prompts through their APIs</span>
+                        </li>
+                    </ul>
+                    <p style="margin-bottom:0;">This tool scans for <strong>all of that</strong> in seconds and generates a detailed report with fix recommendations.</p>
+                </div>
+
+                <!-- Quick Start -->
+                <div class="lla-card" data-aos="fade-up">
+                    <h3><i class="fas fa-terminal"></i> Quick Start</h3>
+                    <p>Three commands and you're scanning. No signup, no API keys, no cloud dependencies.</p>
+                    <div class="lla-code">
+                        <button class="lla-copy-btn" id="llaCopyBtn" onclick="navigator.clipboard.writeText('git clone https://github.com/saikatz/local-llm-configuration-auditor.git\ncd local-llm-configuration-auditor\npip install -r requirements.txt\npython run.py');this.textContent='Copied!';setTimeout(function(){document.getElementById(\'llaCopyBtn\').textContent='Copy'},2000);">Copy</button>
+<span class="lla-comment"># Clone the repository</span>
+<span class="lla-cmd">git clone</span> https://github.com/saikatz/local-llm-configuration-auditor.git
+<span class="lla-cmd">cd</span> local-llm-configuration-auditor
+
+<span class="lla-comment"># Install dependencies & run</span>
+<span class="lla-cmd">pip install</span> -r requirements.txt
+<span class="lla-cmd">python</span> run.py
+                    </div>
+                    <p style="margin-top:16px; font-size:0.85rem; color:var(--text-muted);"><i class="fab fa-windows" style="margin-right:4px;"></i> On Windows, you can also double-click <code style="font-family:'JetBrains Mono',monospace; font-size:0.82rem; background:rgba(245,197,66,0.08); padding:2px 6px; border-radius:4px; color:var(--accent-primary);">start.bat</code></p>
+
+                    <div style="margin-top:24px; text-align:center;">
+                        <a href="https://github.com/saikatz/local-llm-configuration-auditor" target="_blank" rel="noopener noreferrer" class="lla-cta"><i class="fab fa-github"></i> View on GitHub</a>
+                        <a href="https://github.com/saikatz/local-llm-configuration-auditor/archive/refs/heads/master.zip" class="lla-cta-secondary"><i class="fas fa-download"></i> Download ZIP</a>
+                    </div>
+                </div>
+
+                <!-- Scan Modes -->
+                <div class="lla-card" data-aos="fade-up">
+                    <h3><i class="fas fa-crosshairs"></i> Scan Modes</h3>
+                    <p>Choose how you want to scan when you run the tool:</p>
+                    <div class="lla-deep-grid">
+                        <div class="lla-deep-item">
+                            <i class="fas fa-laptop"></i>
+                            <div>
+                                <strong>This Machine</strong>
+                                <span>Deep-scans your local machine &mdash; processes, configs, Docker containers, env vars, plus extended port scan</span>
+                            </div>
+                        </div>
+                        <div class="lla-deep-item">
+                            <i class="fas fa-network-wired"></i>
+                            <div>
+                                <strong>Full Subnet</strong>
+                                <span>Auto-detects your LAN and scans the entire /24 subnet for exposed AI endpoints</span>
+                            </div>
+                        </div>
+                        <div class="lla-deep-item">
+                            <i class="fas fa-bullseye"></i>
+                            <div>
+                                <strong>Custom Target</strong>
+                                <span>Enter a specific IP address or CIDR range to scan</span>
+                            </div>
+                        </div>
+                        <div class="lla-deep-item">
+                            <i class="fas fa-file-alt"></i>
+                            <div>
+                                <strong>HTML Report</strong>
+                                <span>Every scan generates a dark-themed HTML report saved to <code style="font-family:'JetBrains Mono',monospace; font-size:0.78rem; background:rgba(245,197,66,0.08); padding:1px 5px; border-radius:3px; color:var(--accent-primary);">reports/</code></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Security Checks -->
+                <div class="lla-card" data-aos="fade-up">
+                    <h3><i class="fas fa-search"></i> 7 Security Checks Per Service</h3>
+                    <p>Each discovered LLM endpoint is audited against these checks:</p>
+                    <div style="overflow-x:auto;">
+                        <table class="lla-checks">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Check</th>
+                                    <th>Severity</th>
+                                    <th>Why It Matters</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td style="font-weight:600; color:var(--text-primary);">Unauthenticated API Access</td>
+                                    <td><span class="lla-severity critical">Critical</span></td>
+                                    <td>Anyone can use your LLM without credentials</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td style="font-weight:600; color:var(--text-primary);">Unauthorized Model Pull</td>
+                                    <td><span class="lla-severity critical">Critical</span></td>
+                                    <td>Attackers can download arbitrary models via Ollama's /api/pull</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td style="font-weight:600; color:var(--text-primary);">Model Enumeration</td>
+                                    <td><span class="lla-severity high">High</span></td>
+                                    <td>All loaded models are visible to anyone</td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td style="font-weight:600; color:var(--text-primary);">System Prompt Extraction</td>
+                                    <td><span class="lla-severity high">High</span></td>
+                                    <td>Your model's system prompts and configs are exposed</td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td style="font-weight:600; color:var(--text-primary);">Non-Localhost Binding</td>
+                                    <td><span class="lla-severity high">High</span></td>
+                                    <td>Service is reachable from outside your machine</td>
+                                </tr>
+                                <tr>
+                                    <td>6</td>
+                                    <td style="font-weight:600; color:var(--text-primary);">CORS Misconfiguration</td>
+                                    <td><span class="lla-severity medium">Medium</span></td>
+                                    <td>Access-Control-Allow-Origin: * enables browser-based attacks</td>
+                                </tr>
+                                <tr>
+                                    <td>7</td>
+                                    <td style="font-weight:600; color:var(--text-primary);">Version Disclosure</td>
+                                    <td><span class="lla-severity low">Low</span></td>
+                                    <td>Software version exposed, useful for targeted exploits</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Deep Local Scan -->
+                <div class="lla-card" data-aos="fade-up">
+                    <h3><i class="fas fa-microscope"></i> Deep Local Machine Scan</h3>
+                    <p>When scanning localhost, the tool goes beyond port scanning with 5 detection methods &mdash; it even finds LLMs that are <strong>installed but not currently running</strong>:</p>
+                    <div class="lla-deep-grid">
+                        <div class="lla-deep-item">
+                            <i class="fas fa-microchip"></i>
+                            <div>
+                                <strong>Process Scanning</strong>
+                                <span>Running LLM processes with PID and listening ports (via psutil)</span>
+                            </div>
+                        </div>
+                        <div class="lla-deep-item">
+                            <i class="fas fa-plug"></i>
+                            <div>
+                                <strong>Listening Port Harvest</strong>
+                                <span>All ports in use by LLM-related processes, including non-default ports</span>
+                            </div>
+                        </div>
+                        <div class="lla-deep-item">
+                            <i class="fas fa-folder-open"></i>
+                            <div>
+                                <strong>Config File Discovery</strong>
+                                <span>Installed platforms detected by checking known config paths and model directories</span>
+                            </div>
+                        </div>
+                        <div class="lla-deep-item">
+                            <i class="fas fa-code"></i>
+                            <div>
+                                <strong>Environment Variables</strong>
+                                <span>Platform-specific env vars (e.g., OLLAMA_HOST, OLLAMA_ORIGINS)</span>
+                            </div>
+                        </div>
+                        <div class="lla-deep-item">
+                            <i class="fab fa-docker"></i>
+                            <div>
+                                <strong>Docker Enumeration</strong>
+                                <span>Containerized LLM deployments with port mappings</span>
+                            </div>
+                        </div>
+                        <div class="lla-deep-item">
+                            <i class="fas fa-ghost"></i>
+                            <div>
+                                <strong>Dormant Detection</strong>
+                                <span>Flags installed LLMs that aren't running &mdash; they may still contain model files worth reviewing</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Supported Platforms -->
+                <div class="lla-card" data-aos="fade-up">
+                    <h3><i class="fas fa-server"></i> Supported Platforms</h3>
+                    <div class="lla-platforms">
+                        <div class="lla-platform">
+                            <h4>Ollama <span class="lla-port">:11434</span></h4>
+                            <p>Most popular local LLM runner. Default config exposes API to all interfaces with zero auth.</p>
+                        </div>
+                        <div class="lla-platform">
+                            <h4>LM Studio <span class="lla-port">:1234</span></h4>
+                            <p>Desktop app with OpenAI-compatible server. No built-in access controls.</p>
+                        </div>
+                        <div class="lla-platform">
+                            <h4>vLLM <span class="lla-port">:8000</span></h4>
+                            <p>High-performance inference engine. Often deployed in production without auth.</p>
+                        </div>
+                        <div class="lla-platform">
+                            <h4>LocalAI <span class="lla-port">:8080</span></h4>
+                            <p>Drop-in OpenAI replacement. Supports multiple model backends.</p>
+                        </div>
+                        <div class="lla-platform">
+                            <h4>llama.cpp <span class="lla-port">:8080</span></h4>
+                            <p>Lightweight C++ inference server. Minimalist, often without security features.</p>
+                        </div>
+                        <div class="lla-platform">
+                            <h4>text-generation-webui <span class="lla-port">:7860</span></h4>
+                            <p>Gradio-based UI with API. Multiple exposed interfaces and ports.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Features -->
+                <div class="lla-card" data-aos="fade-up">
+                    <h3><i class="fas fa-star"></i> Features</h3>
+                    <div class="lla-features">
+                        <div class="lla-feature">
+                            <i class="fas fa-bolt"></i>
+                            <span><strong>One-command scan</strong> &mdash; just run <code style="font-family:'JetBrains Mono',monospace; font-size:0.8rem; background:rgba(245,197,66,0.08); padding:2px 6px; border-radius:4px; color:var(--accent-primary);">python run.py</code> and pick a target</span>
+                        </div>
+                        <div class="lla-feature">
+                            <i class="fas fa-fingerprint"></i>
+                            <span><strong>Smart identification</strong> &mdash; fingerprints services through API probing, HTTP headers, OpenAPI docs, and model metadata</span>
+                        </div>
+                        <div class="lla-feature">
+                            <i class="fas fa-palette"></i>
+                            <span><strong>Color-coded terminal output</strong> with step-by-step progress and severity breakdown</span>
+                        </div>
+                        <div class="lla-feature">
+                            <i class="fas fa-file-code"></i>
+                            <span><strong>Dark-themed HTML report</strong> &mdash; detailed, professional, ready to share with your team</span>
+                        </div>
+                        <div class="lla-feature">
+                            <i class="fas fa-feather-alt"></i>
+                            <span><strong>Minimal dependencies</strong> &mdash; just <code style="font-family:'JetBrains Mono',monospace; font-size:0.8rem; background:rgba(245,197,66,0.08); padding:2px 6px; border-radius:4px; color:var(--accent-primary);">requests</code> + optionally <code style="font-family:'JetBrains Mono',monospace; font-size:0.8rem; background:rgba(245,197,66,0.08); padding:2px 6px; border-radius:4px; color:var(--accent-primary);">psutil</code></span>
+                        </div>
+                        <div class="lla-feature">
+                            <i class="fas fa-scroll"></i>
+                            <span><strong>Full debug logging</strong> saved to <code style="font-family:'JetBrains Mono',monospace; font-size:0.8rem; background:rgba(245,197,66,0.08); padding:2px 6px; border-radius:4px; color:var(--accent-primary);">logs/</code> for review</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Disclaimer -->
+                <div class="lla-disclaimer" data-aos="fade-up">
+                    <h4><i class="fas fa-exclamation-circle"></i> Authorized Use Only</h4>
+                    <p>This tool is for authorized security auditing only. Only scan networks and systems you own or have explicit written permission to test. Unauthorized scanning may violate local laws. The authors are not responsible for misuse.</p>
+                </div>
+
+                <!-- FAQ -->
+                <div class="lla-faq" data-aos="fade-up">
+                    <h3>Frequently Asked Questions</h3>
+
+                    <div class="lla-faq-item">
+                        <div class="lla-faq-q" onclick="this.classList.toggle('open')">
+                            Why should I care about my local LLM being exposed?
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="lla-faq-a">
+                            Most local LLM platforms ship with zero authentication and bind to all network interfaces by default. This means anyone on your Wi-Fi &mdash; coworkers, guests, or anyone in range &mdash; can query your AI, read your prompts, download models, and run inference on your hardware. An exposed endpoint is essentially an open door to your AI infrastructure.
+                        </div>
+                    </div>
+
+                    <div class="lla-faq-item">
+                        <div class="lla-faq-q" onclick="this.classList.toggle('open')">
+                            Does this tool send any data to the internet?
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="lla-faq-a">
+                            No. Everything runs locally on your machine. The tool only makes network requests to the scan targets you specify (your localhost or your local network). No telemetry, no cloud APIs, no data exfiltration. The source code is fully open and auditable on GitHub.
+                        </div>
+                    </div>
+
+                    <div class="lla-faq-item">
+                        <div class="lla-faq-q" onclick="this.classList.toggle('open')">
+                            What do I need to run it?
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="lla-faq-a">
+                            Python 3.8 or higher and the <code style="font-family:'JetBrains Mono',monospace; font-size:0.82rem;">requests</code> library (installed via pip). For full deep-scan capabilities (process scanning, port harvesting), <code style="font-family:'JetBrains Mono',monospace; font-size:0.82rem;">psutil</code> is recommended but optional &mdash; the tool gracefully degrades without it. Works on Windows, macOS, and Linux.
+                        </div>
+                    </div>
+
+                    <div class="lla-faq-item">
+                        <div class="lla-faq-q" onclick="this.classList.toggle('open')">
+                            Can it find LLMs that aren't currently running?
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="lla-faq-a">
+                            Yes. When scanning localhost, the deep-scan engine checks for installed platforms by examining config files, model directories, environment variables, and Docker containers &mdash; even if the service is stopped. These dormant installs are flagged because they may still contain model files and configuration worth reviewing.
+                        </div>
+                    </div>
+
+                    <div class="lla-faq-item">
+                        <div class="lla-faq-q" onclick="this.classList.toggle('open')">
+                            Is this free for commercial use?
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="lla-faq-a">
+                            Yes. The tool is released under the MIT License, which permits commercial and private use, modification, and distribution. See the LICENSE file in the repository for details.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CTA -->
+                <div class="cta-box" data-aos="fade-up" style="margin-top:48px;">
+                    <h3 style="font-size:1.3rem; font-weight:700; color:var(--text-primary); margin-bottom:8px;">Need Help Securing Your AI Infrastructure?</h3>
+                    <p style="font-size:0.92rem; color:var(--text-secondary); line-height:1.6; margin-bottom:20px;">Our team can help you lock down local LLM deployments, implement authentication, configure network isolation, and audit your AI supply chain.</p>
+                    <a href="/pages/contact" class="lla-cta"><i class="fas fa-arrow-right"></i> Book a Free Consultation</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Other Free Tools -->
+    <section class="tools-section">
+        <div class="container">
+            <h2 style="color:var(--text-primary);font-size:1.4rem;font-weight:700;">Also Try These Free Tools</h2>
+            <div class="tools-grid">
+                <a href="/pages/scorecard" class="tool-card">
+                    <div class="tool-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h3>Security Scorecard</h3>
+                    <p>Rate your business security posture in 2 minutes with our free assessment.</p>
+                    <span class="tool-label">Free &rarr;</span>
+                </a>
+                <a href="/pages/breach-checker" class="tool-card">
+                    <div class="tool-icon"><i class="fas fa-calculator"></i></div>
+                    <h3>Incident Cost Calculator</h3>
+                    <p>What would a cyber breach actually cost your Canadian business?</p>
+                    <span class="tool-label">Free &rarr;</span>
+                </a>
+                <a href="/pages/email-header-analyzer" class="tool-card">
+                    <div class="tool-icon"><i class="fas fa-envelope-open-text"></i></div>
+                    <h3>Email Header Analyzer</h3>
+                    <p>Detect spoofing, authentication failures, and routing anomalies.</p>
+                    <span class="tool-label">Free &rarr;</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="/" class="nav-brand">
+                    <i class="fas fa-dragon brand-icon"></i>
+                    <span class="brand-text">NOCTURN<span class="accent">3</span></span>
+                </a>
+                <p>Nocturne Information Security Inc. &mdash; Your trusted partner for cybersecurity consulting and professional development in Burlington and beyond.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+                    <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="/pages/products" >Products</a></li>
+                    <li><a href="/pages/blog" >Blog</a></li>
+                    <li><a href="/pages/about">About Us</a></li>
+                    <li><a href="/pages/services">Services</a></li>
+                    <li><a href="/pages/contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Free Tools</h4>
+                <ul>
+                    <li><a href="/pages/scorecard">Security Scorecard</a></li>
+                    <li><a href="/pages/breach-checker">Incident Cost Calculator</a></li>
+                    <li><a href="/pages/email-header-analyzer">Email Header Analyzer</a></li>
+                    <li><a href="/pages/llm-auditor">LLM Configuration Auditor</a></li>
+                </ul>
+                <h4 style="margin-top:20px">Services</h4>
+                <ul>
+                    <li><a href="/pages/services">Security Consulting</a></li>
+                    <li><a href="/pages/services">Vulnerability Assessment</a></li>
+                    <li><a href="/pages/services">Compliance &amp; Audit</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>Contact</h4>
+                <ul>
+                    <li><i class="fas fa-envelope"></i> <a href="mailto:saikat@nocturn3.com">saikat@nocturn3.com</a></li>
+                    <li><i class="fas fa-map-marker-alt"></i> Burlington, Ontario</li>
+                    <li><i class="fas fa-globe"></i> <a href="https://nocturn3.com">nocturn3.com</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; <span id="currentYear"></span> Nocturne Information Security Inc. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<button class="back-to-top" id="backToTop" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" integrity="sha512-A7AYk1fGKX6S2SsHywmPkrnzTZHrgiVT7GcQkLGDe2ev0aWb8zejytzS8wjo7PGEXKqJOrjQ4oORtnimIRZBtw==" crossorigin="anonymous"></script>
+<script src="/js/main.js"></script>
+
+</body>
+</html>
