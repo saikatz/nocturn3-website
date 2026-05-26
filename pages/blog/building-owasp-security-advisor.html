@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-907Z6SFM3R"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-907Z6SFM3R');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https://www.google-analytics.com https://www.googletagmanager.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://*.google-analytics.com; frame-src https://www.google.com; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+    <meta name="description" content="Build an offline OWASP Security Advisor using VS Code, GitHub Copilot, and Ollama. Standard local RAG tutorial featuring sentence-transformers, FAISS and Mistral.">
+    <title>Building an OWASP Security Advisor with VS Code, GitHub Copilot, and a Local LLM | Nocturne Blog</title>
+
+    <link rel="canonical" href="https://nocturn3.com/pages/blog/building-owasp-security-advisor.html">
+
+    <meta property="og:title" content="Building an OWASP Security Advisor with VS Code, GitHub Copilot, and a Local LLM">
+    <meta property="og:description" content="A step-by-step tutorial for spinning up a private, offline RAG app that answers application-security questions and cites the OWASP Top 10.">
+    <meta property="og:url" content="https://nocturn3.com/pages/blog/building-owasp-security-advisor.html">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="https://nocturn3.com/images/og-image.svg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Nocturne Information Security Inc.">
+    <meta property="article:published_time" content="2026-05-26">
+    <meta property="article:author" content="Nocturne Information Security Inc.">
+    <meta property="article:section" content="AI Security">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Building an OWASP Security Advisor with VS Code, GitHub Copilot, and a Local LLM">
+    <meta name="twitter:description" content="A step-by-step tutorial for spinning up a private, offline RAG app that answers application-security questions and cites the OWASP Top 10.">
+    <meta name="twitter:image" content="https://nocturn3.com/images/og-image.svg">
+
+    <!-- JSON-LD Article Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Building an OWASP Security Advisor with VS Code, GitHub Copilot, and a Local LLM",
+      "description": "Build an offline OWASP Security Advisor using VS Code, GitHub Copilot, and Ollama. Standard local RAG tutorial featuring sentence-transformers, FAISS and Mistral.",
+      "datePublished": "2026-05-26",
+      "author": {
+        "@type": "Organization",
+        "name": "Nocturne Information Security Inc.",
+        "url": "https://nocturn3.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Nocturne Information Security Inc.",
+        "url": "https://nocturn3.com"
+      }
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous"></noscript>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" media="print" onload="this.media='all'" integrity="sha512-1cK78a1o+ht2JcaW6g8OXYwqpev9+6GqOkz9xmBN9iUUhIndKtxwILGWYOSibOKjLsEdjyjZvYDq/cZwNeak0w==" crossorigin="anonymous">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" integrity="sha512-1cK78a1o+ht2JcaW6g8OXYwqpev9+6GqOkz9xmBN9iUUhIndKtxwILGWYOSibOKjLsEdjyjZvYDq/cZwNeak0w==" crossorigin="anonymous"></noscript>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+
+    <style>
+        .article-content pre {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.2rem;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: var(--text-primary);
+        }
+        .article-content code {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            background: rgba(245, 197, 66, 0.08);
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: var(--accent-primary);
+        }
+        .article-content pre code {
+            background: transparent;
+            padding: 0;
+            color: inherit;
+            font-size: inherit;
+        }
+    </style>
+</head>
+<body>
+    <!-- --- Navigation ------------------------------------------------------ -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="/" class="nav-brand">
+                <i class="fas fa-dragon brand-icon"></i>
+                <span class="brand-text">NOCTURN<span class="accent">3</span></span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="/" >Home</a></li>
+                <li class="nav-dropdown">
+                    <a href="#" >Services <i class="fas fa-chevron-down dropdown-arrow"></i></a>
+                    <div class="nav-dropdown-menu">
+                        <a href="/pages/services" class="nav-dropdown-item">
+                            <span class="dd-icon"><i class="fas fa-user-shield"></i></span>
+                            <span class="dd-content">
+                                <span class="dd-title">Consulting Services</span>
+                                <span class="dd-desc">Security assessments, compliance & consulting</span>
+                            </span>
+                        </a>
+                        <a href="/pages/training" class="nav-dropdown-item">
+                            <span class="dd-icon"><i class="fas fa-graduation-cap"></i></span>
+                            <span class="dd-content">
+                                <span class="dd-title">Training & Certifications</span>
+                                <span class="dd-desc">CISSP, CompTIA Security+, CISA prep courses</span>
+                            </span>
+                        </a>
+                    </div>
+                </li>
+                <li class="nav-dropdown">
+                    <a href="#" >Free Tools <i class="fas fa-chevron-down dropdown-arrow"></i></a>
+                    <div class="nav-dropdown-menu">
+                        <a href="/pages/scorecard" class="nav-dropdown-item">
+                            <span class="dd-icon"><i class="fas fa-shield-alt"></i></span>
+                            <span class="dd-content">
+                                <span class="dd-title">Security Scorecard</span>
+                                <span class="dd-desc">Rate your business security in 2 minutes</span>
+                            </span>
+                            <span class="dd-label">Free &rarr;</span>
+                        </a>
+                        <a href="/pages/breach-checker" class="nav-dropdown-item">
+                            <span class="dd-icon"><i class="fas fa-calculator"></i></span>
+                            <span class="dd-content">
+                                <span class="dd-title">Incident Cost Calculator</span>
+                                <span class="dd-desc">What would a breach cost your business?</span>
+                            </span>
+                            <span class="dd-label">Free &rarr;</span>
+                        </a>
+                        <a href="/pages/email-header-analyzer" class="nav-dropdown-item">
+                            <span class="dd-icon"><i class="fas fa-envelope-open-text"></i></span>
+                            <span class="dd-content">
+                                <span class="dd-title">Email Header Analyzer</span>
+                                <span class="dd-desc">Detect spoofing & routing anomalies</span>
+                            </span>
+                            <span class="dd-label">Free &rarr;</span>
+                        </a>
+                    <a href="/pages/llm-auditor" class="nav-dropdown-item">
+                        <span class="dd-icon"><i class="fas fa-robot"></i></span>
+                        <span class="dd-content">
+                            <span class="dd-title">LLM Configuration Auditor</span>
+                            <span class="dd-desc">Scan for exposed local AI endpoints</span>
+                        </span>
+                        <span class="dd-label">Free &rarr;</span>
+                    </a>
+                    </div>
+                </li>
+                <li><a href="/pages/products" >Products</a></li>
+                <li><a href="/pages/blog" class="active">Blog</a></li>
+                <li><a href="/pages/about" >About</a></li>
+                <li><a href="/pages/contact" >Contact</a></li>
+            </ul>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <a href="#main-content" class="skip-nav">Skip to content</a>
+    <main id="main-content">
+    <!-- --- Article Header -------------------------------------------------- -->
+    <section class="page-header">
+        <div class="hero-bg">
+            <div class="grid-overlay"></div>
+        </div>
+        <div class="container">
+            <div class="page-header-content" data-aos="fade-up">
+                <span class="section-tag"><i class="fas fa-robot"></i> AI Security</span>
+                <h1>Building an OWASP Security Advisor with <span class="gradient-text">VS Code, GitHub Copilot</span>, and a Local LLM</h1>
+                <div class="blog-card-meta" style="justify-content: center; margin-top: 1rem;">
+                    <span class="blog-date"><i class="fas fa-calendar"></i> May 26, 2026</span>
+                    <span class="blog-category"><i class="fas fa-clock"></i> 10 min read</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- --- Article Content ------------------------------------------------- -->
+    <section class="content-section">
+        <div class="container">
+            <div class="article-content" data-aos="fade-up">
+                <p class="article-lead">A step-by-step tutorial for spinning up a private, offline RAG app that answers application-security questions and cites the OWASP Top 10.</p>
+
+                <p>A nice way to learn AI tooling is to take a topic you already know and turn it into a small, working tool — something you can run on your own laptop, with no cloud bills and no API keys.</p>
+                <p>In this project we'll build an <strong>OWASP Security Advisor</strong>: a local Retrieval-Augmented Generation (RAG) app that ingests the OWASP Top 10 documents and answers security questions in plain English, complete with citations and similarity scores.</p>
+                <p>The whole thing runs offline. The whole thing is scaffolded by GitHub Copilot from a single, detailed prompt. And the whole thing takes less than an afternoon.</p>
+                <p>Here's how to build it.</p>
+
+                <h2>What you'll have at the end</h2>
+                <p>A Streamlit web app, running at <code>http://localhost:8501</code>, that:</p>
+                <ul>
+                    <li>Loads the OWASP Top 10 documentation from a local folder</li>
+                    <li>Splits it into chunks, embeds each chunk, and stores the vectors in FAISS</li>
+                    <li>Accepts plain-English security questions in a chat-style UI</li>
+                    <li>Retrieves the most relevant OWASP passages</li>
+                    <li>Sends those passages plus your question to a local Mistral model</li>
+                    <li>Returns a structured answer — vulnerability name, severity, explanation, prevention steps — with the source chunks shown alongside</li>
+                </ul>
+                <p>No API keys. No data leaving your machine.</p>
+
+                <h2>The stack, briefly</h2>
+                <p>If you're brand new to any of these pieces, here's the one-sentence version of each:</p>
+                <ul>
+                    <li><strong>VS Code</strong> — Microsoft's free code editor. The place you write everything.</li>
+                    <li><strong>GitHub Copilot</strong> — an AI pair programmer that lives inside VS Code. It auto-completes code, answers questions in a chat sidebar, and (in Agent mode) can scaffold entire projects from a spec.</li>
+                    <li><strong>Streamlit</strong> — a Python library that turns scripts into web UIs with about three lines of code.</li>
+                    <li><strong>Ollama</strong> — a tool that runs language models locally. Think "Docker for LLMs".</li>
+                    <li><strong>Mistral</strong> — a capable open-weight language model that runs comfortably on a laptop.</li>
+                    <li><strong>sentence-transformers</strong> — produces "embeddings", i.e. converts text into vectors so we can search by meaning.</li>
+                    <li><strong>FAISS</strong> — Facebook's library for fast similarity search over those vectors.</li>
+                </ul>
+                <p>Don't worry if it's a lot. You won't write most of this from scratch.</p>
+
+                <h2>A 30-second primer on RAG</h2>
+                <p>RAG stands for <strong>Retrieval-Augmented Generation</strong>. The idea is simple:</p>
+                <ol>
+                    <li>The user asks a question.</li>
+                    <li>You search your own document collection for the most relevant snippets.</li>
+                    <li>You stitch those snippets into a prompt and send it to the LLM.</li>
+                    <li>The LLM answers using only what you gave it.</li>
+                </ol>
+                <p>Why bother? Two reasons. First, the model can only answer with your trusted documents, so it makes fewer things up. Second, you can show the source — every answer comes with the chunks that produced it. That's how our app cites OWASP Top 10 sections for every reply.</p>
+
+                <h2>Prerequisites</h2>
+                <p>Before starting, make sure you have:</p>
+                <ul>
+                    <li><strong>Windows 10 or 11</strong> (the scripts in this post target Windows; macOS/Linux work with minor tweaks)</li>
+                    <li><strong>Python 3.10–3.12</strong> — Python 3.13 is not yet supported by some of our pinned dependencies (<code>faiss-cpu</code> in particular). I'd recommend 3.12.</li>
+                    <li><strong>VS Code</strong> installed</li>
+                    <li><strong>GitHub Copilot</strong> extension in VS Code, signed in to a paid or trial Copilot account</li>
+                    <li>About 6 GB free disk space (the Mistral model alone is ~4.4 GB)</li>
+                </ul>
+                <p><em>A note on operating systems: the commands below use Windows PowerShell, but everything works on macOS and Linux too — swap <code>py</code> for <code>python3</code>, <code>.\run.bat</code> for a bash equivalent, and the activation script path for <code>source .venv312/bin/activate</code>.</em></p>
+
+                <h2>Step 1 — Install Ollama and pull Mistral</h2>
+                <p>Ollama is the engine that will run our language model locally. Install it once, then pull the model file.</p>
+                <p>Visit <a href="https://ollama.com/download/windows" target="_blank" rel="noopener">https://ollama.com/download/windows</a> and either click "Download for Windows" or paste the PowerShell one-liner into an admin PowerShell window.</p>
+                <p>Once Ollama is installed, open PowerShell and run:</p>
+                <pre><code class="language-powershell">ollama pull mistral</code></pre>
+                <p>You'll see something like this:</p>
+                <pre><code>PS C:\&gt; ollama pull mistral
+pulling manifest
+pulling f5074b1221da: 100%   4.4 GB
+pulling 43070e2d4e53: 100%   11 KB
+pulling 1ff5b64b61b9: 100%   799 B
+pulling ed11eda7790d: 100%   30 B
+pulling 1064e17101bd: 100%   487 B
+verifying sha256 digest
+writing manifest
+success</code></pre>
+                <p>The first download is the only slow step. After this, the model is cached on your machine and starts in seconds.</p>
+
+                <h2>Step 2 — Verify Ollama is reachable</h2>
+                <p>The Ollama daemon listens on port <code>11434</code>. Let's confirm it's alive:</p>
+                <pre><code class="language-powershell">curl http://localhost:11434/api/tags</code></pre>
+                <p>You should get back HTTP 200 OK and a JSON payload that lists <code>mistral:latest</code> among the available models. If you see a connection refused, open the Ollama tray app — it has to be running for the API to respond.</p>
+                <p>Quick sanity check from the shell:</p>
+                <pre><code class="language-powershell">ollama list</code></pre>
+                <p>You should see <code>mistral:latest</code> in the table.</p>
+
+                <h2>Step 3 — Grab the OWASP Top 10 documents</h2>
+                <p>Our corpus is the OWASP Top 10 2021 markdown files. The easiest way to grab them is the <strong>download-directory.github.io</strong> trick:</p>
+                <ol>
+                    <li>Go to <a href="https://download-directory.github.io/" target="_blank" rel="noopener">https://download-directory.github.io/</a></li>
+                    <li>Paste this URL into the box: <code>https://github.com/OWASP/Top10/tree/master/2021/docs/en</code></li>
+                    <li>Hit Download. You'll get a ZIP with about 33 markdown files.</li>
+                </ol>
+                <p>Make a folder called <code>documents/</code> in your project root, and drop the markdown files in there. The structure should look like:</p>
+                <pre><code>owasp-security-advisor/
+├── documents/
+│   ├── A01_2021-Broken_Access_Control.md
+│   ├── A02_2021-Cryptographic_Failures.md
+│   └── ... (31 more)</code></pre>
+                <p>That's our knowledge base.</p>
+
+                <h2>Step 4 — Open VS Code and prompt GitHub Copilot</h2>
+                <p>This is the magic step. Open VS Code in your project folder, open the Copilot Chat / Agent panel, and paste the following spec. The clearer the spec, the better the scaffold — vague prompts produce vague code.</p>
+                
+                <pre><code>Build a Retrieval-Augmented Generation (RAG) system called
+"OWASP Security Advisor" with a professional Streamlit GUI.
+
+Stack:
+- Data source: OWASP Top 10 2021 markdown files in documents/
+- Backend: Ollama running Mistral (local, offline)
+- Embeddings: sentence-transformers (all-MiniLM-L6-v2)
+- Vector DB: FAISS
+- Frontend: Streamlit chat-style UI
+
+Requirements:
+- Sidebar with Build/Rebuild Index, model selection, top-K slider
+- Chat-style query interface
+- Show vulnerability name, severity, explanation, prevention steps
+- Display source chunks and similarity scores with each answer
+- Export conversation as TXT and PDF
+- Handle the case where Ollama is not running with a friendly message
+- Use st.cache_resource to cache the embedder and the FAISS index
+- Provide a run.bat that creates a venv, installs deps, and launches the app
+
+Generate these files:
+- streamlit_app.py
+- rag_backend.py
+- document_loader.py
+- embedder.py
+- vector_db.py
+- retriever.py
+- config.py
+- requirements.txt
+- .streamlit/config.toml
+- run.bat
+
+Pin versions in requirements.txt:
+streamlit==1.28.1, langchain==0.1.0, sentence-transformers==2.2.2,
+faiss-cpu==1.7.4, ollama==0.1.3, pypdf==3.17.1, python-dotenv==1.0.0,
+tiktoken==0.5.2, requests==2.31.0</code></pre>
+
+                <p>Hit enter. Copilot Agent goes to work — creating files, editing them, and iterating. A typical run produces eight Python modules, a pinned <code>requirements.txt</code>, a <code>run.bat</code> launcher, and a <code>.streamlit/config.toml</code> for theming.</p>
+                <p><strong>Read the code before you trust it.</strong> Copilot writes confidently, not necessarily correctly. Skim each file, run the syntax check below, and fix anything that smells off.</p>
+
+                <h2>Step 5 — Run the app</h2>
+                <p>There are two ways to launch.</p>
+                <p><strong>The easy way:</strong> double-click <code>run.bat</code>. The script will:</p>
+                <ol>
+                    <li>Detect your Python launcher (<code>py</code>)</li>
+                    <li>Create a <code>.venv312</code> virtual environment if missing</li>
+                    <li>Activate it</li>
+                    <li>Install dependencies from <code>requirements.txt</code></li>
+                    <li>Launch Streamlit on <code>http://localhost:8501</code></li>
+                </ol>
+                <p><strong>The manual way:</strong></p>
+                <pre><code class="language-powershell">py -3.12 -m venv .venv312
+.venv312\Scripts\Activate.ps1
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+python -m streamlit run streamlit_app.py</code></pre>
+                <p>Either path opens a browser tab to the running app.</p>
+
+                <h2>Step 6 — Build the index and start asking questions</h2>
+                <p>The first time you open the app, click **Build / Rebuild Index** in the sidebar. The backend will:</p>
+                <ul>
+                    <li>Load every file in <code>documents/</code></li>
+                    <li>Normalize and chunk the text (default: 900 chars with 180 char overlap)</li>
+                    <li>Embed each chunk with <code>all-MiniLM-L6-v2</code></li>
+                    <li>Write the vectors and metadata into <code>vector_store/</code></li>
+                </ul>
+                <p>For 33 OWASP files you'll end up with about 615 chunks. The system status panel confirms <code>Ollama: running</code>, <code>Vector Store: indexed</code>, and shows the counts.</p>
+                <p>Now ask it something:</p>
+                <blockquote><em>"Explain Broken Access Control and how to prevent it."</em></blockquote>
+                <p>After a few seconds you'll get a structured answer back: severity (High), an explanation, a list of prevention steps, and — crucially — the OWASP chunks that produced it, each with a cosine similarity score so you can see how confident the retrieval was.</p>
+                <p>Try a few more:</p>
+                <blockquote><em>"What is the top LLM vulnerability?"</em></blockquote>
+                <p>It pulls the OWASP LLM Top 10 chunk on Unbounded Consumption, marks it High severity, and lists mitigations: resource limits, model pruning, quantization.</p>
+                <blockquote><em>"How does SQL Injection work, and how do we remediate it?"</em></blockquote>
+                <p>Critical severity. Use parameterized queries, validate input server-side, use an ORM. Sources are visible right below the answer.</p>
+
+                <h2>What to do when things break</h2>
+                <p>A few common failures and their fixes:</p>
+                <ul>
+                    <li><strong>"Streamlit is not recognized"</strong> — your terminal is using the system Python, not the venv. Either use <code>run.bat</code> or run <code>python -m streamlit run streamlit_app.py</code>.</li>
+                    <li><strong>"Ollama timeout" but the tray app is running</strong> — the model probably hasn't been pulled. Run <code>ollama list</code> and confirm <code>mistral:latest</code> is there. If not, <code>ollama pull mistral</code>.</li>
+                    <li><strong><code>faiss-cpu</code> won't install on Python 3.13</strong> — known issue. Drop back to Python 3.12.</li>
+                    <li><strong>Empty or low-confidence answers</strong> — your documents folder might be empty, or you forgot to click Build Index. Open the sidebar, click Build / Rebuild Index, and try again.</li>
+                </ul>
+
+                <h2>Things worth taking away</h2>
+                <p>Three lessons from this build:</p>
+                <ol>
+                    <li><strong>Prompts beat code.</strong> A vague prompt ("build me a RAG app") produced about 100 lines of confused Python. The structured spec above produced a working project. The leverage from writing the prompt well is enormous.</li>
+                    <li><strong>RAG is more approachable than it sounds.</strong> Once you split it into "embed", "store", "retrieve", and "generate", each part is just a small Python module. You don't need a vector database company — FAISS in a folder works fine for thousands of chunks.</li>
+                    <li><strong>Local LLMs are real now.</strong> Two years ago you needed a GPU farm. Today, Mistral on Ollama runs on a classroom laptop. The first query is slow because the model warms up; subsequent queries on the same model are quick.</li>
+                </ol>
+                <p><strong>Read what Copilot writes.</strong> This is non-negotiable. Copilot is a faster typist than you are, but it doesn't know your intent. Treat its output the way you'd treat a confident intern's first draft: read it, test it, own the bugs.</p>
+
+                <h2>Where to go next</h2>
+                <p>A few directions worth exploring once the basic app is running:</p>
+                <ul>
+                    <li>Swap Mistral for a smaller model (<code>phi3</code>, <code>llama3:8b</code>) and benchmark answer quality vs latency</li>
+                    <li>Add a second corpus — your company's secure-coding standards, OWASP Cheat Sheets, or PCI-DSS controls</li>
+                    <li>Add a regression test set (a list of questions with expected vulnerability tags) and evaluate the RAG on every change</li>
+                    <li>Move the index to a persistent vector DB if you outgrow FAISS</li>
+                    <li>Wrap it as a desktop app (PyInstaller, electron-builder, etc.) so non-technical colleagues can use it</li>
+                </ul>
+                <p>Whichever direction you pick, you now have a working starting point — built in an afternoon, running on your machine, with every answer cited to its source.</p>
+                <p>Go build something.</p>
+
+                <!-- Back to Blog -->
+                <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(245, 197, 66, 0.15);">
+                    <a href="/pages/blog" class="card-link"><i class="fas fa-arrow-left"></i> Back to Blog</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    </main>
+
+    <!-- --- Footer ---------------------------------------------------------- -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="/" class="nav-brand">
+                        <i class="fas fa-dragon brand-icon"></i>
+                        <span class="brand-text">NOCTURN<span class="accent">3</span></span>
+                    </a>
+                    <p>Nocturne Information Security Inc. — Your trusted partner for cybersecurity consulting and professional development.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+                        <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="/pages/products" >Products</a></li>
+                        <li><a href="/pages/blog">Blog</a></li>
+                        <li><a href="/pages/about">About Us</a></li>
+                        <li><a href="/pages/services">Services</a></li>
+                        <li><a href="/pages/contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Free Tools</h4>
+                    <ul>
+                        <li><a href="/pages/scorecard">Security Scorecard</a></li>
+                        <li><a href="/pages/breach-checker">Incident Cost Calculator</a></li>
+                        <li><a href="/pages/email-header-analyzer">Email Header Analyzer</a></li>
+                        <li><a href="/pages/llm-auditor">LLM Configuration Auditor</a></li>
+                    </ul>
+                    <h4 style="margin-top:20px">Services</h4>
+                    <ul>
+                        <li><a href="/pages/services">Security Consulting</a></li>
+                        <li><a href="/pages/services">Vulnerability Assessment</a></li>
+                        <li><a href="/pages/services">Compliance & Audit</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> <a href="mailto:saikat@nocturn3.com">saikat@nocturn3.com</a></li>
+                        <li><i class="fas fa-map-marker-alt"></i> Burlington, Ontario</li>
+                        <li><i class="fas fa-globe"></i> <a href="https://nocturn3.com">nocturn3.com</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="currentYear"></span> Nocturne Information Security Inc. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" integrity="sha512-A7AYk1fGKX6S2SsHywmPkrnzTZHrgiVT7GcQkLGDe2ev0aWb8zejytzS8wjo7PGEXKqJOrjQ4oORtnimIRZBtw==" crossorigin="anonymous"></script>
+    <script src="/js/main.js"></script>
+</body>
+</html>
